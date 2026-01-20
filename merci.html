@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Message envoyé avec succès - Portfolio d'Edouard Desmyter">
+  <title>Message Envoyé - Edouard Desmyter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="Images/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #0D1117;
+      color: #E5E7EB;
+      font-family: 'Poppins', sans-serif;
+    }
+    .animate-checkmark {
+      animation: checkmark 0.8s ease-out;
+    }
+    @keyframes checkmark {
+      0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+      50% { transform: scale(1.2) rotate(-45deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-6">
+  
+  <!-- Container principal -->
+  <div class="max-w-2xl w-full text-center">
+    
+    <!-- Icône de succès -->
+    <div class="mb-8 flex justify-center">
+      <div class="w-24 h-24 rounded-full bg-[#C1A261]/20 border-4 border-[#C1A261] flex items-center justify-center animate-checkmark">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#C1A261" class="w-12 h-12">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+    </div>
+    
+    <!-- Titre -->
+    <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-[#E5E7EB]">
+      Message Envoyé !
+    </h1>
+    
+    <!-- Message -->
+    <p class="text-lg sm:text-xl text-[#9CA3AF] mb-4 leading-relaxed">
+      Merci pour votre message.<br>
+      Je vous répondrai dans les plus brefs délais.
+    </p>
+    
+    <p class="text-base text-[#9CA3AF] mb-12">
+      Vous pouvez fermer cette page ou retourner au portfolio.
+    </p>
+    
+    <!-- Boutons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/#contact" class="bg-[#C1A261] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#1B2F78] transition-all duration-300 inline-block">
+        Retour au contact
+      </a>
+      <a href="/" class="border-2 border-[#C1A261] text-[#C1A261] px-8 py-3 rounded-lg font-medium hover:bg-[#C1A261] hover:text-white transition-all duration-300 inline-block">
+        Retour à l'accueil
+      </a>
+    </div>
+    
+    
+    
+  </div>
+  
+</body>
+</html>
