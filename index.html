@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio d'Edouard Desmyter, développeur AR / MR / VR. Présentation de projets et réalisations en réalité augmentée, mixte et virtuelle." />
+  <title>Edouard Desmyter – Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="JS/main.js" defer></script>
+  <link rel="icon" type="image/png" href="Images/favicon.png" />
+
+</head>
+
+<body class="bg-background text-textmain font-sans">
+
+<!-- HEADER -->
+<header class="w-full fixed top-0 left-0 z-50">
+  <div id="header-container" class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 gap-8 transition-all duration-500">
+    
+    <!-- Nom -->
+    <h1 id="header-name" class="text-xl sm:text-2xl font-bold tracking-wider opacity-0 transition-all duration-500 text-[#C1A261]">
+      <a href="#home">Edouard Desmyter</a>
+    </h1>
+
+    <!-- Navigation desktop -->
+    <nav id="header-nav" class="hidden sm:flex text-sm sm:text-base transition-all duration-500">
+      <a href="#about" class="hover:text-[#C1A261] transition transform hover:scale-105">A propos</a>
+      <a href="#maitrises" class="hover:text-[#C1A261] transition transform hover:scale-105">Maîtrises</a>
+      <a href="#projects" class="hover:text-[#C1A261] transition transform hover:scale-105">Projets</a>
+      <a href="#contact" class="hover:text-[#C1A261] transition transform hover:scale-105">Contact</a>
+    </nav>
+
+    <!-- Hamburger mobile -->
+    <button id="menu-btn" class="sm:hidden flex flex-col justify-center items-center w-10 h-10 relative focus:outline-none z-50 group">
+      <span class="block w-8 h-0.5 bg-[#E5E7EB] mb-1 transition-all duration-300"></span>
+      <span class="block w-8 h-0.5 bg-[#E5E7EB] mb-1 transition-all duration-300"></span>
+      <span class="block w-8 h-0.5 bg-[#E5E7EB] transition-all duration-300"></span>
+    </button>
+  </div>
+</header>
+
+
+<!-- Mobile overlay -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40"></div>
+
+<!-- Mobile panel -->
+<div id="mobile-panel" class="fixed top-0 right-0 h-full w-64 bg-[#0D1117]/90 backdrop-blur-lg text-[#E5E7EB] transform translate-x-full transition-transform duration-500 z-50 shadow-2xl flex flex-col p-6">
+  
+  <button id="close-mobile-btn" class="self-end w-10 h-10 flex items-center justify-center mb-6 group">
+    <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 group-hover:bg-[#C1A261]"></span>
+    <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 group-hover:bg-[#C1A261] mt-1"></span>
+  </button>
+
+  <nav class="flex flex-col mt-4 space-y-4 text-lg font-medium">
+    <a href="#about" class="hover:text-[#C1A261] transition px-3 py-2 rounded-lg bg-[#C1A261]/10">A propos</a>
+    <a href="#maitrises" class="hover:text-[#C1A261] transition px-3 py-2 rounded-lg bg-[#C1A261]/10">Maîtrises</a>
+    <a href="#projects" class="hover:text-[#C1A261] transition px-3 py-2 rounded-lg bg-[#C1A261]/10">Projets</a>
+    <a href="#contact" class="hover:text-[#C1A261] transition px-3 py-2 rounded-lg bg-[#C1A261]/10">Contact</a>
+  </nav>
+</div>
+
+
+
+    <section id="home" class="relative min-h-[100dvh] min-h-[100dvh] flex items-center justify-center sm:justify-start px-6 sm:px-20 overflow-hidden pt-20 sm:pt-24 md:pt-28" data-animate>
+        <img src="Images/BackGroundVR.png" 
+             alt="Arrière-plan VR immersif" 
+             class="absolute inset-0 w-full h-full object-cover sm:object-[50%_0] opacity-0 pointer-events-none select-none transition-all duration-1000 ease-out" 
+             data-animate />
+
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0D1117] via-[#0D1117]/95 to-[#0D1117]/0 opacity-0 transition-all duration-1000 ease-out" data-animate></div>
+
+        <div class="relative z-10 text-left max-w-2xl ml-6 sm:ml-8 md:ml-32 lg:ml-48 opacity-0 translate-y-6 transition-all duration-1000 ease-out sm:pt-4" data-animate>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 leading-tight font-light tracking-tight animate-fade-up">
+                Edouard<br><span class="font-black text-white">Desmyter</span>
+            </h1>
+            <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#9CA3AF] font-medium animate-fade-up delay-200">
+                Développeur AR / MR / VR
+            </h2>
+        </div>
+
+        <div class="scrolldown absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2" style="--color: #C1A261;">
+          <div class="chevrons flex flex-col items-center">
+            <div class="chevrondown"></div>
+            <div class="chevrondown"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="bg-[#F9F9F9] text-[#111827] py-24" data-animate>
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-12 opacity-0 translate-y-6 transition duration-700" data-scroll>A propos</h2>
+
+          <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-20 mb-24">
+            <div class="md:w-1/2 opacity-0 translate-y-6 transition duration-700" data-scroll>
+              <h3 class="text-2xl sm:text-3xl font-semibold mb-6">
+                Développeur XR passionné d'expériences immersives
+              </h3>
+              <p class="text-base sm:text-lg leading-relaxed">
+                Ingénieur Efrei Paris spécialisé Image & Réalité Virtuelle, je développe des expériences immersives XR pour transformer la façon dont nous interagissons avec le monde numérique.<br>
+                Passionné par les technologies qui repoussent les limites de l'immersion, j'allie créativité technique et optimisation performance pour créer des applications fluides et engageantes sur tous supports : casques VR (Pico G3, HTC Vive, HoloLens 2), mobile (Android/iOS) et web.
+              </p>
+              <p class="text-base sm:text-lg leading-relaxed mt-4">
+                Chez Inersio, je pilote les volets AR/VR de projets innovants pour l'industrie française, tout en explorant en parallèle des projets personnels et de recherche universitaire. Mon approche : simplicité technique au service d'expériences mémorables.
+              </p>
+              <p class="text-base sm:text-lg leading-relaxed mt-4">
+                Curieux, rigoureux et toujours à l'affût des dernières avancées XR.
+              </p>
+            </div>
+            <div class="md:w-1/2 opacity-0 translate-y-6 transition duration-700" data-scroll>
+              <img src="Images/Moi.png" alt="Edouard Desmyter" class="w-full h-auto rounded-lg shadow-lg object-cover">
+            </div>
+          </div>
+
+    <div id="experience" class="space-y-8">
+      <h3 class="text-2xl sm:text-3xl font-semibold mb-6 opacity-0 translate-y-6 transition duration-700" data-scroll>Expérience</h3>
+
+      <div class="space-y-4 opacity-0 translate-y-6 transition duration-700" data-scroll>
+        <div class="group-container border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white transition-all duration-300">
+            <button onclick="togglePanel('exp1')" class="w-full text-left px-6 py-4 hover:bg-gray-100 transition flex justify-between items-center">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                <span class="font-semibold text-lg">Études – Efrei Paris</span>
+                <span class="text-gray-500 text-sm sm:text-base italic mt-1 sm:mt-0">2017 – 2020</span>
+              </div>
+
+              <!-- Icône flèche -->
+              <svg id="icon-exp1" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Panneau déroulant -->
+            <div id="xp-panel-exp1" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white">
+              <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-4">
+                <div class="flex-1">
+                  <p class="text-gray-700 leading-relaxed">
+                    Au cours de ma formation d’ingénieur à l’<strong>Efrei Paris</strong>, école généraliste en informatique, j’ai acquis un large éventail de compétences en <strong>développement logiciel et en ingénierie informatique</strong>.</br>
+                    Je me suis spécialisé dans les domaines de l’<strong>Image et de la Réalité Virtuelle</strong>, en me concentrant sur la conception et <strong>le développement d’applications interactives en réalité virtuelle et augmentée</strong>.</br>
+                    J’y ai approfondi <strong>la création d’environnements immersifs</strong> et <strong>l’optimisation temps réel</strong>, <strong>la modélisation 3D</strong>, renforçant ainsi <strong>une expertise technique</strong> qui fonde aujourd’hui mon approche du développement d’expériences numériques innovantes.
+                  </p>
+                </div>
+                <div class="w-full sm:w-1/3 flex justify-center">
+                  <img src="Images/Logos/efrei.png" alt="Logo Inersio" class="w-auto h-24 object-contain" />
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="group-container border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white transition-all duration-300">
+            <button onclick="togglePanel('exp2')" class="w-full text-left px-6 py-4 hover:bg-gray-100 transition flex justify-between items-center">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                <span class="font-semibold text-lg">Stage de fin d'étude – IFSTTAR</span>
+                <span class="text-gray-500 text-sm sm:text-base italic mt-1 sm:mt-0">2020</span>
+              </div>
+
+              <svg id="icon-exp2" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="xp-panel-exp2" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white">
+              <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-4">
+                <div class="flex-1">
+                  <p class="text-gray-700 leading-relaxed">
+                    Au cours de mon stage de fin d’études à l’<strong>IFSTTAR</strong>, j’ai participé au développement d’un <strong>self-avatar</strong> pour une expérience de traversée de route en réalité virtuelle.</br>
+                    Ce premier <strong>projet de recherche et développement</strong> m’a offert une expérience concrète dans le domaine de la VR appliquée à la <strong>recherche scientifique</strong>.</br>
+                    J’y ai approfondi mes compétences techniques en <strong> interaction homme–machine</strong>, <strong>optimisation temps réel</strong>, <strong>modélisation 3D</strong> et <strong>animation</strong>, tout en contribuant à la création d’un avatar virtuel réaliste destiné à <strong>renforcer la présence et l’immersion</strong> dans cette expérience.
+                   </p>
+                </div>
+                <div class="w-full sm:w-1/3 flex justify-center">
+                  <img src="Images/Logos/ifsttar.png" alt="Logo Studio XR" class="w-auto h-24 object-contain" />
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="group-container border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white transition-all duration-300">
+            <button onclick="togglePanel('exp3')" class="w-full text-left px-6 py-4 hover:bg-gray-100 transition flex justify-between items-center">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                <span class="font-semibold text-lg">Ingénieur d'études – Université Côte d'Azur</span>
+                <span class="text-gray-500 text-sm sm:text-base italic mt-1 sm:mt-0">2021 – 2023</span>
+              </div>
+              <svg id="icon-exp3" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="xp-panel-exp3" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white">
+              <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-4">
+                <div class="flex-1">
+                  <p class="text-gray-700 leading-relaxed">
+                    Lors de mon expérience de recherche et développement à l’<strong>Université Côte d’Azur</strong>, j’ai participé à un projet innovant dans <strong>le domaine médical</strong>, centré sur l’usage de la <strong>réalité mixte</strong> pour la <strong>curiethérapie</strong>.</br>
+                    Mon rôle consistait à <strong>concevoir et développer une application</strong> sur <strong>casque HoloLens 2</strong>, intégrant <strong>le positionnement précis de modèles 3D</strong> dans l’espace réel et <strong>le tracking d’objets médicaux</strong>.</br>
+                    Ce projet m’a permis d’<strong>approfondir mon expérience en réalité mixte</strong>, de <strong>concevoir des interfaces et interactions</strong> adaptées aux usages médicaux, et de <strong>développer une réelle rigueur dans mon travail</strong>, indispensable face aux exigences du domaine de la santé.
+                  </p>
+                </div>
+                <div class="w-full sm:w-1/3 flex justify-center">
+                  <img src="Images/Logos/UniversiteCoteDAzur.png" alt="Logo Studio XR" class="w-auto h-24 object-contain" />
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="group-container border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white transition-all duration-300">
+            <button onclick="togglePanel('exp4')" class="w-full text-left px-6 py-4 hover:bg-gray-100 transition flex justify-between items-center">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                <span class="font-semibold text-lg">Développeur AR/VR – Inersio</span>
+                <span class="text-gray-500 text-sm sm:text-base italic mt-1 sm:mt-0">2024 – Aujourd'hui</span>
+              </div>
+
+              <svg id="icon-exp4" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="xp-panel-exp4" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white">
+              <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-4">
+                <div class="flex-1">
+                  <p class="text-gray-700 leading-relaxed">
+                    Au sein d’<strong>Inersio</strong>, j’assure la responsabilité complète du développement des volets <strong>AR et VR</strong> sur nos projets innovants.</br>
+                    • En réalité augmentée, je conçois des <strong>expériences interactives</strong> basées sur <strong>l’image tracking</strong> et <strong>le world tracking</strong>, permettant de <strong>donner vie à des supports physiques</strong> grâce à du contenu immersif dynamique.</br>
+                    • En réalité virtuelle, je développe un <strong>viewer VR</strong> dédié aux <strong>visites d’usines</strong> et conçois également des expériences immersives visant à <strong>gamifier des vidéos 360°</strong>, afin de <strong>renforcer l’engagement utilisateur</strong> et d’<strong>enrichir l’exploration interactive du contenu</strong>.
+                  </p>
+                </div>
+                <div class="w-full sm:w-1/3 flex justify-center">
+                  <img src="Images/Logos/Inersio.png" alt="Logo Studio XR" class="w-auto h-24 object-contain" />
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="maitrises" class="relative text-[#E5E7EB] py-16 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="text-3xl sm:text-4xl font-bold mb-12 opacity-0 translate-y-6 transition-all duration-700" data-animate>Mes Maîtrises</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 border-4 border-[#E5E7EB] rounded-lg overflow-hidden">
+  <div class="md:border-r-4 border-b-4 md:border-b-0 border-[#E5E7EB] p-8 flex flex-col justify-between bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6" data-animate>
+    <div class="flex items-start mb-6 h-20"> <!-- Hauteur fixe -->
+      <img src="Images/Logos/Unity.png" alt="Logo Unity" class="w-16 h-auto object-contain flex-shrink-0" />
+      <div class="ml-6 flex-1 min-h-full">
+        <h3 class="text-xl font-semibold leading-tight">
+          Développement<br>
+          <span class="relative inline-block">
+            <span class="relative z-10">Unity</span>
+            <span class="absolute left-0 bottom-[1px] w-full h-[10px] bg-[#34495E]/60 z-0"></span>
+          </span>
+        </h3>
+      </div>
+    </div>
+    <p class="text-sm leading-relaxed flex-1 mt-4">
+      Maîtrise avancée d’Unity pour la conception et le développement d’expériences immersives en réalité virtuelle et augmentée.<br>
+      Expérience approfondie avec AR Foundation, XR Interaction Toolkit, MRTK, VRTK et SteamVR, couvrant l’ensemble des besoins AR/VR, du tracking à l’interaction.<br>
+      Compétent en scripting C#, animations, shaders (Shader Graph), optimisation temps réel, streaming d’assets et profiling des performances.<br>
+      Habitué au déploiement multiplateforme sur PC, Android, iOS et UWP (HoloLens), avec adaptation graphique et ergonomique selon les environnements cibles.
+    </p>
+  </div>
+
+  <div class="md:border-r-4 border-b-4 md:border-b-0 border-[#E5E7EB] p-8 flex flex-col justify-between bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6" data-animate>
+    <div class="flex items-start mb-6 h-20"> <!-- Hauteur fixe -->
+      <img src="Images/Logos/Computeur.png" alt="Logo Ordinateur" class="w-16 h-auto object-contain flex-shrink-0" />
+      <div class="ml-6 flex-1 min-h-full">
+        <h3 class="text-xl font-semibold leading-tight">
+          Développement<br>
+          <span class="relative inline-block">
+            <span class="relative z-10">Logiciel</span>
+            <span class="absolute left-0 bottom-[1px] w-full h-[10px] bg-[#2ECC71]/60 z-0"></span>
+          </span>
+        </h3>
+      </div>
+    </div>
+    <p class="text-sm leading-relaxed flex-1 mt-4">
+      Maîtrise du développement logiciel en C++, avec une spécialisation en algorithmie de traitement d’image et en optimisation des performances.<br>
+      Expérience en développement web avec HTML, CSS, PHP et JavaScript, pour la création d’interfaces dynamiques et de sites interactifs.<br>
+      Travail sur des applications iOS en Swift, notamment pour des projets de réalité augmentée, intégrant des interactions immersives et un design soigné.<br>
+      Compétences en conception d’interfaces UI/UX, alliant ergonomie, clarté visuelle et cohérence entre expérience utilisateur et contraintes techniques.
+    </p>
+  </div>
+
+  <div class="md:border-b-0 border-[#E5E7EB] p-8 flex flex-col justify-between bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6" data-animate>
+    <div class="flex items-start mb-6 h-20"> <!-- Hauteur fixe -->
+      <img src="Images/Logos/Blender.png" alt="Logo Blender" class="w-16 h-auto object-contain flex-shrink-0" />
+      <div class="ml-6 flex-1 min-h-full">
+        <h3 class="text-xl font-semibold leading-tight">
+          Modélisation<br>
+          <span class="relative inline-block">
+            <span class="relative z-10">Blender</span>
+            <span class="absolute left-0 bottom-[1px] w-full h-[10px] bg-[#EB7700]/60 z-0"></span>
+          </span>
+        </h3>
+      </div>
+    </div>
+    <p class="text-sm leading-relaxed flex-1 mt-4">
+      Bonne maîtrise de Blender pour la modélisation 3D low-poly et détaillée, appliquée aux projets Unity VR/AR.<br>
+      Compétences couvrant tout le workflow 3D : sculpting, retopologie, UV mapping, texturing PBR, baking (normales, ambient occlusion) et rigging pour des animations adaptées aux environnements interactifs.<br>
+      Habitué à l’export FBX/glTF, à la création de matériaux compatibles URP/HDRP et à un pipeline Blender-Unity optimisé pour la production d’environnements, de personnages et d’assets industriels.
+    </p>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<section id="projects" class="bg-[#F9F9F9] text-[#111827] py-16 relative" data-animate>
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 opacity-0 translate-y-6 transition duration-700" data-scroll>Projets</h2>
+    <div class="flex flex-wrap gap-4 mb-10 opacity-0 translate-y-6 transition duration-700" data-scroll>
+      <button class="filter-btn px-5 py-2 rounded-lg font-medium transition-all duration-300 border-2 border-[#C1A261] text-[#111827]" data-filter="Tous">Tous</button>
+      <button class="filter-btn px-5 py-2 rounded-lg font-medium transition-all duration-300 border-2 border-[#C1A261] text-[#111827]" data-filter="AR">AR</button>
+      <button class="filter-btn px-5 py-2 rounded-lg font-medium transition-all duration-300 border-2 border-[#C1A261] text-[#111827]" data-filter="MR">MR</button>
+      <button class="filter-btn px-5 py-2 rounded-lg font-medium transition-all duration-300 border-2 border-[#C1A261] text-[#111827]" data-filter="VR">VR</button>
+      <button class="filter-btn px-5 py-2 rounded-lg font-medium transition-all duration-300 border-2 border-[#C1A261] text-[#111827]" data-filter="Divers">Divers</button>
+    </div>
+    <div id="projects-grid" class="grid md:grid-cols-3 gap-8 opacity-0 translate-y-6 transition duration-700" data-scroll>
+
+      <div class="project-card relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-xl flex flex-col justify-between cursor-pointer" 
+            data-tags="VR"
+            data-title="Projet PEDSIVAL" 
+            data-subtitle="Reconstitution Self Avatar." 
+            data-about="Développement d'un self-avatar immersif avec tracking corporel avancé pour des simulations scientifiques de traversée routière en réalité virtuelle. Utilisation du HTC Vive équipé de trackeurs à la taille et aux pieds, avec implémentation de cinématique inverse pour reproduire fidèlement les mouvements de l'utilisateur en temps réel.
+                        Conception d'une scène routière dynamique optimisée à 90 FPS constants, intégrant des scénarios prédéfinis de trafic réaliste (vitesse variable, densité, types de véhicules) via LOD, occlusion culling et optimisation Unity, garantissant une reproductibilité parfaite pour les tests IFSTTAR.
+                        Création d'une salle de test instrumentée capturant des données comportementales précises – temps de réaction, trajectoires, patterns de déplacement et interactions multiples (corps, décisions)." 
+            data-tech="Unity 3D / SteamVR / Final IK / Blender" 
+            data-images="Images/Projets/Pedsival/p1.png,Images/Projets/Pedsival/p2.png">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Projet PEDSIVAL</h3>
+          <p class="text-sm mb-4 text-[#D1D5DB]">Reconstitution Self Avatar.</p>
+        </div>
+        <div class="relative group aspect-[16/11]">
+          <img src="Images/Projets/Pedsival/p.png" 
+              alt="Projet AR" 
+              class="rounded-lg object-cover w-full h-full">
+          <div class="absolute bottom-3 right-3 bg-black/25 p-2 rounded-full border border-white/20 transition group-hover:bg-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                stroke="#F3F4F6"
+                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300 ease-out">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </div>
+        </div>
+        <p class="text-[#C1A261] text-sm font-medium mt-4">#Unity #VR #SteamVR #CinématiqueInverse</p>
+      </div>
+            
+      <div class="project-card relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-xl flex flex-col justify-between cursor-pointer" 
+            data-tags="MR"
+            data-title="Projet BIGER" 
+            data-subtitle="Développement application médicale." 
+            data-about="Développement d'une application de curiethérapie sur HoloLens 2 pour assister les chirurgiens lors d'interventions de brachythérapie, avec positionnement précis de modèles 3D et tracking temps réel d'outils chirurgicaux.
+                        Phase 1 – Positionnement anatomique : superposition exacte du scan 3D de la patiente dans l'espace opératoire réel, permettant une visualisation immersive et précise de la zone anatomique cible avant l'intervention.
+                        Phase 2 – Guidance chirurgicale interactive : tracking précis des outils chirurgicaux en temps réel, guidant le positionnement des cathéters pour suivre fidèlement le chemin théorique optimal, garantissant une précision millimétrique dans la pose des implants radioactifs." 
+            data-tech="Unity 3D / MRTK / Vuforia / OpenCV / Blender" 
+            data-images="Images/Projets/Biger/b1.png,Images/Projets/Biger/b2.png">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Projet BIGER</h3>
+          <p class="text-sm mb-4 text-[#D1D5DB]">Développement application médicale</p>
+        </div>
+        <div class="relative group aspect-[16/11]">
+          <img src="Images/Projets/Biger/b.png" 
+                alt="Projet AR" 
+                class="rounded-lg object-cover w-full h-full">
+          <div class="absolute bottom-3 right-3 bg-black/25 p-2 rounded-full border border-white/20 transition group-hover:bg-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                stroke="#F3F4F6"
+                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300 ease-out">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </div>
+        </div>
+        <p class="text-[#C1A261] text-sm font-medium mt-4">#Unity #HoloLens2 #MRTK #Curiethérapie</p>
+      </div>
+
+      <div class="project-card relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-xl flex flex-col justify-between cursor-pointer" 
+            data-tags="VR" 
+            data-title="VR Viewer" 
+            data-subtitle="Visites virtuelles des savoir-faire." 
+            data-about="Développement d'un viewer VR dédié aux visites virtuelles d'usines via vidéos 360° interactives, optimisé pour une fluidité maximale sur Pico G3.
+                        Téléchargement direct dans le casque des vidéos et données des visites, avec gestion sécurisée des connexions et licences pour un accès contrôlé au contenu propriétaire depuis des serveurs distants.
+                        Optimisation poussée pour performances critiques : rendu 360° fluide (90 FPS), gestion mémoire contrainte (<6GB RAM), compression adaptative des vidéos locales et interactions tactiles natives Pico, garantissant une expérience immersive sans latence sur hardware mobile VR." 
+            data-tech="Unity 3D / PICO" 
+            data-images="Images/Projets/VRViewer/vv1.png,Images/Projets/VRViewer/vv2.png,Images/Projets/VRViewer/vv3.png">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">VR Viewer</h3>
+          <p class="text-sm mb-4 text-[#D1D5DB]">Visites virtuelles des savoir-faire.</p>
+        </div>
+        <div class="relative group aspect-[16/11]">
+          <img src="Images/Projets/VRViewer/vv.png" alt="Projet VR" class="rounded-lg object-cover w-full h-full">
+          <div class="absolute bottom-3 right-3 bg-black/25 p-2 rounded-full border border-white/20 transition group-hover:bg-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                stroke="#F3F4F6"
+                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300 ease-out">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </div>
+        </div>
+        <p class="text-[#C1A261] text-sm font-medium mt-4">#VR #Immersion #Savoir-Faire #Français</p>
+      </div>
+      
+      <div class="project-card relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-xl flex flex-col justify-between cursor-pointer" 
+            data-tags="AR" 
+            data-title="Inersio AR" 
+            data-subtitle="Support de communication." 
+            data-about="Développement d'une application AR mobile utilisant image tracking et world tracking, déployée sur Android (web) et iOS (App Clip) pour des expériences immersives accessibles instantanément.
+                        Image tracking : affichage de vidéos dynamiques sur cartes de visite, magazines et kakemonos, animant les supports physiques avec du contenu interactif marketing.
+                        World tracking : superposition de vidéos d'avatars parlants en réalité spatiale, créant des guides virtuels immersifs pour expositions et visites guidées.
+                        Création d'expériences à distance via backoffice dédié, permettant la récupération et la gestion centralisée des données de tracking pour générer dynamiquement du contenu depuis n'importe quel support physique." 
+            data-tech="Unity 3D / WebGL / AppClips / Swift" 
+            data-images="Images/Projets/ArApp/aa1.png,Images/Projets/ArApp/aa2.png">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Inersio AR</h3>
+          <p class="text-sm mb-4 text-[#D1D5DB]">Support de communication.</p>
+        </div>
+        <div class="relative group aspect-[16/11]">
+          <img src="Images/Projets/ArApp/aa.png" alt="Projet Web" class="rounded-lg object-cover w-full h-full">
+          <div class="absolute bottom-3 right-3 bg-black/25 p-2 rounded-full border border-white/20 transition group-hover:bg-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                stroke="#F3F4F6"
+                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300 ease-out">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </div>
+        </div>
+        <p class="text-[#C1A261] text-sm font-medium mt-4">#WebGL #AppClips #Trackers #Avatar</p>
+      </div>
+
+      <div class="project-card relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-xl flex flex-col justify-between cursor-pointer" 
+      data-tags="AR" 
+      data-title="Portfolio d’expériences AR" 
+      data-subtitle="Support de communication." 
+      data-about="Développement d'un portfolio AR autonome destiné aux commerciaux de l'entreprise pour des présentations impactantes lors de salons professionnels, regroupant plusieurs démonstrations visuelles en mode hors ligne.
+                  Démonstrations intégrées :
+                    • Image tracking : activation de contenu AR sur supports imprimés (magazines, kakemonos, cartes)
+                    • World tracking : pose d'avatars virtuels et d'objets 3D interactifs dans l'environnement réel
+                    • IA temps réel : coloration de cheveux dynamique via tracking facial précis
+                    • Viewer vidéo : streaming de vidéos démontrant des expériences AR complexes à transporter sur salon (grands produits, environnements spécifiques)
+                  Architecture offline optimisée : assets embarqués, détection robuste sans connexion, interfaces fluides Android/iOS, conçu pour capter l'attention des prospects en rendez-vous ou stands d'exposition."
+      data-tech="Unity 3D / AR Foundation / Vuforia / MediaPipe" 
+      data-images="Images/Projets/AppSalon/as1.png,Images/Projets/AppSalon/as2.png,Images/Projets/AppSalon/as3.png">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Portfolio d’expériences AR</h3>
+          <p class="text-sm mb-4 text-[#D1D5DB]">Support de communication.</p>
+        </div>
+        <div class="relative group aspect-[16/11]">
+          <img src="Images/Projets/AppSalon/as.png" alt="Projet Web" class="rounded-lg object-cover w-full h-full">
+          <div class="absolute bottom-3 right-3 bg-black/25 p-2 rounded-full border border-white/20 transition group-hover:bg-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                stroke="#F3F4F6"
+                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300 ease-out">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </div>
+        </div>
+        <p class="text-[#C1A261] text-sm font-medium mt-4">#AR Foundation #WorldTracking #Trackers #Avatar #IA</p>
+      </div>
+
+      <div class="project-card relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-xl flex flex-col justify-between cursor-pointer" 
+      data-tags="VR" 
+      data-title="Les Défis du Made in France" 
+      data-subtitle="Les défis du Made in France." 
+      data-about="Développement d'une application VR pour le salon du Made in France à Paris, transformant des visites virtuelles d'usines en expérience de jeu immersive via vidéos 360°.
+                  Concept gamifié : challenge interactif où les joueurs doivent trouver des objets cachés dans les environnements 360° des sites industriels français, avec scoring basé sur le temps de découverte.
+                  Système de classement : suivi temps réel des performances individuelles, creation automatique d'un leaderboard global et récompenses virtuelles, favorisant l'engagement des visiteurs du salon."
+      data-tech="Unity 3D / PICO"
+      data-images="Images/Projets/JeuMIF/vm1.png,Images/Projets/JeuMIF/vm2.png">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Les Défis du Made in France</h3>
+          <p class="text-sm mb-4 text-[#D1D5DB]">Les Défis du Made in France.</p>
+        </div>
+        <div class="relative group aspect-[16/11]">
+          <img src="Images/Projets/JeuMIF/vm.png" alt="Projet VR" class="rounded-lg object-cover w-full h-full">
+          <div class="absolute bottom-3 right-3 bg-black/25 p-2 rounded-full border border-white/20 transition group-hover:bg-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                stroke="#F3F4F6"
+                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300 ease-out">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </div>
+        </div>
+        <p class="text-[#C1A261] text-sm font-medium mt-4">#VR #Immersion #Gamification #MIFExpo</p>
+      </div>
+
+      <div class="project-card relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-xl flex flex-col justify-between cursor-pointer" 
+      data-tags="AR" 
+      data-title="Les Voix du Made in France" 
+      data-subtitle="Les voix du Made in France." 
+      data-about="Développement d'une application AR d'image tracking pour le salon du Made in France à Paris, faisant revivre les portraits d'employés industriels français via des vidéos projetées sur tableaux physiques.
+                  Expérience immersive : activation des vidéos des employés Made in France au scan des tableaux, où ils presentent leur travail et leur entreprise d'origine française garantie.
+                  Interactions dynamiques : dialogues virtuels entre les portraits animés, créant une conversation immersive et vivante entre les employés, renforçant l'aspect humain et authentique du savoir-faire français." 
+      data-tech="Unity 3D / Vuforia" 
+      data-images="Images/Projets/VoixMIF/vmif1.png,Images/Projets/VoixMIF/vmif2.png">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Les Voix du Made in France</h3>
+          <p class="text-sm mb-4 text-[#D1D5DB]">Les Voix du Made in France.</p>
+        </div>
+        <div class="relative group aspect-[16/11]">
+          <img src="Images/Projets/VoixMIF/vmif.png" alt="Projet VR" class="rounded-lg object-cover w-full h-full">
+          <div class="absolute bottom-3 right-3 bg-black/25 p-2 rounded-full border border-white/20 transition group-hover:bg-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                stroke="#F3F4F6"
+                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300 ease-out">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </div>
+        </div>
+        <p class="text-[#C1A261] text-sm font-medium mt-4">#AR #Ouvriers #Voix #MIFExpo</p>
+      </div>
+      
+      <div class="project-card relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-xl flex flex-col justify-between cursor-pointer" 
+      data-tags="Divers"
+      data-title="Projet Perso" 
+      data-subtitle="Jeux 2D." 
+      data-about="Développement d'un jeu 2D complet pour compléter mes compétences Unity et explorer la création de jeux traditionnels, démontrant ma polyvalence au-delà des expériences immersives.
+                  Conception d'un jeu avec mécaniques 2D avancées : plateforme, physique réaliste (Unity 2D Physics), animations fluides (Animator 2D), systèmes de scoring et progression joueur.
+                  Workflow de développement complet : level design procédural, UI réactive (Canvas 2D), gestion audio dynamique, optimisation mobile et publication sur stores, du prototype à la version finale." 
+      data-tech="Unity 3D" 
+      data-images="Images/Projets/ProjetPerso/pp1.png,Images/Projets/ProjetPerso/pp2.png">
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Projet Perso</h3>
+          <p class="text-sm mb-4 text-[#D1D5DB]">Jeux 2D.</p>
+        </div>
+        <div class="relative group aspect-[16/11]">
+          <img src="Images/Projets/ProjetPerso/pp.png" alt="Projet VR" class="rounded-lg object-cover w-full h-full">
+          <div class="absolute bottom-3 right-3 bg-black/25 p-2 rounded-full border border-white/20 transition group-hover:bg-black/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                stroke="#F3F4F6"
+                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-300 ease-out">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </div>
+        </div>
+        <p class="text-[#C1A261] text-sm font-medium mt-4">#Unity #2D</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="project-panel" class="fixed inset-0 bg-[#0D1117]/95 text-[#E5E7EB] hidden flex-col z-50 transition-all duration-500 ease-in-out overflow-y-auto items-center pt-10 pb-10">
+  <div id="project-panel-content" class="max-w-6xl w-full px-6 py-8 bg-[#0D1117] border-2 border-[#C1A261] rounded-2xl relative transform scale-95 opacity-0 transition-all duration-300">
+    <!-- Haut du panneau -->
+    <div class="flex items-center justify-between mb-6">
+      <div id="close-panel" class="flex items-center gap-3 cursor-pointer hover:text-[#C1A261] transition">
+        <div class="w-8 h-8 flex items-center justify-center rounded-full border border-[#E5E7EB]/40">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </div>
+        <span class="font-medium">Retour aux projets</span>
+      </div>
+    </div>
+
+    <hr class="border-[#C1A261]/30 mb-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+      <div class="md:col-span-2 space-y-6">
+        <h3 id="panel-title" class="text-3xl font-semibold"></h3>
+        <p id="panel-subtitle" class="text-[#9CA3AF]"></p>
+
+        <div class="relative overflow-hidden rounded-xl">
+          <div id="panel-images" class="flex transition-transform duration-500 ease-in-out"></div>
+          <button id="prev-img" class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 p-2 rounded-full transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button id="next-img" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 p-2 rounded-full transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <div id="carousel-dots" class="absolute bottom-4 left-0 right-0 flex justify-center gap-3"></div>
+
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <h4 class="text-xl font-semibold">A propos du projet</h4>
+        <p id="panel-about" class="text-[#D1D5DB] text-sm leading-relaxed" style="white-space: pre-line;"></p>
+        <h4 class="text-xl font-semibold mt-6">Technologies utilisées</h4>
+        <p id="panel-tech" class="text-[#C1A261]"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="contact" class="bg-[#0D1117] text-[#E5E7EB] py-16" data-animate>
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Titre -->
+    <h2 class="text-3xl sm:text-4xl font-bold mb-12 opacity-0 translate-y-8 transition-all duration-700 ease-out" data-scroll>
+      Contact
+    </h2>
+
+    <!-- Formulaire -->
+    <form id="contact-form" class="grid grid-cols-1 sm:grid-cols-2 gap-6 opacity-0 translate-y-8 transition-all duration-700 ease-out" data-scroll>
+      <!-- Nom -->
+      <div class="flex flex-col">
+        <label for="name" class="mb-2 font-medium">Nom</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition"
+          placeholder="Votre nom"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="flex flex-col">
+        <label for="email" class="mb-2 font-medium">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition"
+          placeholder="Votre email"
+        />
+      </div>
+
+      <!-- Message -->
+      <div class="flex flex-col sm:col-span-2">
+        <label for="message" class="mb-2 font-medium">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          required
+          class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition"
+          placeholder="Votre message..."
+        ></textarea>
+      </div>
+
+  <div class="sm:col-span-2 flex">
+    <button type="submit" class="group relative bg-[#C1A261] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#1B2F78] transition-all duration-300 overflow-hidden w-full sm:w-auto">
+      <span class="flex items-center justify-center">
+        <span id="btn-text">Envoyer</span>
+        <div id="loader" class="absolute inset-0 flex items-center justify-center opacity-0 bg-[#C1A261]/20">
+          <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+        </div>
+      </span>
+    </button>
+  </div>
+  
+  <div id="notification" class="sm:col-span-2 hidden p-4 mt-4 rounded-lg border text-sm transition-all duration-300"></div>
+</form>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const btn = e.target.querySelector('button');
+  const btnText = document.getElementById('btn-text');
+  const loader = document.getElementById('loader');
+  const notif = document.getElementById('notification');
+  
+  // Loading ✨
+  btnText.textContent = 'Envoi...';
+  loader.classList.remove('opacity-0');
+  btn.disabled = true;
+  
+  try {
+    const res = await fetch('contact.php', {method: 'POST', body: formData});
+    const data = await res.json();
+    
+    // Notif stylée
+    notif.textContent = data.message;
+    notif.className = `sm:col-span-2 p-4 mt-4 rounded-lg border text-sm transition-all duration-300 ${
+      data.success ? 'bg-green-500/20 border-green-500 text-green-100 opacity-100 !block' : 'bg-red-500/20 border-red-500 text-red-100 opacity-100 !block'
+    }`;
+    
+    if (data.success) e.target.reset();
+    
+  } catch {
+    notif.textContent = '❌ Erreur réseau';
+    notif.className = 'sm:col-span-2 p-4 mt-4 rounded-lg border bg-red-500/20 border-red-500 text-red-100 opacity-100 !block';
+  } finally {
+    setTimeout(() => {
+      btnText.textContent = 'Envoyer';
+      loader.classList.add('opacity-0');
+      btn.disabled = false;
+      notif.classList.add('hidden');
+    }, 3000);
+  }
+});
+</script>
+
+
+    <!-- Icônes -->
+    <div class="flex flex-col space-y-6 mt-12 opacity-0 translate-y-8 transition-all duration-700 ease-out" data-scroll>
+      <p class="text-lg font-medium">Retrouvez-moi aussi ici :</p>
+      <div class="flex space-x-8">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/edouard-desmyter/" target="_blank" class="hover:text-[#C1A261] transition" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 24 24">
+            <path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zm7.5 0h4.78v2.14h.07c.67-1.26 2.3-2.58 4.74-2.58 5.07 0 6 3.34 6 7.68V24h-5V16.16c0-1.86-.03-4.26-2.6-4.26-2.6 0-3 2.03-3 4.12V24H7.5V8.98z"/>
+          </svg>
+        </a>
+
+        <!-- CV -->
+        <a href="Documents/CV_Edouard_Desmyter.pdf" target="_blank" class="hover:text-[#C1A261] transition group relative block w-10 h-12" aria-label="CV">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="48" viewBox="0 0 40 48" fill="none" class="w-10 h-12">
+            <rect x="3" y="3" width="34" height="42" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <polygon points="36,3 36,13 26,3" fill="currentColor" opacity="0.2" class="group-hover:opacity-40 transition-opacity duration-300"/>
+            <polygon points="36,3 36,11 28,3" fill="#000" opacity="0.15"/>
+            <polyline points="36,3 36,13 26,3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <line x1="26" y1="3" x2="36" y2="13" stroke="currentColor" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="20" y="28" text-anchor="middle" font-size="14" font-weight="800" fill="currentColor" 
+                  class="group-hover:scale-110 transition-all duration-300 drop-shadow-sm" font-family="system-ui, -apple-system, sans-serif">CV</text>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+</body>
+
+<footer class="bg-[#0D1117] text-[#E5E7EB] py-8 mt-16">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+    <p class="text-sm order-1 text-center md:text-left">&copy; 2025 Edouard Desmyter. Tous droits réservés.</p>
+
+    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 order-2 w-full md:w-auto">
+      <a href="#home" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Home</a>
+      <a href="#about" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">A propos</a>
+      <a href="#maitrises" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Maitrise</a>
+      <a href="#projects" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Projets</a>
+      <a href="#contact" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Contact</a>
+    </div>
+
+    <div class="flex space-x-4 order-3">
+      <a href="https://www.linkedin.com/in/edouard-desmyter/" target="_blank" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">LinkedIn</a>
+      <a href="Documents/CV_Edouard_Desmyter.pdf" target="_blank" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">CV</a>
+    </div>
+  </div>
+</footer>
+
+</html>

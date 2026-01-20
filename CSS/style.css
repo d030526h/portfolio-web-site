@@ -1,0 +1,294 @@
+/* -------------------- SMOOTH SCROLL -------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* -------------------- PANEL ANIMATION -------------------- */
+.panel-animate {
+  transform: scale(0.95);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.panel-animate.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* -------------------- SCROLL DOWN BUTTON -------------------- */
+.scrolldown {
+  --color: #C1A261;
+  --sizeX: 40px;
+  --sizeY: 60px;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--sizeX);
+  height: var(--sizeY);
+  border: calc(var(--sizeX) / 10) solid var(--color);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.scrolldown::before {
+  content: "";
+  width: calc(var(--sizeX) / 6);
+  height: calc(var(--sizeX) / 6);
+  background-color: var(--color);
+  border-radius: 50%;
+  animation: scrolldown-anim 2s infinite;
+  box-shadow: 0 -5px 3px 1px rgba(42,84,112,0.4);
+}
+
+@keyframes scrolldown-anim {
+  0% { opacity: 0; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(10px); }
+  80% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 640px) {
+  .scrolldown {
+    --sizeX: 30px;
+    --sizeY: 45px;
+    border-radius: 15px;
+  }
+
+  .scrolldown::before {
+    width: calc(var(--sizeX) / 6);
+    height: calc(var(--sizeX) / 6);
+  }
+}
+
+/* -------------------- HEADER -------------------- */
+/* HEADER CONTAINER */
+/* Conteneur principal du header */
+/* HEADER GLOBAL — conserve le blur et la transparence du HTML */
+header {
+  height: 50px; /* hauteur stable */
+  display: flex;
+  align-items: center;
+  background: rgba(13, 17, 23, 0.8); /* couleur semi-transparente */
+  backdrop-filter: blur(8px); /* effet flou restauré */
+  border-bottom: 1px solid rgba(75, 85, 99, 0.3); /* léger contour */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 40;
+}
+
+/* Container principal */
+#header-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  transition: gap 0.5s ease, padding 0.5s ease;
+}
+
+/* Nom */
+#header-name {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  margin-right: 1rem;
+}
+#header-name.show {
+  opacity: 1;
+}
+
+/* Navigation centré par défaut */
+#header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3.5rem;
+  font-size: clamp(0.9rem, 1vw + 0.6rem, 1.125rem);
+  font-weight: 500;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Quand on scroll : nav glisse à droite */
+#header-container.scrolled #header-nav {
+  justify-content: flex-end;
+  gap: 2rem;
+  left: auto;
+  right: 1.5rem;
+  transform: translateY(-50%);
+}
+
+
+
+/* Bouton burger à droite (mobile) */
+#menu-btn {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+  display: none; /* caché sur desktop */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  #header-container {
+    justify-content: space-between; /* Nom à gauche, burger à droite */
+  }
+
+  #header-nav {
+    display: none; /* nav caché par défaut sur mobile */
+  }
+
+  #menu-btn {
+    display: block;
+  }
+}
+
+
+/* Mobile adjustments */
+@media (max-width: 639px) {
+  #header-nav { display: none; } /* cacher nav sur mobile */
+  #header-name { opacity: 0; } /* commence caché sur mobile, apparait via JS */
+}
+
+
+/* MOBILE PANEL */
+#mobile-panel { transition: transform 0.5s ease; }
+#mobile-overlay { transition: opacity 0.3s ease; }
+
+/* Hamburger -> croix */
+#close-mobile-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #E5E7EB;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  transform-origin: center;
+}
+#close-mobile-btn.open span:nth-child(1) { transform: rotate(45deg) translateY(8px); background-color:#C1A261; }
+#close-mobile-btn.open span:nth-child(2) { transform: rotate(-45deg) translateY(-8px); background-color:#C1A261; }
+
+/* Hover effet modern nav */
+#header-nav a:hover { color:#C1A261; transform: scale(1.05); }
+
+
+/* -------------------- MOBILE PANEL -------------------- */
+#mobile-panel {
+  transition: transform 0.5s ease;
+}
+
+#mobile-overlay {
+  transition: opacity 0.3s ease;
+}
+
+#close-mobile-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #E5E7EB;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  transform-origin: center;
+}
+
+/* Hamburger → croix animation */
+#close-mobile-btn.open span:nth-child(1) { transform: rotate(45deg) translateY(8px); background-color:#C1A261; }
+#close-mobile-btn.open span:nth-child(2) { transform: rotate(-45deg) translateY(-8px); background-color:#C1A261; }
+
+
+/* -------------------- CROIX MOBILE MENU -------------------- */
+#close-mobile-btn {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 6px;
+}
+
+#close-mobile-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #E5E7EB;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  transform-origin: center;
+}
+
+#close-mobile-btn.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+  background-color: #C1A261;
+}
+
+#close-mobile-btn.open span:nth-child(2) {
+  transform: rotate(-45deg) translateY(-10px);
+  background-color: #C1A261;
+}
+
+/* -------------------- DOTS CAROUSEL -------------------- */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.carousel-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(156,163,175,0.5);
+  transition: all 0.3s ease;
+}
+
+.carousel-dots button.active {
+  width: 12px;
+  height: 12px;
+  background-color: #C1A261;
+  box-shadow: 0 0 8px rgba(193,162,97,0.7);
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 0.65; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+/* -------------------- PROJECTS FILTER -------------------- */
+
+.project-card {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.project-card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+
+.open-parent {
+  background: linear-gradient(to bottom, #f3f4f6 0%, #ffffff 40%);
+}
+
+/* -------------------- UTILITAIRES TAILWIND (optionnel) -------------------- */
+/* .opacity-0, .translate-y-6, .transition-all sont déjà dans Tailwind et peuvent être supprimés si Tailwind est actif */
