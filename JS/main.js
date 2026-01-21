@@ -420,3 +420,12 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
     });
   });
 });
+
+document.getElementById('contact-form').addEventListener('submit', e => {
+  const btn = e.target.querySelector('button span');
+  const loader = document.getElementById('loader');
+  
+  btn.querySelector('#btn-text').textContent = 'Envoi...';
+  loader.classList.remove('opacity-0');
+  // Laissez Netlify gérer la soumission (pas de e.preventDefault())
+});
