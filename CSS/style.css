@@ -292,3 +292,32 @@ header {
 
 /* -------------------- UTILITAIRES TAILWIND (optionnel) -------------------- */
 /* .opacity-0, .translate-y-6, .transition-all sont déjà dans Tailwind et peuvent être supprimés si Tailwind est actif */
+
+
+/* Media query spécifique pour mode paysage mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  #home {
+    padding-top: 3rem !important;
+  }
+  
+  #home h1 {
+    font-size: 1.875rem !important; /* text-3xl */
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  #home h2 {
+    font-size: 1rem !important; /* text-base */
+  }
+  
+  #home .scrolldown {
+    display: none !important;
+  }
+}
+
+/* Pour les tablettes en paysage, garder l'icône */
+@media (min-width: 768px) and (orientation: landscape) {
+  #home .scrolldown {
+    display: flex !important;
+  }
+}
