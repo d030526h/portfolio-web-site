@@ -429,3 +429,19 @@ document.getElementById('contact-form').addEventListener('submit', e => {
   loader.classList.remove('opacity-0');
   // Laissez Netlify gérer la soumission (pas de e.preventDefault())
 });
+
+
+// Dans votre code JavaScript qui gère les clics sur les boutons
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Retirer l'état actif de tous les boutons
+    buttons.forEach(b => {
+      b.classList.remove('bg-[#C1A261]', 'text-white', 'shadow-xl', 'shadow-[#C1A261]/40', 'scale-105');
+      b.classList.add('bg-white', 'text-[#111827]');
+    });
+    
+    // Ajouter l'état actif au bouton cliqué
+    btn.classList.add('bg-[#C1A261]', 'text-white', 'shadow-xl', 'shadow-[#C1A261]/40', 'scale-105');
+    btn.classList.remove('bg-white', 'text-[#111827]');
+  });
+});
