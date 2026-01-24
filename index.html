@@ -1,971 +1,904 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio d'Edouard Desmyter, développeur AR / MR / VR. Présentation de projets et réalisations en réalité augmentée, mixte et virtuelle." />
-  <title>Edouard Desmyter – Portfolio</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio d'Edouard Desmyter, développeur AR / MR / VR. Présentation de projets et réalisations en réalité augmentée, mixte et virtuelle." />
+    <title>Edouard Desmyter – Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="JS/main.js" defer></script>
-  <link rel="icon" type="image/png" href="Images/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="JS/main.js" defer></script>
+    <link rel="icon" type="image/png" href="Images/favicon.png" />
 
-</head>
+  </head>
 
-<body class="bg-background text-textmain font-sans">
-
-<!-- HEADER -->
-<header class="w-full fixed top-0 left-0 z-50">
-  <div id="header-container" class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 gap-8 transition-all duration-500">
-    
-    <!-- Nom -->
-    <h1 id="header-name" class="text-xl sm:text-2xl font-bold tracking-wider opacity-0 transition-all duration-500 text-[#C1A261]">
-      <a href="#home">Edouard Desmyter</a>
-    </h1>
-
-    <!-- Navigation desktop -->
-    <nav id="header-nav" class="hidden sm:flex text-sm sm:text-base transition-all duration-500">
-      <a href="#about" class="hover:text-[#C1A261] transition transform hover:scale-105">A propos</a>
-      <a href="#maitrises" class="hover:text-[#C1A261] transition transform hover:scale-105">Maîtrises</a>
-      <a href="#projects" class="hover:text-[#C1A261] transition transform hover:scale-105">Projets</a>
-      <a href="#contact" class="hover:text-[#C1A261] transition transform hover:scale-105">Contact</a>
-    </nav>
-
-    <!-- Hamburger mobile redessiné -->
-    <button id="menu-btn" class="sm:hidden relative w-12 h-12 focus:outline-none z-50 group">
-      <!-- Fond avec blur et gradient cohérent avec le panel -->
-      <div class="absolute inset-0 bg-gradient-to-br from-[#0D1117]/80 to-[#1a1f2e]/80 backdrop-blur-xl rounded-xl border border-[#C1A261]/20 group-hover:border-[#C1A261]/60 group-hover:shadow-lg group-hover:shadow-[#C1A261]/20 transition-all duration-300"></div>
-      
-      <!-- Barres du burger au-dessus du blur -->
-      <div class="relative z-10 flex flex-col justify-center items-center h-full gap-1.5">
-        <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 rounded-full group-hover:bg-[#C1A261] group-hover:w-7"></span>
-        <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 rounded-full group-hover:bg-[#C1A261]"></span>
-        <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 rounded-full group-hover:bg-[#C1A261] group-hover:w-5"></span>
-      </div>
-    </button>
-
-  </div>
-</header>
-
-
-<!-- Mobile overlay -->
-<div id="mobile-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40"></div>
-
-<!-- Mobile panel redessiné -->
-<div id="mobile-panel" class="fixed top-0 right-0 h-full w-72 bg-gradient-to-br from-[#0D1117]/95 to-[#1a1f2e]/95 backdrop-blur-xl text-[#E5E7EB] transform translate-x-full transition-all duration-500 ease-out z-50 shadow-2xl flex flex-col border-l border-[#C1A261]/20">
-  
-  <!-- Header avec bouton close -->
-  <div class="flex items-center justify-between p-6 border-b border-[#C1A261]/10">
-    <h3 class="text-lg font-semibold text-[#C1A261]">Navigation</h3>
-    
-    <!-- Bouton fermer avec croix (X) -->
-    <button id="close-mobile-btn" class="w-10 h-10 flex items-center justify-center group rounded-lg hover:bg-[#C1A261]/10 transition-all duration-300 relative">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-[#E5E7EB] group-hover:text-[#C1A261] group-hover:rotate-90 transition-all duration-300">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
-
-  <!-- Navigation avec design moderne -->
-  <nav class="flex flex-col px-4 py-8 space-y-2 flex-1">
-    <a href="#about" class="group relative px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-2 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 to-[#C1A261]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#C1A261] rounded-r-full scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
-      <span class="relative z-10 text-base font-medium text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">À propos</span>
-    </a>
-    
-    <a href="#maitrises" class="group relative px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-2 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 to-[#C1A261]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#C1A261] rounded-r-full scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
-      <span class="relative z-10 text-base font-medium text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">Maîtrises</span>
-    </a>
-    
-    <a href="#projects" class="group relative px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-2 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 to-[#C1A261]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#C1A261] rounded-r-full scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
-      <span class="relative z-10 text-base font-medium text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">Projets</span>
-    </a>
-    
-    <a href="#contact" class="group relative px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-2 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 to-[#C1A261]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#C1A261] rounded-r-full scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
-      <span class="relative z-10 text-base font-medium text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">Contact</span>
-    </a>
-  </nav>
-
-  <!-- Footer -->
-  <div class="p-6 border-t border-[#C1A261]/10">
-    <p class="text-xs text-[#9CA3AF] text-center">Edouard Desmyter © 2026</p>
-  </div>
-</div>
-
-
-
-
-<section id="home" class="relative min-h-[100dvh] flex items-center justify-center sm:justify-start px-6 sm:px-20 overflow-hidden pt-16 sm:pt-24 md:pt-28 landscape:pt-12" data-animate>
-    <img src="Images/BackGroundVR.png" 
-         alt="Arrière-plan VR immersif" 
-         class="absolute inset-0 w-full h-full object-cover sm:object-[50%_0] opacity-0 pointer-events-none select-none transition-all duration-1000 ease-out" 
-         data-animate />
-
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0D1117] via-[#0D1117]/95 to-[#0D1117]/0 opacity-0 transition-all duration-1000 ease-out" data-animate></div>
-
-    <div class="relative z-10 text-left max-w-2xl ml-6 sm:ml-8 md:ml-32 lg:ml-48 opacity-0 translate-y-6 transition-all duration-1000 ease-out sm:pt-4" data-animate>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 font-light tracking-tight animate-fade-up">
-            Edouard<br><span class="font-black text-white">Desmyter</span>
+  <body class="bg-background text-textmain font-sans">
+    <header class="w-full fixed top-0 left-0 z-50">
+      <div id="header-container" class="max-w-7xl mx-auto flex items-center justify-between px-6 gap-8 transition-all duration-500">
+        
+        <h1 id="header-name" class="text-xl sm:text-2xl font-bold tracking-wider opacity-0 transition-all duration-500 text-[#C1A261]">
+          <a href="#home">Edouard Desmyter</a>
         </h1>
-        <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#9CA3AF] font-medium animate-fade-up delay-200">
-            Développeur AR / MR / VR
-        </h2>
-    </div>
 
-    <!-- Masquer l'icône de scroll en mode paysage mobile -->
-    <div class="scrolldown absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 landscape:hidden sm:landscape:flex" style="--color: #C1A261;">
-      <div class="chevrons flex flex-col items-center">
-        <div class="chevrondown"></div>
-        <div class="chevrondown"></div>
+        <nav id="header-nav" class="hidden sm:flex text-sm sm:text-base transition-all duration-500 gap-8 sm:gap-12">
+          <a href="#about" class="hover:text-[#C1A261] transition transform hover:scale-105 whitespace-nowrap">A propos</a>
+          <a href="#maitrises" class="hover:text-[#C1A261] transition transform hover:scale-105 whitespace-nowrap">Maîtrises</a>
+          <a href="#projects" class="hover:text-[#C1A261] transition transform hover:scale-105 whitespace-nowrap">Projets</a>
+          <a href="#contact" class="hover:text-[#C1A261] transition transform hover:scale-105 whitespace-nowrap">Contact</a>
+        </nav>
+
+        <button id="menu-btn" class="sm:hidden relative w-12 h-12 focus:outline-none z-50 group">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#0D1117]/80 to-[#1a1f2e]/80 backdrop-blur-xl rounded-xl border border-[#C1A261]/20 group-hover:border-[#C1A261]/60 group-hover:shadow-lg group-hover:shadow-[#C1A261]/20 transition-all duration-300"></div>
+          
+          <div class="relative z-10 flex flex-col justify-center items-center h-full gap-1.5">
+            <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 rounded-full group-hover:bg-[#C1A261] group-hover:w-7"></span>
+            <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 rounded-full group-hover:bg-[#C1A261]"></span>
+            <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 rounded-full group-hover:bg-[#C1A261] group-hover:w-5"></span>
+          </div>
+        </button>
+
+      </div>
+    </header>
+
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40"></div>
+    
+    <div id="mobile-panel" class="fixed top-0 right-0 h-full w-72 bg-gradient-to-br from-[#0D1117]/95 to-[#1a1f2e]/95 backdrop-blur-xl text-[#E5E7EB] transform translate-x-full transition-all duration-500 ease-out z-50 shadow-2xl flex flex-col border-l border-[#C1A261]/20">
+      <div class="flex items-center justify-between p-6 border-b border-[#C1A261]/10">
+        <h3 class="text-lg font-semibold text-[#C1A261]">Navigation</h3>
+        <button id="close-mobile-btn" class="w-10 h-10 flex items-center justify-center group rounded-lg hover:bg-[#C1A261]/10 transition-all duration-300 relative">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-[#E5E7EB] group-hover:text-[#C1A261] group-hover:rotate-90 transition-all duration-300">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex flex-col px-4 py-8 space-y-2 flex-1">
+        <a href="#about" class="group relative px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-2 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 to-[#C1A261]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#C1A261] rounded-r-full scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+          <span class="relative z-10 text-base font-medium text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">À propos</span>
+        </a>
+        
+        <a href="#maitrises" class="group relative px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-2 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 to-[#C1A261]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#C1A261] rounded-r-full scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+          <span class="relative z-10 text-base font-medium text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">Maîtrises</span>
+        </a>
+        
+        <a href="#projects" class="group relative px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-2 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 to-[#C1A261]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#C1A261] rounded-r-full scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+          <span class="relative z-10 text-base font-medium text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">Projets</span>
+        </a>
+        
+        <a href="#contact" class="group relative px-4 py-3.5 rounded-xl transition-all duration-300 hover:translate-x-2 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 to-[#C1A261]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#C1A261] rounded-r-full scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+          <span class="relative z-10 text-base font-medium text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">Contact</span>
+        </a>
+      </nav>
+
+      <div class="p-6 border-t border-[#C1A261]/10">
+        <p class="text-xs text-[#9CA3AF] text-center">Edouard Desmyter © 2026</p>
       </div>
     </div>
-</section>
 
+    <section id="home" class="relative min-h-[100dvh] flex items-center justify-center sm:justify-start px-6 sm:px-20 overflow-hidden pt-16 sm:pt-24 md:pt-28 landscape:pt-12" data-animate>
+      <img src="Images/BackGroundVR.png" alt="Arrière-plan VR immersif" class="absolute inset-0 w-full h-full object-cover sm:object-[50%_0] opacity-0 pointer-events-none select-none transition-all duration-1000 ease-out" data-animate />
 
-      <section id="about" class="bg-[#F9F9F9] text-[#111827] py-24" data-animate>
-        <div class="max-w-6xl mx-auto px-6">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-12 opacity-0 translate-y-6 transition duration-700" data-scroll>A propos</h2>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0D1117] via-[#0D1117]/95 to-[#0D1117]/0 opacity-0 transition-all duration-1000 ease-out" data-animate></div>
 
-          <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-20 mb-24">
-            <div class="md:w-1/2 opacity-0 translate-y-6 transition duration-700" data-scroll>
-              <h3 class="text-2xl sm:text-3xl font-semibold mb-6">
-                Développeur XR passionné d'expériences immersives
-              </h3>
-              <p class="text-base sm:text-lg leading-relaxed">
-                Ingénieur Efrei Paris spécialisé Image & Réalité Virtuelle, je développe des expériences immersives XR pour transformer la façon dont nous interagissons avec le monde numérique.<br>
-                Passionné par les technologies qui repoussent les limites de l'immersion, j'allie créativité technique et optimisation performance pour créer des applications fluides et engageantes sur tous supports : casques VR (HTC Vive, HoloLens 2, Pico), mobile (Android/iOS) et web.
-              </p>
-              <p class="text-base sm:text-lg leading-relaxed mt-4">
-                Chez Inersio, je pilote les volets AR/VR de projets innovants pour l'industrie française, tout en explorant en parallèle des projets personnels et de recherche universitaire. Mon approche : simplicité technique au service d'expériences mémorables.
-              </p>
-              <p class="text-base sm:text-lg leading-relaxed mt-4">
-                Curieux, rigoureux et toujours à l'affût des dernières avancées XR.
-              </p>
-            </div>
-            <div class="md:w-1/2 opacity-0 translate-y-6 transition duration-700" data-scroll>
-              <img src="Images/Moi.png" alt="Edouard Desmyter" class="w-full h-auto rounded-lg shadow-lg object-cover">
-            </div>
+      <div class="relative z-10 text-left max-w-2xl ml-6 sm:ml-8 md:ml-32 lg:ml-48 opacity-0 translate-y-6 transition-all duration-1000 ease-out sm:pt-4" data-animate>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 font-light tracking-tight animate-fade-up">
+              Edouard<br><span class="font-black text-white">Desmyter</span>
+          </h1>
+          <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#9CA3AF] font-medium animate-fade-up delay-200">
+              Développeur AR / MR / VR
+          </h2>
+      </div>
+
+      <div class="scrolldown absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 landscape:hidden sm:landscape:flex" style="--color: #C1A261;">
+        <div class="chevrons flex flex-col items-center">
+          <div class="chevrondown"></div>
+          <div class="chevrondown"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-[#F9F9F9] text-[#111827] py-24" data-animate>
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-12 opacity-0 translate-y-6 transition duration-700" data-scroll>
+          <div class="w-1.5 h-10 bg-[#C1A261] sm:h-12 rounded-full"></div>
+          <h2 class="text-3xl sm:text-4xl font-bold">A propos</h2>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-20 mb-24">
+          <div class="md:w-1/2 opacity-0 translate-y-6 transition duration-700" data-scroll>
+            <h3 class="text-2xl sm:text-3xl font-semibold mb-6">Développeur XR passionné d'expériences immersives</h3>
+            <p class="text-base sm:text-lg leading-relaxed">
+              Ingénieur Efrei Paris spécialisé Image & Réalité Virtuelle, je développe des expériences immersives XR pour transformer la façon dont nous interagissons avec le monde numérique.<br>
+              Passionné par les technologies qui repoussent les limites de l'immersion, j'allie créativité technique et optimisation performance pour créer des applications fluides et engageantes sur tous supports : casques VR (HTC Vive, HoloLens 2, Pico), mobile (Android/iOS) et web.
+            </p>
+            <p class="text-base sm:text-lg leading-relaxed mt-4">
+              Chez Inersio, je pilote les volets AR/VR de projets innovants pour l'industrie française, tout en explorant en parallèle des projets personnels et de recherche universitaire. Mon approche : simplicité technique au service d'expériences mémorables.
+            </p>
+            <p class="text-base sm:text-lg leading-relaxed mt-4">
+              Curieux, rigoureux et toujours à l'affût des dernières avancées XR.
+            </p>
+          </div>
+          <div class="md:w-1/2 opacity-0 translate-y-6 transition duration-700" data-scroll>
+            <img src="Images/Moi.png" alt="Edouard Desmyter" class="w-full h-auto rounded-lg shadow-lg object-cover">
+          </div>
+        </div>
+
+        <div id="experience" class="space-y-8">
+          <div class="flex items-center gap-3 mb-6 opacity-0 translate-y-6 transition duration-700" data-scroll>
+            <h3 class="text-2xl sm:text-3xl font-bold">Expérience</h3>
           </div>
 
-    <div id="experience" class="space-y-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold mb-6 opacity-0 translate-y-6 transition duration-700" data-scroll>Expérience</h3>
-
-      <div class="space-y-4 opacity-0 translate-y-6 transition duration-700" data-scroll>
-        <div class="group-container border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white transition-all duration-300">
-            <button onclick="togglePanel('exp4')" class="w-full text-left px-6 py-4 hover:bg-gray-100 transition flex justify-between items-center">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-                <span class="font-semibold text-lg">Développeur AR/VR – Inersio</span>
-                <span class="text-gray-500 text-sm sm:text-base italic mt-1 sm:mt-0">2024 – Aujourd'hui</span>
-              </div>
-
-              <svg id="icon-exp4" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div id="xp-panel-exp4" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white">
-              <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-4">
-                <div class="flex-1">
-                  <p class="text-gray-700 leading-relaxed">
-                    Au sein d’<strong>Inersio</strong>, j’assure la responsabilité complète du développement des volets <strong>AR et VR</strong> sur nos projets innovants.</br>
-                    • En réalité augmentée, je conçois des <strong>expériences interactives</strong> basées sur <strong>l’image tracking</strong> et <strong>le world tracking</strong>, permettant de <strong>donner vie à des supports physiques</strong> grâce à du contenu immersif dynamique.</br>
-                    • En réalité virtuelle, je développe un <strong>viewer VR</strong> dédié aux <strong>visites d’usines</strong> et conçois également des expériences immersives visant à <strong>gamifier des vidéos 360°</strong>, afin de <strong>renforcer l’engagement utilisateur</strong> et d’<strong>enrichir l’exploration interactive du contenu</strong>.
-                  </p>
-                </div>
-                <div class="w-full sm:w-1/3 flex justify-center">
-                  <img src="Images/Logos/Inersio.png" alt="Logo Studio XR" class="w-auto h-24 object-contain" />
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="group-container border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white transition-all duration-300">
-              <button onclick="togglePanel('exp3')" class="w-full text-left px-6 py-4 hover:bg-gray-100 transition flex justify-between items-center">
+          <div class="space-y-4 opacity-0 translate-y-6 transition duration-700" data-scroll>
+            <div class="group-container bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-[#C1A261]/10 border border-[#C1A261]/20 hover:border-[#C1A261]/40 transition-all duration-300">
+              <button onclick="togglePanel('exp4')" class="w-full text-left px-6 py-5 hover:bg-[#C1A261]/5 transition-all duration-300 flex justify-between items-center group">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-                  <span class="font-semibold text-lg">Ingénieur d'études – Université Côte d'Azur</span>
-                  <span class="text-gray-500 text-sm sm:text-base italic mt-1 sm:mt-0">2021 – 2023</span>
+                  <div class="flex items-center gap-3">
+                    <span class="font-bold text-lg sm:text-xl text-[#0D1117] group-hover:text-[#C1A261] transition-colors duration-300">Développeur AR/VR – Inersio</span>
+                  </div>
+                  <span class="text-[#C1A261] text-sm sm:text-base font-semibold italic mt-1 sm:mt-0 ml-4 sm:ml-0">2024 – Aujourd'hui</span>
                 </div>
-                <svg id="icon-exp3" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                <svg id="icon-exp4" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform text-[#C1A261]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div id="xp-panel-exp3" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white">
-                <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-4">
+              <div id="xp-panel-exp4" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gradient-to-br from-[#C1A261]/5 to-transparent">
+                <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-6 border-t border-[#C1A261]/20">
                   <div class="flex-1">
-                    <p class="text-gray-700 leading-relaxed">
-                      Lors de mon expérience de recherche et développement à l’<strong>Université Côte d’Azur</strong>, j’ai participé à un projet innovant dans <strong>le domaine médical</strong>, centré sur l’usage de la <strong>réalité mixte</strong> pour la <strong>curiethérapie</strong>.</br>
-                      Mon rôle consistait à <strong>concevoir et développer une application</strong> sur <strong>casque HoloLens 2</strong>, intégrant <strong>le positionnement précis de modèles 3D</strong> dans l’espace réel et <strong>le tracking d’objets médicaux</strong>.</br>
-                      Ce projet m’a permis d’<strong>approfondir mon expérience en réalité mixte</strong>, de <strong>concevoir des interfaces et interactions</strong> adaptées aux usages médicaux, et de <strong>développer une réelle rigueur dans mon travail</strong>, indispensable face aux exigences du domaine de la santé.
+                    <p class="text-[#1a1f2e] text-base leading-relaxed">
+                      Au sein d'<strong class="text-[#C1A261]">Inersio</strong>, j'assure la responsabilité complète du développement des volets <strong>AR et VR</strong> sur nos projets innovants.<br><br>
+                      • En réalité augmentée, je conçois des <strong>expériences interactives</strong> basées sur <strong>l'image tracking</strong> et <strong>le world tracking</strong>, permettant de <strong>donner vie à des supports physiques</strong> grâce à du contenu immersif dynamique.<br><br>
+                      • En réalité virtuelle, je développe un <strong>viewer VR</strong> dédié aux <strong>visites d'usines</strong> et conçois également des expériences immersives visant à <strong>gamifier des vidéos 360°</strong>, afin de <strong>renforcer l'engagement utilisateur</strong> et d'<strong>enrichir l'exploration interactive du contenu</strong>.
                     </p>
                   </div>
                   <div class="w-full sm:w-1/3 flex justify-center">
-                    <img src="Images/Logos/UniversiteCoteDAzur.png" alt="Logo Studio XR" class="w-auto h-24 object-contain" />
+                    <div class="bg-white/80 rounded-xl p-4 border border-[#C1A261]/20 shadow-md">
+                      <img src="Images/Logos/Inersio.png" alt="Logo Inersio" class="w-auto h-20 object-contain" />
+                    </div>
                   </div>
                 </div>
               </div>
-        </div>
-        <div class="group-container border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white transition-all duration-300">
-              <button onclick="togglePanel('exp2')" class="w-full text-left px-6 py-4 hover:bg-gray-100 transition flex justify-between items-center">
+            </div>
+
+            <div class="group-container bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-[#C1A261]/10 border border-[#C1A261]/20 hover:border-[#C1A261]/40 transition-all duration-300">
+              <button onclick="togglePanel('exp3')" class="w-full text-left px-6 py-5 hover:bg-[#C1A261]/5 transition-all duration-300 flex justify-between items-center group">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-                  <span class="font-semibold text-lg">Stage de fin d'étude – IFSTTAR</span>
-                  <span class="text-gray-500 text-sm sm:text-base italic mt-1 sm:mt-0">2020</span>
+                  <div class="flex items-center gap-3">
+                    <span class="font-bold text-lg sm:text-xl text-[#0D1117] group-hover:text-[#C1A261] transition-colors duration-300">Ingénieur d'études – Université Côte d'Azur</span>
+                  </div>
+                  <span class="text-[#C1A261] text-sm sm:text-base font-semibold italic mt-1 sm:mt-0 ml-4 sm:ml-0">2021 – 2023</span>
                 </div>
-  
-                <svg id="icon-exp2" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                <svg id="icon-exp3" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform text-[#C1A261]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div id="xp-panel-exp2" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white">
-                <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-4">
+              <div id="xp-panel-exp3" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gradient-to-br from-[#C1A261]/5 to-transparent">
+                <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-6 border-t border-[#C1A261]/20">
                   <div class="flex-1">
-                    <p class="text-gray-700 leading-relaxed">
-                      Au cours de mon stage de fin d’études à l’<strong>IFSTTAR</strong>, j’ai participé au développement d’un <strong>self-avatar</strong> pour une expérience de traversée de route en réalité virtuelle.</br>
-                      Ce premier <strong>projet de recherche et développement</strong> m’a offert une expérience concrète dans le domaine de la VR appliquée à la <strong>recherche scientifique</strong>.</br>
-                      J’y ai approfondi mes compétences techniques en <strong> interaction homme–machine</strong>, <strong>optimisation temps réel</strong>, <strong>modélisation 3D</strong> et <strong>animation</strong>, tout en contribuant à la création d’un avatar virtuel réaliste destiné à <strong>renforcer la présence et l’immersion</strong> dans cette expérience.
-                     </p>
+                    <p class="text-[#1a1f2e] text-base leading-relaxed">
+                      Lors de mon expérience de recherche et développement à l'<strong class="text-[#C1A261]">Université Côte d'Azur</strong>, j'ai participé à un projet innovant dans <strong>le domaine médical</strong>, centré sur l'usage de la <strong>réalité mixte</strong> pour la <strong>curiethérapie</strong>.<br><br>
+                      Mon rôle consistait à <strong>concevoir et développer une application</strong> sur <strong>casque HoloLens 2</strong>, intégrant <strong>le positionnement précis de modèles 3D</strong> dans l'espace réel et <strong>le tracking d'objets médicaux</strong>.<br><br>
+                      Ce projet m'a permis d'<strong>approfondir mon expérience en réalité mixte</strong>, de <strong>concevoir des interfaces et interactions</strong> adaptées aux usages médicaux, et de <strong>développer une réelle rigueur dans mon travail</strong>, indispensable face aux exigences du domaine de la santé.
+                    </p>
                   </div>
                   <div class="w-full sm:w-1/3 flex justify-center">
-                    <img src="Images/Logos/ifsttar.png" alt="Logo Studio XR" class="w-auto h-24 object-contain" />
+                    <div class="bg-white/80 rounded-xl p-4 border border-[#C1A261]/20 shadow-md">
+                      <img src="Images/Logos/UniversiteCoteDAzur.png" alt="Logo Université Côte d'Azur" class="w-auto h-20 object-contain" />
+                    </div>
                   </div>
                 </div>
               </div>
-        </div>
-        <div class="group-container border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white transition-all duration-300">
-            <button onclick="togglePanel('exp1')" class="w-full text-left px-6 py-4 hover:bg-gray-100 transition flex justify-between items-center">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
-                <span class="font-semibold text-lg">Études – Efrei Paris</span>
-                <span class="text-gray-500 text-sm sm:text-base italic mt-1 sm:mt-0">2017 – 2020</span>
+            </div>
+
+            <div class="group-container bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-[#C1A261]/10 border border-[#C1A261]/20 hover:border-[#C1A261]/40 transition-all duration-300">
+              <button onclick="togglePanel('exp2')" class="w-full text-left px-6 py-5 hover:bg-[#C1A261]/5 transition-all duration-300 flex justify-between items-center group">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                  <div class="flex items-center gap-3">
+                    <span class="font-bold text-lg sm:text-xl text-[#0D1117] group-hover:text-[#C1A261] transition-colors duration-300">Stage de fin d'étude – IFSTTAR</span>
+                  </div>
+                  <span class="text-[#C1A261] text-sm sm:text-base font-semibold italic mt-1 sm:mt-0 ml-4 sm:ml-0">2020</span>
+                </div>
+                <svg id="icon-exp2" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform text-[#C1A261]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="xp-panel-exp2" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gradient-to-br from-[#C1A261]/5 to-transparent">
+                <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-6 border-t border-[#C1A261]/20">
+                  <div class="flex-1">
+                    <p class="text-[#1a1f2e] text-base leading-relaxed">
+                      Au cours de mon stage de fin d'études à l'<strong class="text-[#C1A261]">IFSTTAR</strong>, j'ai participé au développement d'un <strong>self-avatar</strong> pour une expérience de traversée de route en réalité virtuelle.<br><br>
+                      Ce premier <strong>projet de recherche et développement</strong> m'a offert une expérience concrète dans le domaine de la VR appliquée à la <strong>recherche scientifique</strong>.<br><br>
+                      J'y ai approfondi mes compétences techniques en <strong>interaction homme–machine</strong>, <strong>optimisation temps réel</strong>, <strong>modélisation 3D</strong> et <strong>animation</strong>, tout en contribuant à la création d'un avatar virtuel réaliste destiné à <strong>renforcer la présence et l'immersion</strong> dans cette expérience.
+                    </p>
+                  </div>
+                  <div class="w-full sm:w-1/3 flex justify-center">
+                    <div class="bg-white/80 rounded-xl p-4 border border-[#C1A261]/20 shadow-md">
+                      <img src="Images/Logos/ifsttar.png" alt="Logo IFSTTAR" class="w-auto h-20 object-contain" />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <svg id="icon-exp1" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div id="xp-panel-exp1" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white">
-              <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-4">
+            </div>
+
+            <div class="group-container bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-[#C1A261]/10 border border-[#C1A261]/20 hover:border-[#C1A261]/40 transition-all duration-300">
+              <button onclick="togglePanel('exp1')" class="w-full text-left px-6 py-5 hover:bg-[#C1A261]/5 transition-all duration-300 flex justify-between items-center group">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
+                  <div class="flex items-center gap-3">
+                    <span class="font-bold text-lg sm:text-xl text-[#0D1117] group-hover:text-[#C1A261] transition-colors duration-300">Études – Efrei Paris</span>
+                  </div>
+                  <span class="text-[#C1A261] text-sm sm:text-base font-semibold italic mt-1 sm:mt-0 ml-4 sm:ml-0">2017 – 2020</span>
+                </div>
+                <svg id="icon-exp1" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform text-[#C1A261]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="xp-panel-exp1" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gradient-to-br from-[#C1A261]/5 to-transparent">
+                <div class="flex flex-col sm:flex-row items-center gap-6 px-6 py-6 border-t border-[#C1A261]/20">
+                  <div class="flex-1">
+                    <p class="text-[#1a1f2e] text-base leading-relaxed">
+                      Au cours de ma formation d'ingénieur à l'<strong class="text-[#C1A261]">Efrei Paris</strong>, école généraliste en informatique, j'ai acquis un large éventail de compétences en <strong>développement logiciel et en ingénierie informatique</strong>.<br><br>
+                      Je me suis spécialisé dans les domaines de l'<strong>Image et de la Réalité Virtuelle</strong>, en me concentrant sur la conception et <strong>le développement d'applications interactives en réalité virtuelle et augmentée</strong>.<br><br>
+                      J'y ai approfondi <strong>la création d'environnements immersifs</strong> et <strong>l'optimisation temps réel</strong>, <strong>la modélisation 3D</strong>, renforçant ainsi <strong>une expertise technique</strong> qui fonde aujourd'hui mon approche du développement d'expériences numériques innovantes.
+                    </p>
+                  </div>
+                  <div class="w-full sm:w-1/3 flex justify-center">
+                    <div class="bg-white/80 rounded-xl p-4 border border-[#C1A261]/20 shadow-md">
+                      <img src="Images/Logos/efrei.png" alt="Logo Efrei" class="w-auto h-20 object-contain" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="maitrises" class="relative text-[#E5E7EB] py-16 overflow-hidden">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-12 opacity-0 translate-y-6 transition duration-700" data-scroll>
+          <div class="w-1.5 h-10 bg-[#C1A261] sm:h-12 rounded-full"></div>
+          <h2 class="text-3xl sm:text-4xl font-bold">Mes Maîtrises</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 border-4 border-[#C1A261]/40 rounded-2xl overflow-hidden shadow-2xl">
+          <div class="md:border-r-4 border-b-4 md:border-b-0 border-[#C1A261]/40 p-10 flex flex-col bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6 group" data-animate>
+            <div class="flex items-start gap-4 mb-6">
+              <img src="Images/Logos/Unity.png" alt="Logo Unity" class="w-12 h-12 object-contain" />
+              
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <div class="w-1 h-8 bg-[#5f9ea0] rounded-full transition-all duration-300"></div>
+                  <h3 class="text-lg font-semibold text-[#E5E7EB] leading-tight">
+                    Développement
+                  </h3>
+                </div>
+                <div class="ml-3">
+                  <span class="relative inline-block">
+                    <span class="relative z-10 text-2xl font-bold text-white">Unity</span>
+                    <span class="absolute left-0 bottom-[2px] w-full h-[10px] bg-[#5f9ea0]/60 z-0 transition-all duration-300"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-[#D1D5DB] group-hover:text-[#E5E7EB] transition-colors duration-300">
+              Maîtrise avancée d'Unity pour la conception et le développement d'expériences immersives en réalité virtuelle et augmentée.<br><br>
+              Expérience approfondie avec <strong class="text-[#5f9ea0] font-semibold">AR Foundation, XR Interaction Toolkit, MRTK, VRTK et SteamVR</strong>, couvrant l'ensemble des besoins AR/VR, du tracking à l'interaction.<br><br>
+              Compétent en scripting C#, animations, shaders (Shader Graph), optimisation temps réel, streaming d'assets et profiling des performances.<br><br>
+              Habitué au déploiement multiplateforme sur PC, Android, iOS et UWP (HoloLens), avec adaptation graphique et ergonomique selon les environnements cibles.
+            </p>
+          </div>
+
+          <div class="md:border-r-4 border-b-4 md:border-b-0 border-[#C1A261]/40 p-10 flex flex-col bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6 group" data-animate>
+
+            <div class="flex items-start gap-4 mb-6">
+              <img src="Images/Logos/Computeur.png" alt="Logo Ordinateur" class="w-12 h-12 object-contain" />
+              
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <div class="w-1 h-8 bg-[#2ECC71] rounded-full transition-all duration-300"></div>
+                  <h3 class="text-lg font-semibold text-[#E5E7EB] leading-tight">
+                    Développement
+                  </h3>
+                </div>
+                <div class="ml-3">
+                  <span class="relative inline-block">
+                    <span class="relative z-10 text-2xl font-bold text-white">Logiciel</span>
+                    <span class="absolute left-0 bottom-[2px] w-full h-[10px] bg-[#2ECC71]/60 z-0 transition-all duration-300"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-sm leading-relaxed text-[#D1D5DB] group-hover:text-[#E5E7EB] transition-colors duration-300">
+              Maîtrise du développement logiciel en <strong class="text-[#2ECC71] font-semibold">C++</strong>, avec une spécialisation en algorithmie de traitement d'image et en optimisation des performances.<br><br>
+              Expérience en développement web avec <strong class="text-[#2ECC71] font-semibold">HTML, CSS, PHP et JavaScript</strong>, pour la création d'interfaces dynamiques et de sites interactifs.<br><br>
+              Travail sur des applications iOS en <strong class="text-[#2ECC71] font-semibold">Swift</strong>, notamment pour des projets de réalité augmentée, intégrant des interactions immersives et un design soigné.<br><br>
+              Compétences en conception d'interfaces UI/UX, alliant ergonomie, clarté visuelle et cohérence entre expérience utilisateur et contraintes techniques.
+            </p>
+          </div>
+
+          <div class="p-10 flex flex-col bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6 group" data-animate>
+            <div class="flex items-start gap-4 mb-6">
+              <img src="Images/Logos/Blender.png" alt="Logo Blender" class="w-12 h-12 object-contain" />
+              
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <div class="w-1 h-8 bg-[#EB7700] rounded-full transition-all duration-300"></div>
+                  <h3 class="text-lg font-semibold text-[#E5E7EB] leading-tight">
+                    Modélisation
+                  </h3>
+                </div>
+                <div class="ml-3">
+                  <span class="relative inline-block">
+                    <span class="relative z-10 text-2xl font-bold text-white">Blender</span>
+                    <span class="absolute left-0 bottom-[2px] w-full h-[10px] bg-[#EB7700]/60 z-0 transition-all duration-300"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-sm leading-relaxed text-[#D1D5DB] group-hover:text-[#E5E7EB] transition-colors duration-300">
+              Bonne maîtrise de Blender pour la modélisation 3D low-poly et détaillée, appliquée aux projets Unity VR/AR.<br><br>
+              Compétences couvrant tout le workflow 3D : <strong class="text-[#EB7700] font-semibold">sculpting, retopologie, UV mapping, texturing PBR</strong>, baking (normales, ambient occlusion) et rigging pour des animations adaptées aux environnements interactifs.<br><br>
+              Habitué à l'export FBX/glTF, à la création de matériaux compatibles URP/HDRP et à un pipeline Blender-Unity optimisé pour la production d'environnements, de personnages et d'assets industriels.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="bg-[#F9F9F9] text-[#111827] py-16 relative" data-animate>
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-12 opacity-0 translate-y-6 transition duration-700" data-scroll>
+          <div class="w-1.5 h-10 bg-[#C1A261] sm:h-12 rounded-full"></div>
+          <h2 class="text-3xl sm:text-4xl font-bold">Projets</h2>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mb-10 opacity-0 translate-y-6 transition duration-700" data-scroll>
+          <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] bg-[#C1A261] text-white scale-105 overflow-hidden hover:scale-105" data-filter="Tous">
+            <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+            <span class="relative z-10">Tous</span>
+          </button>
+          
+          <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] text-[#111827] bg-white overflow-hidden hover:scale-105" data-filter="AR">
+            <span class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+            <span class="relative z-10">AR</span>
+          </button>
+          
+          <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] text-[#111827] bg-white overflow-hidden hover:scale-105" data-filter="MR">
+            <span class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+            <span class="relative z-10">MR</span>
+          </button>
+          
+          <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] text-[#111827] bg-white overflow-hidden hover:scale-105" data-filter="VR">
+            <span class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+            <span class="relative z-10">VR</span>
+          </button>
+          
+          <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] text-[#111827] bg-white overflow-hidden hover:scale-105" data-filter="Divers">
+            <span class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+            <span class="relative z-10">Divers</span>
+          </button>
+        </div>
+
+        <div id="projects-grid" class="grid md:grid-cols-3 gap-8 opacity-0 translate-y-6 transition duration-700" data-scroll>
+          <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
+                data-tags="VR"
+                data-title="Projet PEDSIVAL" 
+                data-subtitle="Reconstitution Self Avatar." 
+                data-about="Développement d'un self-avatar immersif avec tracking corporel avancé pour des simulations scientifiques de traversée routière en réalité virtuelle. Utilisation du HTC Vive équipé de trackeurs à la taille et aux pieds, avec implémentation de cinématique inverse pour reproduire fidèlement les mouvements de l'utilisateur en temps réel.
+                            Conception d'une scène routière dynamique optimisée à 90 FPS constants, intégrant des scénarios prédéfinis de trafic réaliste (vitesse variable, densité, types de véhicules) via LOD, occlusion culling et optimisation Unity, garantissant une reproductibilité parfaite pour les tests IFSTTAR.
+                            Création d'une salle de test instrumentée capturant des données comportementales précises – temps de réaction, trajectoires, patterns de déplacement et interactions multiples (corps, décisions)." 
+                data-tech="Unity 3D / SteamVR / Final IK / Blender" 
+                data-images="Images/Projets/Pedsival/p1.png,Images/Projets/Pedsival/p2.png">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
+            <div class="relative z-10 mb-4">
+              <div class="flex items-start justify-between mb-3">
                 <div class="flex-1">
-                  <p class="text-gray-700 leading-relaxed">
-                    Au cours de ma formation d’ingénieur à l’<strong>Efrei Paris</strong>, école généraliste en informatique, j’ai acquis un large éventail de compétences en <strong>développement logiciel et en ingénierie informatique</strong>.</br>
-                    Je me suis spécialisé dans les domaines de l’<strong>Image et de la Réalité Virtuelle</strong>, en me concentrant sur la conception et <strong>le développement d’applications interactives en réalité virtuelle et augmentée</strong>.</br>
-                    J’y ai approfondi <strong>la création d’environnements immersifs</strong> et <strong>l’optimisation temps réel</strong>, <strong>la modélisation 3D</strong>, renforçant ainsi <strong>une expertise technique</strong> qui fonde aujourd’hui mon approche du développement d’expériences numériques innovantes.
-                  </p>
+                  <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Projet PEDSIVAL</h3>
+                  <p class="text-sm text-[#9CA3AF] leading-relaxed">Reconstitution Self Avatar.</p>
                 </div>
-                <div class="w-full sm:w-1/3 flex justify-center">
-                  <img src="Images/Logos/efrei.png" alt="Logo Inersio" class="w-auto h-24 object-contain" />
+                <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
+                  VR
                 </div>
               </div>
             </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="maitrises" class="relative text-[#E5E7EB] py-16 overflow-hidden">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <h2 class="text-3xl sm:text-4xl font-bold mb-12 opacity-0 translate-y-6 transition-all duration-700" data-animate>Mes Maîtrises</h2>
-
-<div class="grid grid-cols-1 md:grid-cols-3 border-4 border-[#E5E7EB] rounded-lg overflow-hidden">
-  <div class="md:border-r-4 border-b-4 md:border-b-0 border-[#E5E7EB] p-8 flex flex-col justify-between bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6" data-animate>
-    <div class="flex items-start mb-6 h-20">
-      <img src="Images/Logos/Unity.png" alt="Logo Unity" class="w-16 h-auto object-contain flex-shrink-0" />
-      <div class="ml-6 flex-1 min-h-full">
-        <h3 class="text-xl font-semibold leading-tight">
-          Développement<br>
-          <span class="relative inline-block">
-            <span class="relative z-10">Unity</span>
-            <span class="absolute left-0 bottom-[1px] w-full h-[10px] bg-[#5f9ea0]/60 z-0"></span>
-          </span>
-        </h3>
-      </div>
-    </div>
-    <p class="text-sm leading-relaxed flex-1 mt-4">
-      Maîtrise avancée d’Unity pour la conception et le développement d’expériences immersives en réalité virtuelle et augmentée.<br>
-      Expérience approfondie avec AR Foundation, XR Interaction Toolkit, MRTK, VRTK et SteamVR, couvrant l’ensemble des besoins AR/VR, du tracking à l’interaction.<br>
-      Compétent en scripting C#, animations, shaders (Shader Graph), optimisation temps réel, streaming d’assets et profiling des performances.<br>
-      Habitué au déploiement multiplateforme sur PC, Android, iOS et UWP (HoloLens), avec adaptation graphique et ergonomique selon les environnements cibles.
-    </p>
-  </div>
-
-  <div class="md:border-r-4 border-b-4 md:border-b-0 border-[#E5E7EB] p-8 flex flex-col justify-between bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6" data-animate>
-    <div class="flex items-start mb-6 h-20">
-      <img src="Images/Logos/Computeur.png" alt="Logo Ordinateur" class="w-16 h-auto object-contain flex-shrink-0" />
-      <div class="ml-6 flex-1 min-h-full">
-        <h3 class="text-xl font-semibold leading-tight">
-          Développement<br>
-          <span class="relative inline-block">
-            <span class="relative z-10">Logiciel</span>
-            <span class="absolute left-0 bottom-[1px] w-full h-[10px] bg-[#2ECC71]/60 z-0"></span>
-          </span>
-        </h3>
-      </div>
-    </div>
-    <p class="text-sm leading-relaxed flex-1 mt-4">
-      Maîtrise du développement logiciel en C++, avec une spécialisation en algorithmie de traitement d’image et en optimisation des performances.<br>
-      Expérience en développement web avec HTML, CSS, PHP et JavaScript, pour la création d’interfaces dynamiques et de sites interactifs.<br>
-      Travail sur des applications iOS en Swift, notamment pour des projets de réalité augmentée, intégrant des interactions immersives et un design soigné.<br>
-      Compétences en conception d’interfaces UI/UX, alliant ergonomie, clarté visuelle et cohérence entre expérience utilisateur et contraintes techniques.
-    </p>
-  </div>
-
-  <div class="md:border-b-0 border-[#E5E7EB] p-8 flex flex-col justify-between bg-[#0D1117]/70 transition-all duration-700 opacity-0 translate-y-6" data-animate>
-    <div class="flex items-start mb-6 h-20">
-      <img src="Images/Logos/Blender.png" alt="Logo Blender" class="w-16 h-auto object-contain flex-shrink-0" />
-      <div class="ml-6 flex-1 min-h-full">
-        <h3 class="text-xl font-semibold leading-tight">
-          Modélisation<br>
-          <span class="relative inline-block">
-            <span class="relative z-10">Blender</span>
-            <span class="absolute left-0 bottom-[1px] w-full h-[10px] bg-[#EB7700]/60 z-0"></span>
-          </span>
-        </h3>
-      </div>
-    </div>
-    <p class="text-sm leading-relaxed flex-1 mt-4">
-      Bonne maîtrise de Blender pour la modélisation 3D low-poly et détaillée, appliquée aux projets Unity VR/AR.<br>
-      Compétences couvrant tout le workflow 3D : sculpting, retopologie, UV mapping, texturing PBR, baking (normales, ambient occlusion) et rigging pour des animations adaptées aux environnements interactifs.<br>
-      Habitué à l’export FBX/glTF, à la création de matériaux compatibles URP/HDRP et à un pipeline Blender-Unity optimisé pour la production d’environnements, de personnages et d’assets industriels.
-    </p>
-  </div>
-</div>
-
-
-  </div>
-</section>
-
-<section id="projects" class="bg-[#F9F9F9] text-[#111827] py-16 relative" data-animate>
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold mb-8 opacity-0 translate-y-6 transition duration-700" data-scroll>Projets</h2>
-    <div class="flex flex-wrap gap-4 mb-10 opacity-0 translate-y-6 transition duration-700" data-scroll>
-      <!-- Bouton "Tous" avec état actif par défaut -->
-      <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] bg-[#C1A261] text-white shadow-xl shadow-[#C1A261]/40 scale-105 overflow-hidden hover:scale-105 hover:shadow-lg hover:shadow-[#C1A261]/30" data-filter="Tous">
-        <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-        <span class="relative z-10">Tous</span>
-      </button>
-      
-      <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] text-[#111827] bg-white overflow-hidden hover:scale-105 hover:shadow-lg hover:shadow-[#C1A261]/30" data-filter="AR">
-        <span class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-        <span class="relative z-10">AR</span>
-      </button>
-      
-      <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] text-[#111827] bg-white overflow-hidden hover:scale-105 hover:shadow-lg hover:shadow-[#C1A261]/30" data-filter="MR">
-        <span class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-        <span class="relative z-10">MR</span>
-      </button>
-      
-      <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] text-[#111827] bg-white overflow-hidden hover:scale-105 hover:shadow-lg hover:shadow-[#C1A261]/30" data-filter="VR">
-        <span class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-        <span class="relative z-10">VR</span>
-      </button>
-      
-      <button class="filter-btn group relative px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 border-2 border-[#C1A261] text-[#111827] bg-white overflow-hidden hover:scale-105 hover:shadow-lg hover:shadow-[#C1A261]/30" data-filter="Divers">
-        <span class="absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-        <span class="relative z-10">Divers</span>
-      </button>
-    </div>
-
-    <div id="projects-grid" class="grid md:grid-cols-3 gap-8 opacity-0 translate-y-6 transition duration-700" data-scroll>
-
-      <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
-            data-tags="VR"
-            data-title="Projet PEDSIVAL" 
-            data-subtitle="Reconstitution Self Avatar." 
-            data-about="Développement d'un self-avatar immersif avec tracking corporel avancé pour des simulations scientifiques de traversée routière en réalité virtuelle. Utilisation du HTC Vive équipé de trackeurs à la taille et aux pieds, avec implémentation de cinématique inverse pour reproduire fidèlement les mouvements de l'utilisateur en temps réel.
-                        Conception d'une scène routière dynamique optimisée à 90 FPS constants, intégrant des scénarios prédéfinis de trafic réaliste (vitesse variable, densité, types de véhicules) via LOD, occlusion culling et optimisation Unity, garantissant une reproductibilité parfaite pour les tests IFSTTAR.
-                        Création d'une salle de test instrumentée capturant des données comportementales précises – temps de réaction, trajectoires, patterns de déplacement et interactions multiples (corps, décisions)." 
-            data-tech="Unity 3D / SteamVR / Final IK / Blender" 
-            data-images="Images/Projets/Pedsival/p1.png,Images/Projets/Pedsival/p2.png">
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
-        
-        <div class="relative z-10 mb-4">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex-1">
-              <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Projet PEDSIVAL</h3>
-              <p class="text-sm text-[#9CA3AF] leading-relaxed">Reconstitution Self Avatar.</p>
-            </div>
-            <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
-              VR
+            <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
+              <img src="Images/Projets/Pedsival/p.png" 
+                  alt="Projet PEDSIVAL" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">              
+              <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                    stroke="#F3F4F6"
+                    class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </div>
+            </div>            
+            <div class="relative z-10 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#VR</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#SteamVR</span>
             </div>
           </div>
-        </div>
-        
-        <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
-          <img src="Images/Projets/Pedsival/p.png" 
-              alt="Projet PEDSIVAL" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+          <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
+                data-tags="MR"
+                data-title="Projet BIGER" 
+                data-subtitle="Développement application médicale." 
+                data-about="Développement d'une application de curiethérapie sur HoloLens 2 pour assister les chirurgiens lors d'interventions de brachythérapie, avec positionnement précis de modèles 3D et tracking temps réel d'outils chirurgicaux.
+                            Phase 1 – Positionnement anatomique : superposition exacte du scan 3D de la patiente dans l'espace opératoire réel, permettant une visualisation immersive et précise de la zone anatomique cible avant l'intervention.
+                            Phase 2 – Guidance chirurgicale interactive : tracking précis des outils chirurgicaux en temps réel, guidant le positionnement des cathéters pour suivre fidèlement le chemin théorique optimal, garantissant une précision millimétrique dans la pose des implants radioactifs." 
+                data-tech="Unity 3D / MRTK / Vuforia / OpenCV / Blender" 
+                data-images="Images/Projets/Biger/b1.png,Images/Projets/Biger/b2.png">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
+            <div class="relative z-10 mb-4">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Projet BIGER</h3>
+                  <p class="text-sm text-[#9CA3AF] leading-relaxed">Développement application médicale.</p>
+                </div>
+                <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
+                  MR
+                </div>
+              </div>
+            </div>
+            <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
+              <img src="Images/Projets/Biger/b.png" 
+                  alt="Projet BIGER" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                    stroke="#F3F4F6"
+                    class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </div>
+            </div>
+            <div class="relative z-10 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#HoloLens2</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#MRTK</span>
+            </div>
+          </div>
           
-          <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
-                stroke="#F3F4F6"
-                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
-            </svg>
+          <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
+                data-tags="VR" 
+                data-title="VR Viewer" 
+                data-subtitle="Visites virtuelles des savoir-faire français." 
+                data-about="Développement d'un viewer VR dédié aux visites virtuelles d'usines via vidéos 360° interactives, optimisé pour une fluidité maximale sur Pico G3.
+                            Téléchargement direct dans le casque des vidéos et données des visites, avec gestion sécurisée des connexions et licences pour un accès contrôlé au contenu propriétaire depuis des serveurs distants.
+                            Optimisation poussée pour performances critiques : rendu 360° fluide, gestion mémoire contrainte, compression adaptative des vidéos locales et interactions tactiles natives Pico, garantissant une expérience immersive sans latence." 
+                data-tech="Unity 3D / PICO" 
+                data-images="Images/Projets/VRViewer/vv1.png,Images/Projets/VRViewer/vv2.png,Images/Projets/VRViewer/vv3.png">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>        
+            <div class="relative z-10 mb-4">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">VR Viewer</h3>
+                  <p class="text-sm text-[#9CA3AF] leading-relaxed">Visites virtuelles des savoir-faire français.</p>
+                </div>
+                <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
+                  VR
+                </div>
+              </div>
+            </div>            
+            <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
+              <img src="Images/Projets/VRViewer/vv.png" 
+                  alt="Projet BIGER" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">              
+              <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                    stroke="#F3F4F6"
+                    class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </div>
+            </div>     
+            <div class="relative z-10 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#PICO</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Immersion</span>
+            </div>
           </div>
-        </div>
-        
-        <div class="relative z-10 flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#VR</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#SteamVR</span>
+
+          <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
+                data-tags="AR" 
+                data-title="Inersio AR" 
+                data-subtitle="Support de communication." 
+                data-about="Développement d'une application AR mobile utilisant image tracking et world tracking, déployée sur Android (web) et iOS (App Clip) pour des expériences immersives accessibles instantanément.
+                            Image tracking : affichage de vidéos dynamiques sur cartes de visite, magazines et kakemonos, animant les supports physiques avec du contenu interactif marketing.
+                            World tracking : superposition de vidéos d'avatars parlants en réalité spatiale, créant des guides virtuels immersifs pour expositions et visites guidées.
+                            Création d'expériences à distance via backoffice dédié, permettant la récupération et la gestion centralisée des données de tracking pour générer dynamiquement du contenu depuis n'importe quel support physique." 
+                data-tech="Unity 3D / WebGL / AppClips / Swift" 
+                data-images="Images/Projets/ArApp/aa1.png,Images/Projets/ArApp/aa2.png">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>   
+            <div class="relative z-10 mb-4">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Inersio AR</h3>
+                  <p class="text-sm text-[#9CA3AF] leading-relaxed">Support de communication.</p>
+                </div>
+                <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
+                  AR
+                </div>
+              </div>
+            </div> 
+            <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
+              <img src="Images/Projets/ArApp/aa.png" 
+                  alt="Projet BIGER" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                    stroke="#F3F4F6"
+                    class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </div>
+            </div>
+            <div class="relative z-10 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#WebGL</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#AppClips</span>
+            </div>
+          </div>
+
+          <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
+                data-tags="AR" 
+                data-title="Portfolio d’expériences" 
+                data-subtitle="Support de communication." 
+                data-about="Développement d'un portfolio AR autonome destiné aux commerciaux de l'entreprise pour des présentations impactantes lors de salons professionnels, regroupant plusieurs démonstrations visuelles en mode hors ligne.
+                            Démonstrations intégrées :
+                              • Image tracking : activation de contenu AR sur supports imprimés (magazines, kakemonos, cartes)
+                              • World tracking : pose d'avatars virtuels et d'objets 3D interactifs dans l'environnement réel
+                              • IA temps réel : coloration de cheveux dynamique via tracking facial précis
+                              • Viewer vidéo : streaming de vidéos démontrant des expériences AR complexes à transporter sur salon (grands produits, environnements spécifiques)
+                            Architecture offline optimisée : assets embarqués, détection robuste sans connexion, interfaces fluides Android/iOS, conçu pour capter l'attention des prospects en rendez-vous ou stands d'exposition."
+                data-tech="Unity 3D / AR Foundation / Vuforia / MediaPipe" 
+                data-images="Images/Projets/AppSalon/as1.png,Images/Projets/AppSalon/as2.png,Images/Projets/AppSalon/as3.png">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
+            <div class="relative z-10 mb-4">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Portfolio d’expériences</h3>
+                  <p class="text-sm text-[#9CA3AF] leading-relaxed">Support de communication.</p>
+                </div>
+                <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
+                  AR
+                </div>
+              </div>
+            </div>
+            <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
+              <img src="Images/Projets/AppSalon/as.png" 
+                  alt="Portfolio AR" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                    stroke="#F3F4F6"
+                    class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </div>
+            </div>
+            <div class="relative z-10 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#AR</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#IA</span>
+            </div>
+          </div>
+
+          <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
+                data-tags="VR" 
+                data-title="Les Défis du MIF" 
+                data-subtitle="Les défis du Made in France." 
+                data-about="Développement d'une application VR pour le salon du Made in France à Paris, transformant des visites virtuelles d'usines en expérience de jeu immersive via vidéos 360°.
+                            Concept gamifié : challenge interactif où les joueurs doivent trouver des objets cachés dans les environnements 360° des sites industriels français, avec scoring basé sur le temps de découverte.
+                            Système de classement : suivi temps réel des performances individuelles, creation automatique d'un leaderboard global et récompenses virtuelles, favorisant l'engagement des visiteurs du salon."
+                data-tech="Unity 3D / PICO"
+                data-images="Images/Projets/JeuMIF/vm1.png,Images/Projets/JeuMIF/vm2.png">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
+            <div class="relative z-10 mb-4">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Les Défis du MIF</h3>
+                  <p class="text-sm text-[#9CA3AF] leading-relaxed">Les Défis du Made in France.</p>
+                </div>
+                <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
+                  VR
+                </div>
+              </div>
+            </div>
+
+            <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
+              <img src="Images/Projets/JeuMIF/vm.png" 
+                  alt="Portfolio AR" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              
+              <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                    stroke="#F3F4F6"
+                    class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </div>
+            </div>
+            <div class="relative z-10 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#PICO</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Immersion</span>
+            </div>
+          </div>
+
+          <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
+                data-tags="AR" 
+                data-title="Les Voix du Made in France" 
+                data-subtitle="Les voix du Made in France." 
+                data-about="Développement d'une application AR d'image tracking pour le salon du Made in France à Paris, faisant revivre les portraits d'employés industriels français via des vidéos projetées sur tableaux physiques.
+                            Expérience immersive : activation des vidéos des employés Made in France au scan des tableaux, où ils presentent leur travail et leur entreprise d'origine française garantie.
+                            Interactions dynamiques : dialogues virtuels entre les portraits animés, créant une conversation immersive et vivante entre les employés, renforçant l'aspect humain et authentique du savoir-faire français." 
+                data-tech="Unity 3D / Vuforia" 
+                data-images="Images/Projets/VoixMIF/vmif1.png,Images/Projets/VoixMIF/vmif2.png">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
+            <div class="relative z-10 mb-4">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Les Voix du MIF</h3>
+                  <p class="text-sm text-[#9CA3AF] leading-relaxed">Les Voix du Made in France.</p>
+                </div>
+                <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
+                  AR
+                </div>
+              </div>
+            </div>
+            <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
+              <img src="Images/Projets/VoixMIF/vmif.png" 
+                  alt="Portfolio AR" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                    stroke="#F3F4F6"
+                    class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </div>
+            </div>
+            <div class="relative z-10 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#AR</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Vuforia</span>
+            </div>
+          </div>
+          
+          <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
+                data-tags="Divers"
+                data-title="Projet Perso" 
+                data-subtitle="Jeux 2D." 
+                data-about="Développement d'un jeu 2D complet pour compléter mes compétences Unity et explorer la création de jeux traditionnels, démontrant ma polyvalence au-delà des expériences immersives.
+                            Conception d'un jeu avec mécaniques 2D avancées : plateforme, physique réaliste (Unity 2D Physics), animations fluides (Animator 2D), systèmes de scoring et progression joueur.
+                            Workflow de développement complet : level design procédural, UI réactive (Canvas 2D), gestion audio dynamique, optimisation mobile et publication sur stores, du prototype à la version finale." 
+                data-tech="Unity 3D" 
+                data-images="Images/Projets/ProjetPerso/pp1.png,Images/Projets/ProjetPerso/pp2.png">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
+            <div class="relative z-10 mb-4">
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Projet Perso</h3>
+                  <p class="text-sm text-[#9CA3AF] leading-relaxed">Jeux 2D.</p>
+                </div>
+                <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
+                  Divers
+                </div>
+              </div>
+            </div>
+            <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
+              <img src="Images/Projets/ProjetPerso/pp.png" 
+                  alt="Portfolio AR" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
+                    stroke="#F3F4F6"
+                    class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </div>
+            </div>
+            <div class="relative z-10 flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
+              <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#2D</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
-            data-tags="MR"
-            data-title="Projet BIGER" 
-            data-subtitle="Développement application médicale." 
-            data-about="Développement d'une application de curiethérapie sur HoloLens 2 pour assister les chirurgiens lors d'interventions de brachythérapie, avec positionnement précis de modèles 3D et tracking temps réel d'outils chirurgicaux.
-                        Phase 1 – Positionnement anatomique : superposition exacte du scan 3D de la patiente dans l'espace opératoire réel, permettant une visualisation immersive et précise de la zone anatomique cible avant l'intervention.
-                        Phase 2 – Guidance chirurgicale interactive : tracking précis des outils chirurgicaux en temps réel, guidant le positionnement des cathéters pour suivre fidèlement le chemin théorique optimal, garantissant une précision millimétrique dans la pose des implants radioactifs." 
-            data-tech="Unity 3D / MRTK / Vuforia / OpenCV / Blender" 
-            data-images="Images/Projets/Biger/b1.png,Images/Projets/Biger/b2.png">
+    <div id="project-panel" class="fixed inset-0 bg-black/60 backdrop-blur-xl text-[#E5E7EB] hidden flex-col z-50 transition-all duration-500 ease-in-out overflow-y-auto items-center pt-4 pb-4 px-2 sm:pt-8 sm:pb-8 sm:px-4">
+      <div id="project-panel-content" class="max-w-6xl w-full px-4 py-6 sm:px-8 sm:py-10 bg-gradient-to-br from-[#0D1117]/98 to-[#1a1f2e]/98 backdrop-blur-2xl border border-[#C1A261]/30 rounded-2xl sm:rounded-3xl relative transform scale-95 opacity-0 transition-all duration-300 shadow-2xl shadow-[#C1A261]/10">
         
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
-        
-        <div class="relative z-10 mb-4">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex-1">
-              <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Projet BIGER</h3>
-              <p class="text-sm text-[#9CA3AF] leading-relaxed">Développement application médicale.</p>
+        <div class="flex items-center justify-between mb-6 sm:mb-8 pb-4 sm:pb-6 border-b border-[#C1A261]/20">
+          <button id="close-panel" class="group flex items-center gap-2 sm:gap-3 cursor-pointer hover:translate-x-[-4px] transition-all duration-300">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg sm:rounded-xl bg-[#C1A261]/10 border border-[#C1A261]/20 group-hover:bg-[#C1A261]/20 group-hover:border-[#C1A261]/40 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-[#C1A261] group-hover:translate-x-[-2px] transition-transform duration-300">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
             </div>
-            <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
-              MR
-            </div>
-          </div>
-        </div>
-        
-        <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
-          <img src="Images/Projets/Biger/b.png" 
-              alt="Projet BIGER" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          
-          <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
-                stroke="#F3F4F6"
-                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </div>
-        </div>
-        
-        <div class="relative z-10 flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#HoloLens2</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#MRTK</span>
-        </div>
-      </div>
-      
-      <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
-            data-tags="VR" 
-            data-title="VR Viewer" 
-            data-subtitle="Visites virtuelles des savoir-faire français." 
-            data-about="Développement d'un viewer VR dédié aux visites virtuelles d'usines via vidéos 360° interactives, optimisé pour une fluidité maximale sur Pico G3.
-                        Téléchargement direct dans le casque des vidéos et données des visites, avec gestion sécurisée des connexions et licences pour un accès contrôlé au contenu propriétaire depuis des serveurs distants.
-                        Optimisation poussée pour performances critiques : rendu 360° fluide, gestion mémoire contrainte, compression adaptative des vidéos locales et interactions tactiles natives Pico, garantissant une expérience immersive sans latence." 
-            data-tech="Unity 3D / PICO" 
-            data-images="Images/Projets/VRViewer/vv1.png,Images/Projets/VRViewer/vv2.png,Images/Projets/VRViewer/vv3.png">
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
-        
-        <div class="relative z-10 mb-4">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex-1">
-              <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">VR Viewer</h3>
-              <p class="text-sm text-[#9CA3AF] leading-relaxed">Visites virtuelles des savoir-faire français.</p>
-            </div>
-            <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
-              VR
-            </div>
-          </div>
-        </div>
-        
-        <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
-          <img src="Images/Projets/VRViewer/vv.png" 
-              alt="Projet BIGER" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          
-          <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
-                stroke="#F3F4F6"
-                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </div>
-        </div>
-        
-        <div class="relative z-10 flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#PICO</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Immersion</span>
-        </div>
-      </div>
-
-      <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
-            data-tags="AR" 
-            data-title="Inersio AR" 
-            data-subtitle="Support de communication." 
-            data-about="Développement d'une application AR mobile utilisant image tracking et world tracking, déployée sur Android (web) et iOS (App Clip) pour des expériences immersives accessibles instantanément.
-                        Image tracking : affichage de vidéos dynamiques sur cartes de visite, magazines et kakemonos, animant les supports physiques avec du contenu interactif marketing.
-                        World tracking : superposition de vidéos d'avatars parlants en réalité spatiale, créant des guides virtuels immersifs pour expositions et visites guidées.
-                        Création d'expériences à distance via backoffice dédié, permettant la récupération et la gestion centralisée des données de tracking pour générer dynamiquement du contenu depuis n'importe quel support physique." 
-            data-tech="Unity 3D / WebGL / AppClips / Swift" 
-            data-images="Images/Projets/ArApp/aa1.png,Images/Projets/ArApp/aa2.png">
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
-        
-        <div class="relative z-10 mb-4">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex-1">
-              <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Inersio AR</h3>
-              <p class="text-sm text-[#9CA3AF] leading-relaxed">Support de communication.</p>
-            </div>
-            <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
-              AR
-            </div>
-          </div>
-        </div>
-        
-        <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
-          <img src="Images/Projets/ArApp/aa.png" 
-              alt="Projet BIGER" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          
-          <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
-                stroke="#F3F4F6"
-                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </div>
-        </div>
-        
-        <div class="relative z-10 flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#WebGL</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#AppClips</span>
-        </div>
-      </div>
-
-      <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
-            data-tags="AR" 
-            data-title="Portfolio d’expériences" 
-            data-subtitle="Support de communication." 
-            data-about="Développement d'un portfolio AR autonome destiné aux commerciaux de l'entreprise pour des présentations impactantes lors de salons professionnels, regroupant plusieurs démonstrations visuelles en mode hors ligne.
-                        Démonstrations intégrées :
-                          • Image tracking : activation de contenu AR sur supports imprimés (magazines, kakemonos, cartes)
-                          • World tracking : pose d'avatars virtuels et d'objets 3D interactifs dans l'environnement réel
-                          • IA temps réel : coloration de cheveux dynamique via tracking facial précis
-                          • Viewer vidéo : streaming de vidéos démontrant des expériences AR complexes à transporter sur salon (grands produits, environnements spécifiques)
-                        Architecture offline optimisée : assets embarqués, détection robuste sans connexion, interfaces fluides Android/iOS, conçu pour capter l'attention des prospects en rendez-vous ou stands d'exposition."
-            data-tech="Unity 3D / AR Foundation / Vuforia / MediaPipe" 
-            data-images="Images/Projets/AppSalon/as1.png,Images/Projets/AppSalon/as2.png,Images/Projets/AppSalon/as3.png">
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
-        
-        <div class="relative z-10 mb-4">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex-1">
-              <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Portfolio d’expériences</h3>
-              <p class="text-sm text-[#9CA3AF] leading-relaxed">Support de communication.</p>
-            </div>
-            <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
-              AR
-            </div>
-          </div>
-        </div>
-        
-        <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
-          <img src="Images/Projets/AppSalon/as.png" 
-              alt="Portfolio AR" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          
-          <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
-                stroke="#F3F4F6"
-                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </div>
-        </div>
-        
-        <div class="relative z-10 flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#AR</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#IA</span>
-        </div>
-      </div>
-
-      <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
-            data-tags="VR" 
-            data-title="Les Défis du MIF" 
-            data-subtitle="Les défis du Made in France." 
-            data-about="Développement d'une application VR pour le salon du Made in France à Paris, transformant des visites virtuelles d'usines en expérience de jeu immersive via vidéos 360°.
-                        Concept gamifié : challenge interactif où les joueurs doivent trouver des objets cachés dans les environnements 360° des sites industriels français, avec scoring basé sur le temps de découverte.
-                        Système de classement : suivi temps réel des performances individuelles, creation automatique d'un leaderboard global et récompenses virtuelles, favorisant l'engagement des visiteurs du salon."
-            data-tech="Unity 3D / PICO"
-            data-images="Images/Projets/JeuMIF/vm1.png,Images/Projets/JeuMIF/vm2.png">
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
-        
-        <div class="relative z-10 mb-4">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex-1">
-              <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Les Défis du MIF</h3>
-              <p class="text-sm text-[#9CA3AF] leading-relaxed">Les Défis du Made in France.</p>
-            </div>
-            <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
-              VR
-            </div>
-          </div>
-        </div>
-        
-        <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
-          <img src="Images/Projets/JeuMIF/vm.png" 
-              alt="Portfolio AR" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          
-          <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
-                stroke="#F3F4F6"
-                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </div>
-        </div>
-        
-        <div class="relative z-10 flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#PICO</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Immersion</span>
-        </div>
-      </div>
-
-      <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
-      data-tags="AR" 
-      data-title="Les Voix du Made in France" 
-      data-subtitle="Les voix du Made in France." 
-      data-about="Développement d'une application AR d'image tracking pour le salon du Made in France à Paris, faisant revivre les portraits d'employés industriels français via des vidéos projetées sur tableaux physiques.
-                  Expérience immersive : activation des vidéos des employés Made in France au scan des tableaux, où ils presentent leur travail et leur entreprise d'origine française garantie.
-                  Interactions dynamiques : dialogues virtuels entre les portraits animés, créant une conversation immersive et vivante entre les employés, renforçant l'aspect humain et authentique du savoir-faire français." 
-      data-tech="Unity 3D / Vuforia" 
-      data-images="Images/Projets/VoixMIF/vmif1.png,Images/Projets/VoixMIF/vmif2.png">
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
-        
-        <div class="relative z-10 mb-4">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex-1">
-              <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Les Voix du MIF</h3>
-              <p class="text-sm text-[#9CA3AF] leading-relaxed">Les Voix du Made in France.</p>
-            </div>
-            <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
-              AR
-            </div>
-          </div>
-        </div>
-        
-        <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
-          <img src="Images/Projets/VoixMIF/vmif.png" 
-              alt="Portfolio AR" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          
-          <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
-                stroke="#F3F4F6"
-                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </div>
-        </div>
-        
-        <div class="relative z-10 flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#AR</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Vuforia</span>
-        </div>
-      </div>
-      
-      <div class="project-card group relative bg-[#0D1117] text-[#E5E7EB] p-6 rounded-2xl flex flex-col justify-between cursor-pointer border border-[#C1A261]/20 hover:border-[#C1A261]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C1A261]/20 hover:scale-[1.02] overflow-hidden" 
-      data-tags="Divers"
-      data-title="Projet Perso" 
-      data-subtitle="Jeux 2D." 
-      data-about="Développement d'un jeu 2D complet pour compléter mes compétences Unity et explorer la création de jeux traditionnels, démontrant ma polyvalence au-delà des expériences immersives.
-                  Conception d'un jeu avec mécaniques 2D avancées : plateforme, physique réaliste (Unity 2D Physics), animations fluides (Animator 2D), systèmes de scoring et progression joueur.
-                  Workflow de développement complet : level design procédural, UI réactive (Canvas 2D), gestion audio dynamique, optimisation mobile et publication sur stores, du prototype à la version finale." 
-      data-tech="Unity 3D" 
-      data-images="Images/Projets/ProjetPerso/pp1.png,Images/Projets/ProjetPerso/pp2.png">
-        
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out pointer-events-none"></div>
-        
-        <div class="relative z-10 mb-4">
-          <div class="flex items-start justify-between mb-3">
-            <div class="flex-1">
-              <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#C1A261] transition-colors duration-300">Projet Perso</h3>
-              <p class="text-sm text-[#9CA3AF] leading-relaxed">Jeux 2D.</p>
-            </div>
-            <div class="px-3 py-1 bg-[#C1A261]/20 backdrop-blur-sm rounded-lg border border-[#C1A261]/30 text-[#C1A261] text-xs font-bold tracking-wider">
-              Divers
-            </div>
-          </div>
-        </div>
-        
-        <div class="relative z-10 aspect-[16/11] rounded-xl overflow-hidden mb-4">
-          <img src="Images/Projets/ProjetPerso/pp.png" 
-              alt="Portfolio AR" 
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          
-          <div class="absolute bottom-3 right-3 bg-black/25 backdrop-blur-md p-2 rounded-full border border-white/20 transition-all duration-300 group-hover:bg-[#C1A261]/30 group-hover:border-[#C1A261]/50 group-hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" 
-                stroke="#F3F4F6"
-                class="w-6 h-6 transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:stroke-[#C1A261] transition-all duration-300 ease-out">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </div>
-        </div>
-        
-        <div class="relative z-10 flex flex-wrap gap-2">
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Unity</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#2D</span>
-          <span class="px-3 py-1.5 bg-[#0D1117] backdrop-blur-sm rounded-lg text-[#C1A261] text-xs font-medium border border-[#C1A261]/20 group-hover:border-[#C1A261]/40 group-hover:bg-[#C1A261]/10 transition-all duration-300">#Vuforia</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div id="project-panel" class="fixed inset-0 bg-black/60 backdrop-blur-xl text-[#E5E7EB] hidden flex-col z-50 transition-all duration-500 ease-in-out overflow-y-auto items-center pt-8 pb-8 px-4">
-  <div id="project-panel-content" class="max-w-6xl w-full px-8 py-10 bg-gradient-to-br from-[#0D1117]/98 to-[#1a1f2e]/98 backdrop-blur-2xl border border-[#C1A261]/30 rounded-3xl relative transform scale-95 opacity-0 transition-all duration-300 shadow-2xl shadow-[#C1A261]/10">
-    
-    <!-- Header avec bouton retour élégant -->
-    <div class="flex items-center justify-between mb-8 pb-6 border-b border-[#C1A261]/20">
-      <button id="close-panel" class="group flex items-center gap-3 cursor-pointer hover:translate-x-[-4px] transition-all duration-300">
-        <!-- Icône flèche avec fond -->
-        <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-[#C1A261]/10 border border-[#C1A261]/20 group-hover:bg-[#C1A261]/20 group-hover:border-[#C1A261]/40 transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-[#C1A261] group-hover:translate-x-[-2px] transition-transform duration-300">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-        </div>
-        <span class="font-semibold text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">Retour aux projets</span>
-      </button>
-    </div>
-
-    <!-- Contenu principal -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-      
-      <!-- Colonne gauche: Titre + Images -->
-      <div class="lg:col-span-2 space-y-8">
-        <!-- Titre et sous-titre -->
-        <div class="space-y-3">
-          <h3 id="panel-title" class="text-4xl font-bold text-white leading-tight"></h3>
-          <p id="panel-subtitle" class="text-lg text-[#9CA3AF]"></p>
-        </div>
-
-        <!-- Carrousel d'images moderne -->
-        <div class="relative overflow-hidden rounded-2xl bg-[#0D1117]/50 border border-[#C1A261]/20 shadow-xl group/carousel">
-          <div id="panel-images" class="flex transition-transform duration-500 ease-out"></div>
-          
-          <!-- Boutons de navigation avec design moderne -->
-          <button id="prev-img" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#0D1117]/90 to-[#1a1f2e]/90 backdrop-blur-md hover:from-[#C1A261]/30 hover:to-[#C1A261]/20 border border-[#C1A261]/30 rounded-xl transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 hover:scale-110 hover:border-[#C1A261]/60">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 text-[#C1A261]">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
+            <span class="font-semibold text-sm sm:text-base text-[#E5E7EB] group-hover:text-[#C1A261] transition-colors duration-300">
+              <span class="hidden sm:inline">Retour aux projets</span>
+              <span class="sm:hidden">Retour</span>
+            </span>
           </button>
-          
-          <button id="next-img" class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#0D1117]/90 to-[#1a1f2e]/90 backdrop-blur-md hover:from-[#C1A261]/30 hover:to-[#C1A261]/20 border border-[#C1A261]/30 rounded-xl transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 hover:scale-110 hover:border-[#C1A261]/60">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 text-[#C1A261]">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-          
-          <!-- Dots modernes -->
-          <div id="carousel-dots" class="absolute bottom-6 left-0 right-0 flex justify-center gap-2"></div>
         </div>
-      </div>
 
-      <!-- Colonne droite: Informations -->
-      <div class="space-y-8 lg:sticky lg:top-8">
-        <!-- À propos -->
-        <div class="bg-[#0D1117]/30 backdrop-blur-sm rounded-2xl p-6 border border-[#C1A261]/10">
-          <h4 class="text-xl font-bold mb-4 text-white flex items-center gap-2">
-            <div class="w-1 h-6 bg-[#C1A261] rounded-full"></div>
-            À propos du projet
-          </h4>
-          <p id="panel-about" class="text-[#D1D5DB] text-sm leading-relaxed" style="white-space: pre-line;"></p>
-        </div>
-        
-        <!-- Technologies -->
-        <div class="bg-gradient-to-br from-[#C1A261]/10 to-[#C1A261]/5 backdrop-blur-sm rounded-2xl p-6 border border-[#C1A261]/20">
-          <h4 class="text-xl font-bold mb-4 text-white flex items-center gap-2">
-            <div class="w-1 h-6 bg-[#C1A261] rounded-full"></div>
-            Technologies utilisées
-          </h4>
-          <p id="panel-tech" class="text-[#C1A261] font-medium text-sm leading-relaxed"></p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10 items-start">
+          <div class="lg:col-span-2 space-y-6 sm:space-y-8">
+            <div class="space-y-2 sm:space-y-3">
+              <h3 id="panel-title" class="text-2xl sm:text-4xl font-bold text-white leading-tight"></h3>
+              <p id="panel-subtitle" class="text-base sm:text-lg text-[#9CA3AF]"></p>
+            </div>
+            <div class="relative overflow-hidden rounded-xl sm:rounded-2xl bg-[#0D1117]/50 border border-[#C1A261]/20 shadow-xl group/carousel">
+              <div id="panel-images" class="flex transition-transform duration-500 ease-out"></div>
+              <button id="prev-img" class="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gradient-to-br from-[#0D1117]/90 to-[#1a1f2e]/90 backdrop-blur-md hover:from-[#C1A261]/30 hover:to-[#C1A261]/20 border border-[#C1A261]/30 rounded-lg sm:rounded-xl transition-all duration-300 sm:opacity-0 sm:group-hover/carousel:opacity-100 hover:scale-110 hover:border-[#C1A261]/60">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6 text-[#C1A261]">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button id="next-img" class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gradient-to-br from-[#0D1117]/90 to-[#1a1f2e]/90 backdrop-blur-md hover:from-[#C1A261]/30 hover:to-[#C1A261]/20 border border-[#C1A261]/30 rounded-lg sm:rounded-xl transition-all duration-300 sm:opacity-0 sm:group-hover/carousel:opacity-100 hover:scale-110 hover:border-[#C1A261]/60">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6 text-[#C1A261]">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              <div id="carousel-dots" class="absolute bottom-4 sm:bottom-6 left-0 right-0 flex justify-center gap-2"></div>
+            </div>
+          </div>
+
+          <div class="space-y-6 sm:space-y-8">
+            <div class="bg-[#0D1117]/30 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-[#C1A261]/10">
+              <h4 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white flex items-center gap-2">
+                <div class="w-1 h-5 sm:h-6 bg-[#C1A261] rounded-full"></div>
+                À propos du projet
+              </h4>
+              <p id="panel-about" class="text-[#D1D5DB] text-sm leading-relaxed" style="white-space: pre-line;"></p>
+            </div>
+            <div class="bg-gradient-to-br from-[#C1A261]/10 to-[#C1A261]/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-[#C1A261]/20">
+              <h4 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white flex items-center gap-2">
+                <div class="w-1 h-5 sm:h-6 bg-[#C1A261] rounded-full"></div>
+                Technologies utilisées
+              </h4>
+              <p id="panel-tech" class="text-[#C1A261] font-medium text-sm leading-relaxed"></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-
-<section id="contact" class="bg-[#0D1117] text-[#E5E7EB] py-16" data-animate>
-  <div class="max-w-6xl mx-auto px-6">
-    <!-- Titre -->
-    <h2 class="text-3xl sm:text-4xl font-bold mb-12 opacity-0 translate-y-8 transition-all duration-700 ease-out" data-scroll>
-      Contact
-    </h2>
-
-    <!-- Formulaire -->
-    <form   name="contact" method="POST" action="/merci.html" netlify netlify-honeypot="bot-field" id="contact-form" class="grid grid-cols-1 sm:grid-cols-2 gap-6 opacity-0 translate-y-8 transition-all duration-700 ease-out" data-scroll>
-  <input type="hidden" name="form-name" value="contact" />
-  <p class="hidden"><label>Ne pas remplir : <input name="bot-field" /></label></p>
-  
-      <!-- Nom -->
-      <div class="flex flex-col">
-        <label for="name" class="mb-2 font-medium">Nom</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition"
-          placeholder="Votre nom"
-        />
-      </div>
-
-      <!-- Email -->
-      <div class="flex flex-col">
-        <label for="email" class="mb-2 font-medium">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition"
-          placeholder="Votre email"
-        />
-      </div>
-
-      <!-- Message -->
-      <div class="flex flex-col sm:col-span-2">
-        <label for="message" class="mb-2 font-medium">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="6"
-          required
-          class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition"
-          placeholder="Votre message..."
-        ></textarea>
-      </div>
-
-  <div class="sm:col-span-2 flex">
-    <button type="submit" class="group relative bg-[#C1A261] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#1B2F78] transition-all duration-300 overflow-hidden w-full sm:w-auto">
-      <span class="flex items-center justify-center">
-        <span id="btn-text">Envoyer</span>
-        <div id="loader" class="absolute inset-0 flex items-center justify-center opacity-0 bg-[#C1A261]/20">
-          <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+    <section id="contact" class="bg-[#0D1117] text-[#E5E7EB] py-16" data-animate>
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center gap-3 mb-12 opacity-0 translate-y-6 transition duration-700" data-scroll>
+          <div class="w-1.5 h-10 bg-[#C1A261] sm:h-12 rounded-full"></div>
+          <h2 class="text-3xl sm:text-4xl font-bold">Contact</h2>
         </div>
-      </span>
-    </button>
-  </div>
-  
-  <div id="notification" class="sm:col-span-2 hidden p-4 mt-4 rounded-lg border text-sm transition-all duration-300"></div>
-</form>
 
-    <div class="flex flex-col space-y-6 mt-12 opacity-0 translate-y-8 transition-all duration-700 ease-out" data-scroll>
-      <p class="text-lg font-medium">Retrouvez-moi aussi ici :</p>
-      <div class="flex space-x-8">
-        <a href="https://www.linkedin.com/in/edouard-desmyter/" target="_blank" class="hover:text-[#C1A261] transition" aria-label="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 24 24">
-            <path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zm7.5 0h4.78v2.14h.07c.67-1.26 2.3-2.58 4.74-2.58 5.07 0 6 3.34 6 7.68V24h-5V16.16c0-1.86-.03-4.26-2.6-4.26-2.6 0-3 2.03-3 4.12V24H7.5V8.98z"/>
-          </svg>
-        </a>
-        <a href="Documents/CV_Edouard_Desmyter.pdf" target="_blank" class="hover:text-[#C1A261] transition group relative block" aria-label="CV">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" class="w-12 h-12">
-            <!-- Fond du document avec gradient au hover -->
-            <rect x="12" y="6" width="24" height="36" rx="2" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  stroke-width="2" 
-                  class="group-hover:stroke-[#C1A261] transition-all duration-300"/>
-            
-            <!-- Coin plié moderne -->
-            <path d="M 30 6 L 36 6 L 36 12 Z" 
-                  fill="currentColor" 
-                  opacity="0.15"
-                  class="group-hover:opacity-30 transition-opacity duration-300"/>
-            <path d="M 30 6 L 36 12 L 30 12 Z" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  stroke-width="1.5"
-                  stroke-linejoin="round"
-                  class="group-hover:stroke-[#C1A261] transition-all duration-300"/>
-            
-            <!-- Lignes de texte simulées -->
-            <line x1="16" y1="16" x2="28" y2="16" 
-                  stroke="currentColor" 
-                  stroke-width="1.5" 
-                  stroke-linecap="round"
-                  opacity="0.4"
-                  class="group-hover:opacity-100 group-hover:stroke-[#C1A261] transition-all duration-300"/>
-            <line x1="16" y1="20" x2="32" y2="20" 
-                  stroke="currentColor" 
-                  stroke-width="1.5" 
-                  stroke-linecap="round"
-                  opacity="0.4"
-                  class="group-hover:opacity-100 group-hover:stroke-[#C1A261] transition-all duration-300"/>
-            <line x1="16" y1="24" x2="26" y2="24" 
-                  stroke="currentColor" 
-                  stroke-width="1.5" 
-                  stroke-linecap="round"
-                  opacity="0.4"
-                  class="group-hover:opacity-100 group-hover:stroke-[#C1A261] transition-all duration-300"/>
-            
-            <!-- Badge CV au centre -->
-            <circle cx="24" cy="32" r="6" 
-                    fill="currentColor" 
-                    opacity="0.1"
-                    class="group-hover:opacity-20 transition-opacity duration-300"/>
-            <text x="24" y="35" 
-                  text-anchor="middle" 
-                  font-size="10" 
-                  font-weight="700" 
-                  fill="currentColor"
-                  class="group-hover:fill-[#C1A261] transition-all duration-300" 
-                  font-family="system-ui, -apple-system, sans-serif">CV</text>
-          </svg>
-        </a>
+        <form name="contact" method="POST" action="/merci.html" netlify netlify-honeypot="bot-field" id="contact-form" class="grid grid-cols-1 sm:grid-cols-2 gap-6 opacity-0 translate-y-8 transition-all duration-700 ease-out" data-scroll>
+          <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden"><label>Ne pas remplir : <input name="bot-field" /></label></p>
+            <div class="flex flex-col">
+              <label for="name" class="mb-2 font-medium">Nom</label>
+              <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition" placeholder="Votre nom"/>
+            </div>
+            <div class="flex flex-col">
+              <label for="email" class="mb-2 font-medium">Email</label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition"placeholder="Votre email" />
+            </div>
+            <div class="flex flex-col sm:col-span-2">
+              <label for="message" class="mb-2 font-medium">Message</label>
+              <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 rounded-lg border border-gray-700 bg-[#111827] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C1A261] focus:border-transparent transition"placeholder="Votre message..." ></textarea>
+            </div>
+
+            <div class="sm:col-span-2 flex">
+              <button type="submit" class="group relative bg-gradient-to-r from-[#C1A261] to-[#a58a4d] text-white px-8 py-3.5 rounded-xl font-bold hover:from-[#a58a4d] hover:to-[#C1A261] transition-all duration-300 overflow-hidden w-full sm:w-auto hover:scale-[1.02] border border-[#C1A261]/50">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+                <span class="relative flex items-center justify-center gap-2">
+                  <span id="btn-text" class="transition-all duration-300">Envoyer</span>                  
+                  <div id="loader" class="absolute inset-0 flex items-center justify-center opacity-0 bg-gradient-to-r from-[#C1A261] to-[#a58a4d] rounded-xl backdrop-blur-sm transition-opacity duration-300">
+                    <div class="animate-spin rounded-full h-6 w-6 border-2 border-white/30 border-t-white"></div>
+                  </div>
+                </span>
+              </button>
+            </div>
+          <div id="notification" class="sm:col-span-2 hidden p-4 mt-4 rounded-lg border text-sm transition-all duration-300"></div>
+        </form>
+
+        <div class="flex flex-col space-y-6 mt-12 opacity-0 translate-y-8 transition-all duration-700 ease-out" data-scroll>
+          <p class="text-lg font-medium">Retrouvez-moi aussi ici :</p>
+          <div class="flex space-x-8">
+            <a href="https://www.linkedin.com/in/edouard-desmyter/" target="_blank" class="hover:text-[#C1A261] transition" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10" viewBox="0 0 24 24">
+                <path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zm7.5 0h4.78v2.14h.07c.67-1.26 2.3-2.58 4.74-2.58 5.07 0 6 3.34 6 7.68V24h-5V16.16c0-1.86-.03-4.26-2.6-4.26-2.6 0-3 2.03-3 4.12V24H7.5V8.98z"/>
+              </svg>
+            </a>
+            <a href="Documents/CV_Edouard_Desmyter.pdf" target="_blank" class="hover:text-[#C1A261] transition group relative block" aria-label="CV">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" class="w-12 h-12">
+                <rect x="12" y="6" width="24" height="36" rx="2" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      stroke-width="2" 
+                      class="group-hover:stroke-[#C1A261] transition-all duration-300"/>
+                
+                <path d="M 30 6 L 36 6 L 36 12 Z" 
+                      fill="currentColor" 
+                      opacity="0.15"
+                      class="group-hover:opacity-30 transition-opacity duration-300"/>
+                <path d="M 30 6 L 36 12 L 30 12 Z" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      stroke-width="1.5"
+                      stroke-linejoin="round"
+                      class="group-hover:stroke-[#C1A261] transition-all duration-300"/>
+                
+                <line x1="16" y1="16" x2="28" y2="16" 
+                      stroke="currentColor" 
+                      stroke-width="1.5" 
+                      stroke-linecap="round"
+                      opacity="0.4"
+                      class="group-hover:opacity-100 group-hover:stroke-[#C1A261] transition-all duration-300"/>
+                <line x1="16" y1="20" x2="32" y2="20" 
+                      stroke="currentColor" 
+                      stroke-width="1.5" 
+                      stroke-linecap="round"
+                      opacity="0.4"
+                      class="group-hover:opacity-100 group-hover:stroke-[#C1A261] transition-all duration-300"/>
+                <line x1="16" y1="24" x2="26" y2="24" 
+                      stroke="currentColor" 
+                      stroke-width="1.5" 
+                      stroke-linecap="round"
+                      opacity="0.4"
+                      class="group-hover:opacity-100 group-hover:stroke-[#C1A261] transition-all duration-300"/>
+                
+                <circle cx="24" cy="32" r="6" 
+                        fill="currentColor" 
+                        opacity="0.1"
+                        class="group-hover:opacity-20 transition-opacity duration-300"/>
+                <text x="24" y="35" 
+                      text-anchor="middle" 
+                      font-size="10" 
+                      font-weight="700" 
+                      fill="currentColor"
+                      class="group-hover:fill-[#C1A261] transition-all duration-300" 
+                      font-family="system-ui, -apple-system, sans-serif">CV</text>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <footer class="bg-[#0D1117] text-[#E5E7EB] py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-sm order-1 text-center md:text-left">&copy; 2026 Edouard Desmyter. Tous droits réservés.</p>
+
+      <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 order-2 w-full md:w-auto">
+        <a href="#home" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Home</a>
+        <a href="#about" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">A propos</a>
+        <a href="#maitrises" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Maitrise</a>
+        <a href="#projects" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Projets</a>
+        <a href="#contact" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Contact</a>
+      </div>
+
+      <div class="flex space-x-4 order-3">
+        <a href="https://www.linkedin.com/in/edouard-desmyter/" target="_blank" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">LinkedIn</a>
+        <a href="Documents/CV_Edouard_Desmyter.pdf" target="_blank" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">CV</a>
       </div>
     </div>
-  </div>
-</section>
-
-</body>
-
-<footer class="bg-[#0D1117] text-[#E5E7EB] py-8 mt-16">
-  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-    <p class="text-sm order-1 text-center md:text-left">&copy; 2025 Edouard Desmyter. Tous droits réservés.</p>
-
-    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 order-2 w-full md:w-auto">
-      <a href="#home" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Home</a>
-      <a href="#about" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">A propos</a>
-      <a href="#maitrises" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Maitrise</a>
-      <a href="#projects" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Projets</a>
-      <a href="#contact" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">Contact</a>
-    </div>
-
-    <div class="flex space-x-4 order-3">
-      <a href="https://www.linkedin.com/in/edouard-desmyter/" target="_blank" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">LinkedIn</a>
-      <a href="Documents/CV_Edouard_Desmyter.pdf" target="_blank" class="hover:text-[#C1A261] transition text-sm whitespace-nowrap">CV</a>
-    </div>
-  </div>
-</footer>
-
+  </footer>
 </html>

@@ -10,9 +10,17 @@ tailwind.config = {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
       },
+      screens: {
+        'sm': '640px',
+        'md': '960px',   // au lieu de 768px
+        'lg': '1280px',  // au lieu de 1024px
+        'xl': '1536px',
+        '2xl': '1920px',
+      },
     },
   },
 };
+
 
 // -------------------- HEADER & MOBILE MENU --------------------
 const headerName = document.getElementById("header-name");
@@ -431,17 +439,31 @@ document.getElementById('contact-form').addEventListener('submit', e => {
 });
 
 
-// Dans votre code JavaScript qui gère les clics sur les boutons
 buttons.forEach(btn => {
   btn.addEventListener('click', () => {
-    // Retirer l'état actif de tous les boutons
+    
+    // Réinitialiser tous les boutons (inactifs)
     buttons.forEach(b => {
-      b.classList.remove('bg-[#C1A261]', 'text-white', 'shadow-xl', 'shadow-[#C1A261]/40', 'scale-105');
+      b.classList.remove('bg-[#C1A261]', 'text-white', 'scale-105');
       b.classList.add('bg-white', 'text-[#111827]');
+      
+      // Mettre à jour le shine pour les boutons inactifs (doré)
+      const shine = b.querySelector('span:first-child');
+      if (shine) {
+        shine.className = 'absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700';
+      }
     });
     
-    // Ajouter l'état actif au bouton cliqué
-    btn.classList.add('bg-[#C1A261]', 'text-white', 'shadow-xl', 'shadow-[#C1A261]/40', 'scale-105');
+    // Activer le bouton cliqué
+    btn.classList.add('bg-[#C1A261]', 'text-white', 'scale-105');
     btn.classList.remove('bg-white', 'text-[#111827]');
+    
+    // Mettre à jour le shine pour le bouton actif (blanc)
+    const activeShine = btn.querySelector('span:first-child');
+    if (activeShine) {
+      activeShine.className = 'absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700';
+    }
   });
 });
+
+
