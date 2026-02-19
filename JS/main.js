@@ -186,8 +186,11 @@ const container = document.getElementById("projects-grid");
 // -----------------------------
 // FONCTION POUR AFFICHER LES CARTES FILTRÉES
 // -----------------------------
+let currentFilter = "Tous"; // ← variable globale à ajouter
+
 function showFilteredCards(filter) {
-  container.innerHTML = ""; // vider le container
+  currentFilter = filter; // ← mémorise le filtre actif
+  container.innerHTML = "";
 
   const filtered = allCards.filter(card => {
     const tags = card.dataset.tags.split(",");

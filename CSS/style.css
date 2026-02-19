@@ -95,8 +95,6 @@ header {
   z-index: 40;
 }
 
-
-/* Container principal */
 #header-container {
   position: relative;
   display: flex;
@@ -109,7 +107,6 @@ header {
   transition: gap 0.5s ease, padding 0.5s ease;
 }
 
-
 /* Nom */
 #header-name {
   opacity: 0;
@@ -120,8 +117,7 @@ header {
   opacity: 1;
 }
 
-
-/* Navigation centré par défaut */
+/* Nav : centrée par défaut */
 #header-nav {
   display: flex;
   justify-content: center;
@@ -136,16 +132,32 @@ header {
   transform: translate(-50%, -50%);
 }
 
-
+/* Nav scrollée : s'arrête avant le toggle */
 #header-container.scrolled #header-nav {
   justify-content: flex-end;
   gap: 2rem;
   left: auto;
-  right: 1.5rem;
+  right: calc(1.5rem + 82px + 0.75rem); /* 82px = largeur toggle, 0.75rem = gap */
   transform: translateY(-50%);
 }
 
+/* Toggle : toujours ancré à droite */
+#lang-toggle {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex; /* visible par défaut sur desktop */
+}
 
+/* Cache le toggle sur mobile (géré dans le panel) */
+@media (max-width: 639px) {
+  #lang-toggle {
+    display: none;
+  }
+}
+
+/* Burger */
 #menu-btn {
   position: absolute;
   right: 1rem;
@@ -164,17 +176,35 @@ header {
     display: none;
   }
 
+  #lang-toggle {
+    display: none !important;
+  }
   #menu-btn {
     display: block;
   }
 }
 
-
-/* Mobile adjustments */
-@media (max-width: 639px) {
-  #header-nav { display: none; }
-  #header-name { opacity: 0; }
+/* Toggle : ancré à droite avec transition */
+#lang-toggle {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex; /* visible sur desktop */
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
+
+#header-container.scrolled #lang-toggle {
+  transform: translateY(-50%) translateX(16px);
+}
+
+/* Mobile : caché, le toggle est dans le panel */
+@media (max-width: 639px) {
+  #lang-toggle {
+    display: none !important; /* !important pour écraser d'éventuels résidus Tailwind */
+  }
+}
+
 
 
 
@@ -188,6 +218,68 @@ header {
   transition: opacity 0.3s ease; 
 }
 
+/* -------------------- MOBILE NAV LINKS -------------------- */
+.mobile-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1rem 1.25rem 1.75rem; /* padding-left pour laisser place à la barre */
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transform: translateX(0);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.mobile-nav-link span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #9CA3AF;
+  transition: color 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+  transform: translateX(4px);
+  background: linear-gradient(to right, rgba(193, 162, 97, 0.08), transparent);
+  border-color: rgba(193, 162, 97, 0.25);
+}
+
+.mobile-nav-link:hover span {
+  color: #C1A261;
+}
+
+/* Barre gauche — positionnée en absolu à l'intérieur du bouton */
+.mobile-nav-bar {
+  position: absolute;
+  left: 0.6rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: rgba(193, 162, 97, 0.2);
+}
+
+.mobile-nav-bar-fill {
+  position: absolute;
+  inset: 0;
+  background-color: #C1A261;
+  border-radius: 9999px;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-link:hover .mobile-nav-bar-fill {
+  transform: scaleY(1);
+}
+
+
+
+/* Annule le hover du header-nav desktop */
+#mobile-panel .mobile-nav-link:hover {
+  transform: translateX(4px) !important;
+}
 
 /* Hamburger -> croix */
 #close-mobile-btn span {
