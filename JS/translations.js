@@ -1,11 +1,19 @@
 // ── Traductions ───────────────────────────────────────────
 const translations = {
   fr: {
+    "page.title":       "Édouard Desmyter – Portfolio",
+    "page.description": "Portfolio d'Édouard Desmyter, développeur AR / MR / VR. Présentation de projets et réalisations en réalité augmentée, mixte et virtuelle.",
+
+    "merci.page.title":       "Message Envoyé – Édouard Desmyter",
+    "merci.page.description": "Message envoyé avec succès - Portfolio d'Édouard Desmyter",
+
+    "nav.name":    "Édouard Desmyter",
     "nav.about":    "À propos",
     "nav.skills":   "Maîtrises",
     "nav.projects": "Projets",
     "nav.contact":  "Contact",
 
+    "hero.firstname": "Édouard",
     "hero.role": "Développeur AR / MR / VR",
 
     "about.title":    "À propos",
@@ -102,11 +110,19 @@ const translations = {
     },
 
   en: {
+    "page.title":       "Edouard Desmyter – Portfolio",
+    "page.description": "Portfolio of Edouard Desmyter, AR / MR / VR developer. Showcase of projects and work in augmented, mixed and virtual reality.",
+
+    "merci.page.title":       "Message Sent – Edouard Desmyter",
+    "merci.page.description": "Message successfully sent - Edouard Desmyter's Portfolio",
+
+    "nav.name":    "Edouard Desmyter",
     "nav.about":    "About",
     "nav.skills":   "Skills",
     "nav.projects": "Projects",
     "nav.contact":  "Contact",
 
+    "hero.firstname": "Edouard",
     "hero.role": "AR / MR / VR Developer",
 
     "about.title":    "About",
@@ -188,7 +204,7 @@ const translations = {
     "contact.send":                "Send",
     "contact.findme":              "Find me here:",
 
-    "footer.rights":       "© 2026 Édouard Desmyter. All rights reserved.",
+    "footer.rights":       "© 2026 Edouard Desmyter. All rights reserved.",
     "footer.nav.home":     "Home",
     "footer.nav.about":    "About",
     "footer.nav.skills":   "Skills",
@@ -209,6 +225,11 @@ function applyTranslations(lang, animate = false) {
   const elements = document.querySelectorAll('[data-i18n]');
 
     const doSwap = () => {
+    const title = document.getElementById('page-title');
+    const desc  = document.getElementById('meta-description');
+    if (title && translations[lang]?.['page.title'])       title.textContent  = translations[lang]['page.title'];
+    if (desc  && translations[lang]?.['page.description']) desc.setAttribute('content', translations[lang]['page.description']);
+
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang]?.[key]) el.innerHTML = translations[lang][key];

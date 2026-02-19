@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio d'Édouard Desmyter, développeur AR / MR / VR. Présentation de projets et réalisations en réalité augmentée, mixte et virtuelle." />
-    <title>Édouard Desmyter – Portfolio</title>
+    <meta name="description" id="meta-description" content="Portfolio d'Édouard Desmyter, développeur AR / MR / VR. Présentation de projets et réalisations en réalité augmentée, mixte et virtuelle." />
+    <title id="page-title">Édouard Desmyter – Portfolio</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="JS/main.js" defer></script>
     <script src="JS/translations.js" defer></script>
+    <script src="JS/main.js" defer></script>
     <link rel="icon" type="image/png" href="Images/favicon.png" />
-
   </head>
+
 
   <body class="bg-background text-textmain font-sans">
 
@@ -21,10 +21,9 @@
     <div id="header-container"
         class="max-w-7xl mx-auto grid grid-cols-[1fr_auto_1fr] items-center px-6 transition-all duration-500">
 
-      <!-- Colonne gauche : Nom -->
       <h1 id="header-name"
           class="text-xl sm:text-2xl font-bold tracking-wider opacity-0 transition-all duration-500 text-[#C1A261]">
-        <a href="#home">Édouard Desmyter</a>
+        <a href="#home" data-i18n="nav.name">Édouard Desmyter</a>
       </h1>
 
       <!-- Colonne centrale : Nav desktop -->
@@ -124,7 +123,7 @@
         </div>
 
         <p class="text-xs text-[#6B7280] tracking-wide">
-          © 2026 <span class="text-[#9CA3AF] font-medium">Édouard Desmyter</span>
+          © 2026 <span class="text-[#9CA3AF] font-medium" data-i18n="nav.name">Édouard Desmyter</span>
         </p>
 
       </div>
@@ -140,8 +139,10 @@
 
       <div class="relative z-10 text-left max-w-2xl ml-6 sm:ml-8 md:ml-32 lg:ml-48 opacity-0 translate-y-6 transition-all duration-1000 ease-out sm:pt-4" data-animate>
         <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 font-light tracking-tight animate-fade-up">
-          Édouard<br><span class="font-black text-white">Desmyter</span>
+          <span data-i18n="hero.firstname">Édouard</span><br>
+          <span class="font-black text-white">Desmyter</span>
         </h1>
+
         <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#9CA3AF] font-medium animate-fade-up delay-200"
             data-i18n="hero.role">
           Développeur AR / MR / VR

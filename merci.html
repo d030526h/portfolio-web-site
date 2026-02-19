@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Message envoyé avec succès - Portfolio d'Edouard Desmyter">
-  <title>Message Envoyé</title>
+  <meta name="description" id="meta-description" content="Message envoyé avec succès - Portfolio d'Édouard Desmyter">
+  <title id="page-title">Message Envoyé – Édouard Desmyter</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="Images/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="JS/translations.js"></script>  <!-- sans defer pour être dispo immédiatement -->
+  <script src="JS/translations.js"></script>
   <style>
     body {
       background-color: #0D1117;
@@ -25,6 +25,7 @@
     }
   </style>
 </head>
+
 <body class="min-h-screen flex items-center justify-center px-6">
 
   <div class="max-w-2xl w-full text-center">
@@ -63,16 +64,22 @@
 
   </div>
 
-  <script>
-    const lang = localStorage.getItem('lang') || 'fr';
+<script>
+  const lang = localStorage.getItem('lang') || 'fr';
 
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (translations[lang]?.[key]) el.innerHTML = translations[lang][key];
-    });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang]?.[key]) el.innerHTML = translations[lang][key];
+  });
 
-    document.documentElement.setAttribute('lang', lang);
-  </script>
+  const title = document.getElementById('page-title');
+  const desc  = document.getElementById('meta-description');
+  if (title && translations[lang]?.['merci.page.title'])       title.textContent         = translations[lang]['merci.page.title'];
+  if (desc  && translations[lang]?.['merci.page.description']) desc.setAttribute('content', translations[lang]['merci.page.description']);
+
+  document.documentElement.setAttribute('lang', lang);
+</script>
+
 
 </body>
 </html>
