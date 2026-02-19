@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Message envoyé avec succès - Portfolio d'Edouard Desmyter">
-  <title>Message Envoyé - Edouard Desmyter</title>
+  <title>Message Envoyé</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="Images/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="JS/translations.js"></script>  <!-- sans defer pour être dispo immédiatement -->
   <style>
     body {
       background-color: #0D1117;
@@ -18,18 +19,16 @@
       animation: checkmark 0.8s ease-out;
     }
     @keyframes checkmark {
-      0% { transform: scale(0) rotate(-45deg); opacity: 0; }
-      50% { transform: scale(1.2) rotate(-45deg); opacity: 1; }
+      0%   { transform: scale(0) rotate(-45deg); opacity: 0; }
+      50%  { transform: scale(1.2) rotate(-45deg); opacity: 1; }
       100% { transform: scale(1) rotate(0deg); opacity: 1; }
     }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center px-6">
-  
-  <!-- Container principal -->
+
   <div class="max-w-2xl w-full text-center">
-    
-    <!-- Icône de succès -->
+
     <div class="mb-8 flex justify-center">
       <div class="w-24 h-24 rounded-full bg-[#C1A261]/20 border-4 border-[#C1A261] flex items-center justify-center animate-checkmark">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#C1A261" class="w-12 h-12">
@@ -37,35 +36,43 @@
         </svg>
       </div>
     </div>
-    
-    <!-- Titre -->
-    <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-[#E5E7EB]">
+
+    <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-[#E5E7EB]" data-i18n="merci.title">
       Message Envoyé !
     </h1>
-    
-    <!-- Message -->
-    <p class="text-lg sm:text-xl text-[#9CA3AF] mb-4 leading-relaxed">
-      Merci pour votre message.<br>
-      Je vous répondrai dans les plus brefs délais.
+
+    <p class="text-lg sm:text-xl text-[#9CA3AF] mb-4 leading-relaxed" data-i18n="merci.p1">
+      Merci pour votre message.<br>Je vous répondrai dans les plus brefs délais.
     </p>
-    
-    <p class="text-base text-[#9CA3AF] mb-12">
+    <p class="text-base text-[#9CA3AF] mb-12" data-i18n="merci.p2">
       Vous pouvez fermer cette page ou retourner au portfolio.
     </p>
-    
-    <!-- Boutons -->
+
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/#contact" class="bg-[#C1A261] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#1B2F78] transition-all duration-300 inline-block">
-        Retour au contact
+      <a href="/#contact"
+         class="group relative bg-gradient-to-r from-[#C1A261] to-[#a58a4d] text-white px-8 py-3.5 rounded-xl font-bold hover:from-[#a58a4d] hover:to-[#C1A261] transition-all duration-300 overflow-hidden hover:scale-[1.02] border border-[#C1A261]/50 inline-flex items-center justify-center">
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+        <span class="relative" data-i18n="merci.btn.contact">Retour au contact</span>
       </a>
-      <a href="/" class="border-2 border-[#C1A261] text-[#C1A261] px-8 py-3 rounded-lg font-medium hover:bg-[#C1A261] hover:text-white transition-all duration-300 inline-block">
-        Retour à l'accueil
+      <a href="/"
+         class="group relative border-2 border-[#C1A261]/50 text-[#C1A261] px-8 py-3.5 rounded-xl font-bold hover:border-[#C1A261] hover:bg-[#C1A261]/10 transition-all duration-300 overflow-hidden hover:scale-[1.02] inline-flex items-center justify-center">
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#C1A261]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+        <span class="relative" data-i18n="merci.btn.home">Retour à l'accueil</span>
       </a>
     </div>
-    
-    
-    
+
   </div>
-  
+
+  <script>
+    const lang = localStorage.getItem('lang') || 'fr';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang]?.[key]) el.innerHTML = translations[lang][key];
+    });
+
+    document.documentElement.setAttribute('lang', lang);
+  </script>
+
 </body>
 </html>
