@@ -1,0 +1,15 @@
+# ════════════════════════════════════════════════
+# .htaccess — Réécriture SPA pour XAMPP / Apache
+# Toutes les URLs → index.html (le router JS gère le reste)
+# ════════════════════════════════════════════════
+
+Options -MultiViews
+RewriteEngine On
+
+# Autoriser l'accès aux fichiers et dossiers réels (css, js, images, pages/)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Tout le reste → index.html
+RewriteRule ^ index.html [L]
