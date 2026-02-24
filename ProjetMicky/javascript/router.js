@@ -40,74 +40,105 @@ const router = {
     return html;
   },
 
-  async go(input, param = null, push = true) {
-    let path = input;
-    if (!path.startsWith('/')) {
-      path = (input === 'hero') ? '/' : '/' + input;
-    }
-    if (param) path = '/project/' + param;
+async go(input, param = null, push = true) {
+  let path = input;
+  if (!path.startsWith('/')) {
+    path = (input === 'hero') ? '/' : '/' + input;
+  }
+  if (param) path = '/project/' + param;
 
-    const { route, param: p } = this.resolve(path);
-    if (!route) return;
+  const { route, param: p } = this.resolve(path);
+  if (!route) return;
 
-    const key = p ? 'project:' + p : route.page;
-    if (this.current === key) return;
+  const key = p ? 'project:' + p : route.page;
+  if (this.current === key) return;
 
-    const vp = document.getElementById('viewport');
+  const vp = document.getElementById('viewport');
 
-    // Fade out
-    vp.style.transition = 'opacity .18s ease, transform .18s ease';
-    vp.style.opacity    = '0';
-    vp.style.transform  = 'translateY(-8px)';
+  // Fade out
+  vp.style.transition = 'opacity .18s ease, transform .18s ease';
+  vp.style.opacity    = '0';
+  vp.style.transform  = 'translateY(-8px)';
 
-    let html;
-    try {
-      html = await this.load(route.file);
-    } catch(err) {
-      console.error('[router] Chargement échoué :', err);
-      vp.style.opacity   = '1';
-      vp.style.transform = 'translateY(0)';
-      return;
-    }
+  let html;
+  try {
+    html = await this.load(route.file);
+  } catch(err) {
+    console.error('[router] Chargement échoué :', err);
+    vp.style.opacity   = '1';
+    vp.style.transform = 'translateY(0)';
+    return;
+  }
 
-    await sleep(180);
+  await sleep(180);
 
-    vp.innerHTML = html;
+  // ── Page projet → loader ──────────────────────
+  if (route.page === 'project') {
+    window.showRenderLoader(() => {
+      vp.innerHTML = html;
+      if (p && window.renderProject) window.renderProject(p);
 
-    // Appel renderProject après injection DOM
-    if (p && window.renderProject) {
-      window.renderProject(p);
-    }
+      vp.style.transform = 'translateY(10px)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        vp.style.opacity   = '1';
+        vp.style.transform = 'translateY(0)';
+      }));
 
-    // Fade in
-    vp.style.transform = 'translateY(10px)';
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      vp.style.opacity   = '1';
-      vp.style.transform = 'translateY(0)';
-    }));
+      this.current = key;
 
-    this.current = key;
+      if (push) {
+        const fullUrl = BASE + (path === '/' ? '/' : path);
+        history.pushState({ path }, '', fullUrl);
+      }
 
-    if (push) {
-      const fullUrl = BASE + (path === '/' ? '/' : path);
-      history.pushState({ path }, '', fullUrl);
-    }
+      this.updateUI(route.page);
+      document.title = 'Projet — Micky Valat';
+      window.scrollTo(0, 0);
 
-    this.updateUI(route.page);
-    document.title = ({
-      hero:      'Micky Valat — Monteur Vidéo',
-      about:     'À propos — Micky Valat',
-      portfolio: 'Portfolio — Micky Valat',
-      contact:   'Contact — Micky Valat',
-      project:   'Projet — Micky Valat',
-    })[route.page] || 'Micky Valat';
+      setTimeout(() => {
+        triggerReveals();
+        initImages();
+        initCutEffect();
+      }, 200);
+    });
+    return; // ← stop, tout est géré dans le callback
+  }
 
-    window.scrollTo(0, 0);
-    setTimeout(() => {
-      triggerReveals();
-      if (route.page === 'about') setTimeout(animateBars, 480);
-    }, 60);
-  },
+  // ── Pages normales ────────────────────────────
+  vp.innerHTML = html;
+
+  if (p && window.renderProject) window.renderProject(p);
+
+  vp.style.transform = 'translateY(10px)';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    vp.style.opacity   = '1';
+    vp.style.transform = 'translateY(0)';
+  }));
+
+  this.current = key;
+
+  if (push) {
+    const fullUrl = BASE + (path === '/' ? '/' : path);
+    history.pushState({ path }, '', fullUrl);
+  }
+
+  this.updateUI(route.page);
+  document.title = ({
+    hero:      'Micky Valat — Monteur Vidéo',
+    about:     'À propos — Micky Valat',
+    portfolio: 'Portfolio — Micky Valat',
+    contact:   'Contact — Micky Valat',
+  })[route.page] || 'Micky Valat';
+
+  window.scrollTo(0, 0);
+  setTimeout(() => {
+    triggerReveals();
+    initImages();
+    initCutEffect();
+    if (route.page === 'about') setTimeout(animateBars, 480);
+  }, 200);
+},
+
 
   updateUI(page) {
     const nav = document.getElementById('nav');
@@ -148,6 +179,7 @@ const router = {
 };
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
 
 // Init déclenché après que main.js a tout défini
 router.init();

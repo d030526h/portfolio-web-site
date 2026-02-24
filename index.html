@@ -26,27 +26,23 @@
         <a href="#home" data-i18n="nav.name">Édouard Desmyter</a>
       </h1>
 
-      <!-- Colonne centrale : Nav desktop -->
       <nav id="header-nav"
-          class="hidden sm:flex text-sm sm:text-base transition-all duration-500 gap-8 sm:gap-12">
+          class="hidden md:flex text-sm sm:text-base transition-all duration-500 gap-8 sm:gap-12">
         <a href="#about"     data-i18n="nav.about"    class="hover:text-[#C1A261] transition transform hover:scale-105 whitespace-nowrap">À propos</a>
         <a href="#maitrises" data-i18n="nav.skills"   class="hover:text-[#C1A261] transition transform hover:scale-105 whitespace-nowrap">Maîtrises</a>
         <a href="#projects"  data-i18n="nav.projects" class="hover:text-[#C1A261] transition transform hover:scale-105 whitespace-nowrap">Projets</a>
         <a href="#contact"   data-i18n="nav.contact"  class="hover:text-[#C1A261] transition transform hover:scale-105 whitespace-nowrap">Contact</a>
       </nav>
 
-      <!-- Colonne droite : Toggle + Burger -->
       <div class="flex items-center justify-end gap-3">
 
-        <!-- Toggle : caché sur mobile, visible à partir de sm -->
-        <div id="lang-toggle" onclick="toggleLang()" class="hidden sm:flex relative items-center cursor-pointer select-none bg-[#0D1117]/80 backdrop-blur-xl border border-[#C1A261]/30 rounded-full px-1 py-1 hover:border-[#C1A261]/70 transition-all duration-300 shadow-sm hover:shadow-[#C1A261]/10 hover:shadow-md">
+        <div id="lang-toggle" onclick="toggleLang()" class="hidden md:flex relative items-center cursor-pointer select-none bg-[#0D1117]/80 backdrop-blur-xl border border-[#C1A261]/30 rounded-full px-1 py-1 hover:border-[#C1A261]/70 transition-all duration-300 shadow-sm hover:shadow-[#C1A261]/10 hover:shadow-md">
           <span id="lang-pill" class="absolute top-1 left-1 h-[calc(100%-8px)] w-[calc(50%-4px)] bg-[#C1A261] rounded-full transition-all duration-300 ease-in-out shadow-sm"></span>
           <span id="label-fr" class="relative z-10 text-xs font-bold px-3 py-0.5 transition-colors duration-300 text-[#0D1117]">FR</span>
           <span id="label-en" class="relative z-10 text-xs font-bold px-3 py-0.5 transition-colors duration-300 text-[#C1A261]/60">EN</span>
         </div>
 
-        <!-- Burger : visible uniquement sur mobile -->
-        <button id="menu-btn" class="flex sm:hidden relative w-12 h-12 focus:outline-none z-50 group">
+        <button id="menu-btn" class="flex md:hidden relative w-12 h-12 focus:outline-none z-50 group">
           <div class="absolute inset-0 bg-gradient-to-br from-[#0D1117]/80 to-[#1a1f2e]/80 backdrop-blur-xl rounded-xl border border-[#C1A261]/20 group-hover:border-[#C1A261]/60 group-hover:shadow-lg group-hover:shadow-[#C1A261]/20 transition-all duration-300"></div>
           <div class="relative z-10 flex flex-col justify-center items-center h-full gap-1.5">
             <span class="block w-6 h-0.5 bg-[#E5E7EB] transition-all duration-300 rounded-full group-hover:bg-[#C1A261] group-hover:w-7"></span>
@@ -58,7 +54,6 @@
     </div>
   </header>
 
-  <!-- Overlay -->
   <div id="mobile-overlay"
       class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40">
   </div>
@@ -193,7 +188,6 @@
 
           <div class="space-y-4 opacity-0 translate-y-6 transition duration-700" data-scroll>
 
-            <!-- Inersio -->
             <div class="group-container bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-[#C1A261]/10 border border-[#C1A261]/20 hover:border-[#C1A261]/40 transition-all duration-300">
               <button onclick="togglePanel('exp4')" class="w-full text-left px-6 py-5 hover:bg-[#C1A261]/5 transition-all duration-300 flex justify-between items-center group">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
@@ -226,7 +220,6 @@
               </div>
             </div>
 
-            <!-- UCA -->
             <div class="group-container bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-[#C1A261]/10 border border-[#C1A261]/20 hover:border-[#C1A261]/40 transition-all duration-300">
               <button onclick="togglePanel('exp3')" class="w-full text-left px-6 py-5 hover:bg-[#C1A261]/5 transition-all duration-300 flex justify-between items-center group">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
@@ -259,7 +252,6 @@
               </div>
             </div>
 
-            <!-- IFSTTAR -->
             <div class="group-container bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-[#C1A261]/10 border border-[#C1A261]/20 hover:border-[#C1A261]/40 transition-all duration-300">
               <button onclick="togglePanel('exp2')" class="w-full text-left px-6 py-5 hover:bg-[#C1A261]/5 transition-all duration-300 flex justify-between items-center group">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
@@ -292,7 +284,6 @@
               </div>
             </div>
 
-            <!-- Efrei -->
             <div class="group-container bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-[#C1A261]/10 border border-[#C1A261]/20 hover:border-[#C1A261]/40 transition-all duration-300">
               <button onclick="togglePanel('exp1')" class="w-full text-left px-6 py-5 hover:bg-[#C1A261]/5 transition-all duration-300 flex justify-between items-center group">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">

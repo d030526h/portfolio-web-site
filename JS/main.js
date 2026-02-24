@@ -12,8 +12,8 @@ tailwind.config = {
       },
       screens: {
         'sm': '640px',
-        'md': '960px',   // au lieu de 768px
-        'lg': '1280px',  // au lieu de 1024px
+        'md': '960px',
+        'lg': '1280px',
         'xl': '1536px',
         '2xl': '1920px',
       },
@@ -22,451 +22,291 @@ tailwind.config = {
 };
 
 
-// -------------------- HEADER & MOBILE MENU --------------------
-const headerName = document.getElementById("header-name");
-const headerContainer = document.getElementById("header-container");
-const homeSection = document.querySelector("section[data-animate]");
-const menuBtn = document.getElementById("menu-btn");
-const mobilePanel = document.getElementById("mobile-panel");
-const overlay = document.getElementById("mobile-overlay");
-const closeBtn = document.getElementById("close-mobile-btn");
-const mobileLinks = document.querySelectorAll('#mobile-panel nav a');
+// -------------------- SÉLECTEURS GLOBAUX --------------------
+const headerEl         = document.querySelector('header');
+const headerName       = document.getElementById('header-name');
+const headerContainer  = document.getElementById('header-container');
+const homeSection      = document.querySelector('section[data-animate]');
+const menuBtn          = document.getElementById('menu-btn');
+const mobilePanel      = document.getElementById('mobile-panel');
+const overlay          = document.getElementById('mobile-overlay');
+const closeBtn         = document.getElementById('close-mobile-btn');
+const mobileLinks      = document.querySelectorAll('#mobile-panel nav a');
+
+const panelProject         = document.getElementById('project-panel');
+const closePanel           = document.getElementById('close-panel');
+const panelTitle           = document.getElementById('panel-title');
+const panelSubtitle        = document.getElementById('panel-subtitle');
+const panelAbout           = document.getElementById('panel-about');
+const panelTech            = document.getElementById('panel-tech');
+const panelImagesContainer = document.getElementById('panel-images');
+const dotsContainer        = document.getElementById('carousel-dots');
+const nextBtn              = document.getElementById('next-img');
+const prevBtn              = document.getElementById('prev-img');
+
+const filterButtons = document.querySelectorAll('.filter-btn');
+const allCards      = Array.from(document.querySelectorAll('.project-card'));
+const projectsGrid  = document.getElementById('projects-grid');
+
+let currentIndex  = 0;
+let currentFilter = 'Tous';
+
 
 // -------------------- OBSERVER HOME --------------------
 if (headerName && headerContainer && homeSection) {
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Retour sur home : cacher nom, centrer nav
-          headerName.classList.remove("show");
-          headerContainer.classList.remove("scrolled");
-        } else {
-          // Hors home : montrer nom, déplacer nav
-          headerName.classList.add("show");
-          if (window.innerWidth >= 640) headerContainer.classList.add("scrolled");
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        headerName.classList.remove('show');
+        headerContainer.classList.remove('scrolled');
+      } else {
+        headerName.classList.add('show');
+        if (window.innerWidth >= 768) headerContainer.classList.add('scrolled');
+      }
+    });
+  }, { threshold: 0.1 });
+
   observer.observe(homeSection);
 }
 
+
 // -------------------- MOBILE PANEL --------------------
 function openMobilePanel() {
-  mobilePanel.classList.remove("translate-x-full");
-  overlay.classList.remove("opacity-0", "pointer-events-none");
-  overlay.classList.add("opacity-100", "pointer-events-auto");
-  document.body.style.overflow = "hidden";
+  mobilePanel.classList.remove('translate-x-full');
+  overlay.classList.replace('opacity-0', 'opacity-100');
+  overlay.classList.replace('pointer-events-none', 'pointer-events-auto');
+  document.body.style.overflow = 'hidden';
+  closeBtn?.classList.add('open');
 
-  if (closeBtn) closeBtn.classList.add("open");
-
-  if (menuBtn) {
-    menuBtn.children[0].classList.add("rotate-45", "translate-y-1");
-    menuBtn.children[1].classList.add("opacity-0");
-    menuBtn.children[2].classList.add("-rotate-45", "-translate-y-1");
-  }
+  menuBtn?.querySelectorAll('span').forEach((span, i) => {
+    if (i === 0) span.classList.add('rotate-45', 'translate-y-1');
+    if (i === 1) span.classList.add('opacity-0');
+    if (i === 2) span.classList.add('-rotate-45', '-translate-y-1');
+  });
 }
 
 function closeMobilePanel() {
-  mobilePanel.classList.add("translate-x-full");
-  overlay.classList.remove("opacity-100", "pointer-events-auto");
-  overlay.classList.add("opacity-0", "pointer-events-none");
-  document.body.style.overflow = "";
+  mobilePanel.classList.add('translate-x-full');
+  overlay.classList.replace('opacity-100', 'opacity-0');
+  overlay.classList.replace('pointer-events-auto', 'pointer-events-none');
+  document.body.style.overflow = '';
+  closeBtn?.classList.remove('open');
 
-  if (closeBtn) closeBtn.classList.remove("open");
-
-  if (menuBtn) {
-    menuBtn.children[0].classList.remove("rotate-45", "translate-y-1");
-    menuBtn.children[1].classList.remove("opacity-0");
-    menuBtn.children[2].classList.remove("-rotate-45", "-translate-y-1");
-  }
+  menuBtn?.querySelectorAll('span').forEach((span, i) => {
+    if (i === 0) span.classList.remove('rotate-45', 'translate-y-1');
+    if (i === 1) span.classList.remove('opacity-0');
+    if (i === 2) span.classList.remove('-rotate-45', '-translate-y-1');
+  });
 }
 
-// Hamburger click
-menuBtn?.addEventListener("click", () => {
-  mobilePanel.classList.contains("translate-x-full") ? openMobilePanel() : closeMobilePanel();
+menuBtn?.addEventListener('click', () => {
+  mobilePanel.classList.contains('translate-x-full') ? openMobilePanel() : closeMobilePanel();
 });
 
-// Overlay & close button
-overlay?.addEventListener("click", closeMobilePanel);
-closeBtn?.addEventListener("click", closeMobilePanel);
+overlay?.addEventListener('click', closeMobilePanel);
+closeBtn?.addEventListener('click', closeMobilePanel);
+mobileLinks.forEach(link => link.addEventListener('click', closeMobilePanel));
 
-// Fermer le menu si la fenêtre devient large
-window.addEventListener("resize", () => {
-  if (window.innerWidth >= 640) closeMobilePanel();
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 768) closeMobilePanel();
 });
-
-// Fermer le panel au clic sur un lien mobile
-mobileLinks.forEach(link => {
-  link.addEventListener("click", closeMobilePanel);
-});
-
-
-
 
 
 // -------------------- SCROLL ANIMATIONS --------------------
-function initScrollAnimations(selector = "[data-animate]", offset = 100) {
+function initScrollAnimations(selector = '[data-animate]', offset = 100) {
   const elements = document.querySelectorAll(selector);
-  const elementInView = (el) => el.getBoundingClientRect().top <= window.innerHeight - offset;
-  const displayElement = (el) => {
-    el.classList.add("opacity-100", "translate-y-0");
-    el.classList.remove("opacity-0", "translate-y-6");
-  };
-  const handleScroll = () => {
-    elements.forEach(el => {
-      if (elementInView(el)) displayElement(el);
-    });
+  const isInView = el => el.getBoundingClientRect().top <= window.innerHeight - offset;
+  const reveal   = el => {
+    el.classList.add('opacity-100', 'translate-y-0');
+    el.classList.remove('opacity-0', 'translate-y-6');
   };
 
+  const handleScroll = () => elements.forEach(el => { if (isInView(el)) reveal(el); });
   handleScroll();
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener('scroll', handleScroll);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initScrollAnimations();            // [data-animate]
-  initScrollAnimations("[data-scroll]"); // [data-scroll]
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollAnimations();
+  initScrollAnimations('[data-scroll]');
 });
 
-// -------------------- TOGGLE PANELS --------------------
+
+// -------------------- TOGGLE PANELS EXPÉRIENCE --------------------
 function togglePanel(id) {
-  const panel = document.getElementById(`xp-panel-${id}`);
-  const icon = document.getElementById(`icon-${id}`);
-  const container = panel.parentElement; // Le div global
+  const panel     = document.getElementById(`xp-panel-${id}`);
+  const icon      = document.getElementById(`icon-${id}`);
+  const container = panel.parentElement;
+  const isOpen    = panel.classList.contains('open');
 
-  const isOpen = panel.classList.contains("open");
-
-  // Fermer les autres panels
+  // Fermer tous les autres
   document.querySelectorAll("[id^='xp-panel-']").forEach(p => {
     if (p !== panel) {
-      p.style.transition = "max-height 0.5s ease-in-out";
-      p.style.maxHeight = "0";
-      p.classList.remove("open");
-      p.parentElement.classList.remove("open-parent");
+      p.style.maxHeight = '0';
+      p.classList.remove('open');
+      p.parentElement.classList.remove('open-parent');
     }
   });
-
   document.querySelectorAll("[id^='icon-']").forEach(i => {
-    if (i !== icon) i.classList.remove("rotate-180");
+    if (i !== icon) i.classList.remove('rotate-180');
   });
+
+  panel.style.transition = 'max-height 0.5s ease-in-out';
 
   if (!isOpen) {
-    panel.classList.add("open");
-    container.classList.add("open-parent");
-
-    panel.style.transition = "max-height 0.5s ease-in-out";
-    panel.style.maxHeight = panel.scrollHeight + "px";
-    icon.classList.add("rotate-180");
+    panel.classList.add('open');
+    container.classList.add('open-parent');
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    icon.classList.add('rotate-180');
   } else {
-    panel.classList.remove("open");
-    container.classList.remove("open-parent");
-
-    panel.style.transition = "max-height 0.5s ease-in-out";
-    panel.style.maxHeight = "0";
-    icon.classList.remove("rotate-180");
+    panel.classList.remove('open');
+    container.classList.remove('open-parent');
+    panel.style.maxHeight = '0';
+    icon.classList.remove('rotate-180');
   }
 }
 
-window.addEventListener("resize", () => {
+window.addEventListener('resize', () => {
   document.querySelectorAll("[id^='xp-panel-'].open").forEach(panel => {
-    panel.style.maxHeight = panel.scrollHeight + "px";
+    panel.style.maxHeight = panel.scrollHeight + 'px';
   });
 });
+
 
 // -------------------- PROJECT FILTER --------------------
-// -----------------------------
-// VARIABLES
-// -----------------------------
-const buttons = document.querySelectorAll(".filter-btn");
-const allCards = Array.from(document.querySelectorAll(".project-card"));
-const container = document.getElementById("projects-grid");
+function setActiveFilterBtn(activeBtn) {
+  filterButtons.forEach(b => {
+    b.classList.remove('bg-[#C1A261]', 'text-white', 'scale-105');
+    b.classList.add('bg-white', 'text-[#111827]');
+    const shine = b.querySelector('span:first-child');
+    if (shine) shine.className = 'absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700';
+  });
 
-// -----------------------------
-// FONCTION POUR AFFICHER LES CARTES FILTRÉES
-// -----------------------------
-let currentFilter = "Tous"; // ← variable globale à ajouter
+  activeBtn.classList.add('bg-[#C1A261]', 'text-white', 'scale-105');
+  activeBtn.classList.remove('bg-white', 'text-[#111827]');
+  const activeShine = activeBtn.querySelector('span:first-child');
+  if (activeShine) activeShine.className = 'absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700';
+}
 
 function showFilteredCards(filter) {
-  currentFilter = filter; // ← mémorise le filtre actif
-  container.innerHTML = "";
+  currentFilter = filter;
+  projectsGrid.innerHTML = '';
 
   const filtered = allCards.filter(card => {
-    const tags = card.dataset.tags.split(",");
-    return filter === "Tous" || tags.includes(filter);
+    const tags = card.dataset.tags.split(',');
+    return filter === 'Tous' || tags.includes(filter);
   });
 
-  let delay = 0;
-  filtered.forEach(card => {
+  filtered.forEach((card, i) => {
     const clone = card.cloneNode(true);
-    clone.classList.remove("show"); // invisible avant animation
-    container.appendChild(clone);
+    clone.classList.remove('show');
+    projectsGrid.appendChild(clone);
+    setTimeout(() => clone.classList.add('show'), i * 80);
 
-    setTimeout(() => {
-      clone.classList.add("show"); // ajoute la classe pour l'animation
-    }, delay);
-
-    delay += 80; // décalage entre chaque carte
-  });
-
-  // Ré-attacher les événements click aux nouveaux clones
-  const newCards = container.querySelectorAll('.project-card');
-  newCards.forEach(card => {
-    card.addEventListener('click', () => {
-      console.log("open");
-      // Ton code d'ouverture du panneau ici, par ex:
-      panelTitle.textContent = card.dataset.title;
-      panelSubtitle.textContent = card.dataset.subtitle;
-      panelAbout.textContent = card.dataset.about;
-      panelTech.textContent = card.dataset.tech;
-
-      panelImagesContainer.innerHTML = '';
-      card.dataset.images.split(',').forEach(src => {
-        const img = document.createElement('img');
-        img.src = src.trim();
-        img.className = "w-full flex-shrink-0 object-cover rounded-xl";
-        panelImagesContainer.appendChild(img);
-      });
-
-      currentIndex = 0;
-      panelImagesContainer.style.transform = 'translateX(0)';
-      createDots();
-
-      panelProject.classList.remove('hidden');
-      panelProject.classList.add('flex');
-
-      const panelContent = panelProject.firstElementChild;
-      panelContent.classList.add('panel-animate');
-      setTimeout(() => panelContent.classList.add('show'), 10);
-
-      if (headerEl) headerEl.classList.add('header-hidden');
-      document.body.style.overflow = 'hidden';
-    });
+    clone.addEventListener('click', () => openProjectPanel(clone));
   });
 }
 
-
-// -----------------------------
-// CLIC SUR LES BOUTONS
-// -----------------------------
-buttons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const filter = btn.dataset.filter;
-
-    // Gestion du bouton actif
-    buttons.forEach(b => {
-      b.classList.remove("bg-[#C1A261]", "text-white");
-      b.classList.add("text-[#111827]");
-    });
-    btn.classList.add("bg-[#C1A261]", "text-white");
-    btn.classList.remove("text-[#111827]");
-
-    showFilteredCards(filter);
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    setActiveFilterBtn(btn);
+    showFilteredCards(btn.dataset.filter);
   });
 });
 
-// -----------------------------
-// AFFICHAGE PAR DÉFAUT AU CHARGEMENT
-// -----------------------------
-window.addEventListener("DOMContentLoaded", () => {
-  if (buttons.length > 0) {
-    const firstBtn = buttons[0];
-    firstBtn.classList.add("bg-[#C1A261]", "text-white");
-    firstBtn.classList.remove("text-[#111827]");
-    showFilteredCards(firstBtn.dataset.filter);
+window.addEventListener('DOMContentLoaded', () => {
+  if (filterButtons.length > 0) {
+    setActiveFilterBtn(filterButtons[0]);
+    showFilteredCards(filterButtons[0].dataset.filter);
   }
 });
+
 
 // -------------------- PROJECT PANEL --------------------
-const projectCards = document.querySelectorAll('.project-card');
-console.log(projectCards.length);
-const panelProject = document.getElementById('project-panel');
-const closePanel = document.getElementById('close-panel');
-const panelTitle = document.getElementById('panel-title');
-const panelSubtitle = document.getElementById('panel-subtitle');
-const panelAbout = document.getElementById('panel-about');
-const panelTech = document.getElementById('panel-tech');
-const panelImagesContainer = document.getElementById('panel-images');
-const dotsContainer = document.getElementById('carousel-dots');
-const nextBtn = document.getElementById('next-img');
-const prevBtn = document.getElementById('prev-img');
+function openProjectPanel(card) {
+  panelTitle.textContent    = card.dataset.title;
+  panelSubtitle.textContent = card.dataset.subtitle;
+  panelAbout.innerHTML      = card.dataset.about;
+  panelTech.textContent     = card.dataset.tech;
 
-let currentIndex = 0;
-
-// -------------------- OUVRIR LE PANEL --------------------
-projectCards.forEach(card => {
-  console.log("test");
-  card.addEventListener('click', () => {
-    console.log("open");
-        // Remplir les infos
-    panelTitle.textContent = card.dataset.title;
-    panelSubtitle.textContent = card.dataset.subtitle;
-    panelAbout.innerHTML  = card.dataset.about;
-    panelTech.textContent = card.dataset.tech;
-
-    // Images
-    panelImagesContainer.innerHTML = '';
-    card.dataset.images.split(',').forEach(src => {
-      const img = document.createElement('img');
-      img.src = src.trim();
-      img.className = "w-full flex-shrink-0 object-cover rounded-xl";
-      panelImagesContainer.appendChild(img);
-    });
-
-    currentIndex = 0;
-    panelImagesContainer.style.transform = 'translateX(0)';
-
-    // Créer les dots
-    createDots();
-
-    // Afficher le panel
-    panelProject.classList.remove('hidden');
-    panelProject.classList.add('flex');
-
-    const panelContent = panelProject.firstElementChild;
-    panelContent.classList.add('panel-animate');
-    setTimeout(() => panelContent.classList.add('show'), 10);
-
-    if(headerEl) headerEl.classList.add('header-hidden');
-    document.body.style.overflow = 'hidden';
+  panelImagesContainer.innerHTML = '';
+  card.dataset.images.split(',').forEach(src => {
+    const img = document.createElement('img');
+    img.src       = src.trim();
+    img.className = 'w-full flex-shrink-0 object-cover rounded-xl';
+    panelImagesContainer.appendChild(img);
   });
-});
 
-// -------------------- FERMER LE PANEL --------------------
-closePanel.addEventListener('click', closeProjectPanel);
+  currentIndex = 0;
+  panelImagesContainer.style.transform = 'translateX(0)';
+  createDots();
 
-panelProject.addEventListener('click', e => {
-  if (!panelProject.firstElementChild.contains(e.target)) {
-    closeProjectPanel();
-  }
-});
+  panelProject.classList.replace('hidden', 'flex');
+  const panelContent = panelProject.firstElementChild;
+  panelContent.classList.add('panel-animate');
+  setTimeout(() => panelContent.classList.add('show'), 10);
+
+  headerEl?.classList.add('header-hidden');
+  document.body.style.overflow = 'hidden';
+}
 
 function closeProjectPanel() {
   const panelContent = panelProject.firstElementChild;
-  if (!panelContent) return; // sécurité
+  if (!panelContent) return;
 
   panelContent.classList.remove('show');
   setTimeout(() => {
-    panelProject.classList.add('hidden');
-    panelProject.classList.remove('flex');
+    panelProject.classList.replace('flex', 'hidden');
     document.body.style.overflow = 'auto';
-    if (headerEl) headerEl.classList.remove('header-hidden');
+    headerEl?.classList.remove('header-hidden');
   }, 300);
 }
+
+closePanel?.addEventListener('click', closeProjectPanel);
+
+panelProject?.addEventListener('click', e => {
+  if (!panelProject.firstElementChild.contains(e.target)) closeProjectPanel();
+});
 
 
 // -------------------- CAROUSEL --------------------
 function createDots() {
   dotsContainer.innerHTML = '';
-  const imgs = panelImagesContainer.children;
-  for (let i = 0; i < imgs.length; i++) {
+  Array.from(panelImagesContainer.children).forEach((_, i) => {
     const dot = document.createElement('button');
     dot.className = 'w-2 h-2 rounded-full hover:bg-[#C1A261] transition-all duration-300';
     dot.addEventListener('click', () => showImage(i));
     dotsContainer.appendChild(dot);
-  }
+  });
   updateDots();
 }
 
 function updateDots() {
-  const dots = dotsContainer.children;
-  for (let i = 0; i < dots.length; i++) {
-    // Gestion de l'état actif
-    if (i === currentIndex) {
-      dots[i].classList.add('bg-[#C1A261]/80', 'scale-150', 'shadow-lg');
-      dots[i].classList.remove('bg-gray-900/60');
-      dots[i].style.animation = '';
-    } else {
-      dots[i].classList.remove('bg-[#C1A261]/80', 'scale-150', 'shadow-lg');
-      dots[i].classList.add('bg-gray-900/60');
-      dots[i].style.animation = '';
-    }
-  }
+  Array.from(dotsContainer.children).forEach((dot, i) => {
+    const isActive = i === currentIndex;
+    dot.classList.toggle('bg-[#C1A261]/80', isActive);
+    dot.classList.toggle('scale-150', isActive);
+    dot.classList.toggle('shadow-lg', isActive);
+    dot.classList.toggle('bg-gray-900/60', !isActive);
+  });
 }
 
-
-
 function showImage(index) {
-  const imgs = panelImagesContainer.children;
-  if (imgs.length === 0) return;
-  currentIndex = (index + imgs.length) % imgs.length;
+  const count = panelImagesContainer.children.length;
+  if (!count) return;
+  currentIndex = (index + count) % count;
   panelImagesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
   updateDots();
 }
 
-nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
-prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+nextBtn?.addEventListener('click', () => showImage(currentIndex + 1));
+prevBtn?.addEventListener('click', () => showImage(currentIndex - 1));
 
 
-document.querySelectorAll(".filter-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const filter = btn.dataset.filter;
-    const cards = document.querySelectorAll(".project-card");
-
-    // Remove active class on buttons
-    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    let delay = 0;
-
-    cards.forEach(card => {
-      const tags = card.dataset.tags.split(",");
-
-      const shouldShow = filter === "Tous" || tags.includes(filter);
-
-      if (shouldShow) {
-        // stagger sur les apparitions
-        setTimeout(() => {
-          card.classList.remove("project-hide");
-          card.classList.add("project-show");
-        }, delay);
-
-        delay += 80; // ajoute un léger décalage entre chaque carte
-      } else {
-        // disparition instant mais animée
-        card.classList.remove("project-show");
-        card.classList.add("project-hide");
-      }
-    });
-  });
+// -------------------- CONTACT FORM --------------------
+document.getElementById('contact-form')?.addEventListener('submit', e => {
+  const btnText = e.target.querySelector('#btn-text');
+  const loader  = document.getElementById('loader');
+  if (btnText) btnText.textContent = 'Envoi...';
+  loader?.classList.remove('opacity-0');
 });
-
-document.getElementById('contact-form').addEventListener('submit', e => {
-  const btn = e.target.querySelector('button span');
-  const loader = document.getElementById('loader');
-  
-  btn.querySelector('#btn-text').textContent = 'Envoi...';
-  loader.classList.remove('opacity-0');
-  // Laissez Netlify gérer la soumission (pas de e.preventDefault())
-});
-
-
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    
-    // Réinitialiser tous les boutons (inactifs)
-    buttons.forEach(b => {
-      b.classList.remove('bg-[#C1A261]', 'text-white', 'scale-105');
-      b.classList.add('bg-white', 'text-[#111827]');
-      
-      // Mettre à jour le shine pour les boutons inactifs (doré)
-      const shine = b.querySelector('span:first-child');
-      if (shine) {
-        shine.className = 'absolute inset-0 bg-gradient-to-r from-[#C1A261]/0 via-[#C1A261]/10 to-[#C1A261]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700';
-      }
-    });
-    
-    // Activer le bouton cliqué
-    btn.classList.add('bg-[#C1A261]', 'text-white', 'scale-105');
-    btn.classList.remove('bg-white', 'text-[#111827]');
-    
-    // Mettre à jour le shine pour le bouton actif (blanc)
-    const activeShine = btn.querySelector('span:first-child');
-    if (activeShine) {
-      activeShine.className = 'absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700';
-    }
-  });
-});
-
-
