@@ -1,73 +1,66 @@
 <section id="p-project">
-  <div class="orb" style="width:600px;height:600px;background:#EDECEA;top:-80px;right:-100px;filter:blur(140px);opacity:.75;"></div>
-  <div class="proj-detail-inner">
+  <div class="orb" style="width:600px;height:600px;background:#EDECEA;top:-60px;right:-160px;filter:blur(130px);opacity:.75;"></div>
+  <div class="orb" style="width:400px;height:400px;background:#E8E6E0;bottom:0;left:-80px;filter:blur(110px);opacity:.65;"></div>
 
-    <!-- Breadcrumb -->
-    <div class="reveal" style="margin-bottom:30px;">
+  <div class="proj-detail-inner">
+    <div class="reveal pd-breadcrumb-row">
       <a href="/portfolio" class="breadcrumb" data-route="portfolio">← Retour au portfolio</a>
     </div>
-
-    <!-- Video + Timeline -->
-    <div class="reveal" style="margin-bottom:36px;">
-      <div class="pd-preview">
-        <div class="play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="pd-year-badge" id="pd-year"></div>
-        <div class="pd-tc-overlay" id="pd-timecode">00:00:00</div>
-      </div>
-
-      <!-- Timeline NLE -->
-      <div class="pd-timeline">
-        <div class="pd-tl-ruler" id="pd-tl-ruler"></div>
-        <div class="pd-tl-body">
-          <div class="pd-tl-label-col">
-            <div class="pd-tl-lbl">V2</div>
-            <div class="pd-tl-lbl">V1</div>
-            <div class="pd-tl-lbl">A1</div>
-            <div class="pd-tl-lbl">A2</div>
+    <div class="pd-layout">
+      <div class="pd-col-right">
+                <div class="reveal" style="transition-delay:.1s;">
+          <div class="modal-tags" id="pd-tags"></div>
+          <h1 class="pd-title" id="pd-title"></h1>
+          <p class="pd-client" id="pd-client"></p>
+          <p class="pd-desc" id="pd-desc"></p>
+        </div>
+        <div class="pd-preview-container reveal" style="transition-delay:.15s;">
+          <div class="pd-preview">
+            <div class="play-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="pd-year-badge" id="pd-year"></div>
+            <div class="pd-tc-overlay" id="pd-timecode">00:00:00</div>
           </div>
-          <div class="pd-tl-clips-col" id="pd-tl-clips">
-            <div class="pd-tl-lane v2" id="pd-tl-v2"></div>
-            <div class="pd-tl-lane v1" id="pd-tl-v1"></div>
-            <div class="pd-tl-lane a1" id="pd-tl-a1"></div>
-            <div class="pd-tl-lane a2" id="pd-tl-a2"></div>
-            <div class="pd-tl-playhead" id="pd-playhead"></div>
+          <div class="pd-timeline" style="transition-delay:.08s;">
+            <div class="pd-tl-ruler" id="pd-tl-ruler"></div>
+            <div class="pd-tl-body">
+              <div class="pd-tl-label-col">
+                <div class="pd-tl-lbl">V2</div>
+                <div class="pd-tl-lbl">V1</div>
+                <div class="pd-tl-lbl">A1</div>
+                <div class="pd-tl-lbl">A2</div>
+              </div>
+              <div class="pd-tl-clips-col" id="pd-tl-clips">
+                <div class="pd-tl-lane v2" id="pd-tl-v2"></div>
+                <div class="pd-tl-lane v1" id="pd-tl-v1"></div>
+                <div class="pd-tl-lane a1" id="pd-tl-a1"></div>
+                <div class="pd-tl-lane a2" id="pd-tl-a2"></div>
+                <div class="pd-tl-playhead" id="pd-playhead"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Info projet -->
-    <div class="reveal pd-hero-info" style="transition-delay:.1s;">
-      <div class="modal-tags" id="pd-tags" style="grid-column:1/-1;"></div>
-      <h1 class="pd-title" id="pd-title"></h1>
-      <p class="pd-client" id="pd-client"></p>
-      <p class="pd-desc" id="pd-desc"></p>
-      <div class="pd-cta" style="grid-column:1/-1;">
-        <a href="/portfolio" class="pd-back-link" data-route="portfolio">Voir tous les projets</a>
+      <div class="pd-col-left">       
+        <div class="reveal pd-section" style="transition-delay:.16s;">
+          <p class="pd-section-title">Détails du projet</p>
+          <div class="pd-stats-grid" id="pd-stats"></div>
+        </div>
+        <div class="reveal pd-section" style="transition-delay:.22s;">
+          <p class="pd-section-title">Outils utilisés</p>
+          <div class="modal-tools" id="pd-tools"></div>
+        </div>
+        <div class="reveal pd-section" style="transition-delay:.28s;">
+          <p class="pd-section-title">Résultats & Impact</p>
+          <div class="pd-impact-grid" id="pd-impact"></div>
+        </div>
+        <div class="reveal pd-nav-projects" id="pd-nav-projects" style="transition-delay:.34s;"></div>
       </div>
     </div>
-
-    <!-- Stats -->
-    <div class="reveal pd-section" style="transition-delay:.18s;">
-      <p class="pd-section-title">Détails du projet</p>
-      <div class="pd-stats-grid" id="pd-stats"></div>
-    </div>
-
-    <!-- Outils -->
-    <div class="reveal pd-section" style="transition-delay:.26s;">
-      <p class="pd-section-title">Outils utilisés</p>
-      <div class="modal-tools" id="pd-tools"></div>
-    </div>
-
-    <!-- Impact -->
-    <div class="reveal pd-section" style="transition-delay:.34s;">
-      <p class="pd-section-title">Résultats & Impact</p>
-      <div class="pd-impact-grid" id="pd-impact"></div>
-    </div>
-
-    <!-- Nav -->
-    <div class="reveal pd-nav-projects" id="pd-nav-projects" style="transition-delay:.42s;"></div>
   </div>
+  
   <div class="ft">© 2026 Micky Valat</div>
 
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">

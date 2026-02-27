@@ -3,7 +3,7 @@
    window.BASE et window.ASSET_BASE définis dans index.html
 ════════════════════════════════════════════════ */
 
-const DARK_PAGES = new Set(['hero', 'contact', 'project']);
+const DARK_PAGES = new Set(['contact', 'project']);
 
 const ROUTES = {
   '/'          : { page: 'hero',      file: 'pages/hero.html' },
@@ -31,7 +31,6 @@ const router = {
 
   async load(file) {
     if (CACHE[file]) return CACHE[file];
-    // Chemin absolu depuis la racine du site via ASSET_BASE
     const url = ASSET_BASE + file;
     const res = await fetch(url);
     if (!res.ok) throw new Error('HTTP ' + res.status + ' → ' + url);
@@ -40,112 +39,161 @@ const router = {
     return html;
   },
 
-async go(input, param = null, push = true) {
-  let path = input;
-  if (!path.startsWith('/')) {
-    path = (input === 'hero') ? '/' : '/' + input;
-  }
-  if (param) path = '/project/' + param;
+  animateMobNav(page) {
+    const mob = document.getElementById('mob-nav');
+    if (!mob || window.innerWidth > 768) return;
 
-  const { route, param: p } = this.resolve(path);
-  if (!route) return;
+    // Créer la pill si elle n'existe pas encore
+    let pill = mob.querySelector('.mob-pill');
+    if (!pill) {
+      pill = document.createElement('div');
+      pill.className = 'mob-pill';
+      mob.prepend(pill);
+    }
 
-  const key = p ? 'project:' + p : route.page;
-  if (this.current === key) return;
+    const activePage = page === 'project' ? 'portfolio' : page;
+    const activeBtn  = mob.querySelector(`.mob-item[data-route="${activePage}"]`);
+    if (!activeBtn) return;
 
-  const vp = document.getElementById('viewport');
+    // Utiliser getBoundingClientRect pour position visuelle réelle
+    // mais en relatif au nav (pas au viewport)
+    requestAnimationFrame(() => {
+      const mobRect = mob.getBoundingClientRect();
+      const btnRect = activeBtn.getBoundingClientRect();
+      const left    = btnRect.left - mobRect.left;
 
-  // Fade out
-  vp.style.transition = 'opacity .18s ease, transform .18s ease';
-  vp.style.opacity    = '0';
-  vp.style.transform  = 'translateY(-8px)';
-
-  let html;
-  try {
-    html = await this.load(route.file);
-  } catch(err) {
-    console.error('[router] Chargement échoué :', err);
-    vp.style.opacity   = '1';
-    vp.style.transform = 'translateY(0)';
-    return;
-  }
-
-  await sleep(180);
-
-  // ── Page projet → loader ──────────────────────
-  if (route.page === 'project') {
-    window.showRenderLoader(() => {
-      vp.innerHTML = html;
-      if (p && window.renderProject) window.renderProject(p);
-
-      vp.style.transform = 'translateY(10px)';
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        vp.style.opacity   = '1';
-        vp.style.transform = 'translateY(0)';
-      }));
-
-      this.current = key;
-
-      if (push) {
-        const fullUrl = BASE + (path === '/' ? '/' : path);
-        history.pushState({ path }, '', fullUrl);
+      // Désactiver transition pour le premier positionnement (sans animation)
+      if (!pill.dataset.init) {
+        pill.style.transition = 'none';
+        pill.dataset.init = '1';
+        pill.style.width     = btnRect.width + 'px';
+        pill.style.transform = `translateX(${left}px)`;
+        // Réactiver la transition au prochain frame
+        requestAnimationFrame(() => {
+          pill.style.transition = '';
+        });
+      } else {
+        pill.style.width     = btnRect.width + 'px';
+        pill.style.transform = `translateX(${left}px)`;
       }
-
-      this.updateUI(route.page);
-      document.title = 'Projet — Micky Valat';
-      window.scrollTo(0, 0);
-
-      setTimeout(() => {
-        triggerReveals();
-        initImages();
-        initCutEffect();
-      }, 200);
     });
-    return; // ← stop, tout est géré dans le callback
-  }
+  },
 
-  // ── Pages normales ────────────────────────────
-  vp.innerHTML = html;
+  async go(input, param = null, push = true) {
+    let path = input;
+    if (!path.startsWith('/')) {
+      path = (input === 'hero') ? '/' : '/' + input;
+    }
+    if (param) path = '/project/' + param;
 
-  if (p && window.renderProject) window.renderProject(p);
+    const { route, param: p } = this.resolve(path);
+    if (!route) return;
 
-  vp.style.transform = 'translateY(10px)';
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    vp.style.opacity   = '1';
-    vp.style.transform = 'translateY(0)';
-  }));
+    const key = p ? 'project:' + p : route.page;
+    if (this.current === key) return;
 
-  this.current = key;
+    const vp = document.getElementById('viewport');
 
-  if (push) {
-    const fullUrl = BASE + (path === '/' ? '/' : path);
-    history.pushState({ path }, '', fullUrl);
-  }
+    // Fade out
+    vp.style.transition = 'opacity .18s ease, transform .18s ease';
+    vp.style.opacity    = '0';
+    vp.style.transform  = 'translateY(-8px)';
 
-  this.updateUI(route.page);
-  document.title = ({
-    hero:      'Micky Valat — Monteur Vidéo',
-    about:     'À propos — Micky Valat',
-    portfolio: 'Portfolio — Micky Valat',
-    contact:   'Contact — Micky Valat',
-  })[route.page] || 'Micky Valat';
+    let html;
+    try {
+      html = await this.load(route.file);
+    } catch(err) {
+      console.error('[router] Chargement échoué :', err);
+      vp.style.opacity   = '1';
+      vp.style.transform = 'translateY(0)';
+      return;
+    }
 
-  window.scrollTo(0, 0);
-  setTimeout(() => {
-    triggerReveals();
-    initImages();
-    initCutEffect();
-    if (route.page === 'about') setTimeout(animateBars, 480);
-  }, 200);
-},
+    await sleep(180);
 
+    // ── Page projet → loader ──────────────────────
+    if (route.page === 'project') {
+      window.showRenderLoader(() => {
+        vp.innerHTML = html;
+        if (p && window.renderProject) window.renderProject(p);
+
+        vp.style.transform = 'translateY(10px)';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          vp.style.opacity   = '1';
+          vp.style.transform = 'translateY(0)';
+        }));
+
+        this.current = key;
+
+        if (push) {
+          const fullUrl = BASE + (path === '/' ? '/' : path);
+          history.pushState({ path }, '', fullUrl);
+        }
+
+        this.updateUI(route.page);
+        this.animateMobNav(route.page);
+
+        document.title = 'Projet — Micky Valat';
+        window.scrollTo(0, 0);
+
+        setTimeout(() => {
+          triggerReveals();
+          initImages();
+          initCutEffect();
+        }, 200);
+      });
+
+      return;
+    }
+
+    // ── Pages normales ────────────────────────────
+    vp.innerHTML = html;
+
+    if (p && window.renderProject) window.renderProject(p);
+
+    vp.style.transform = 'translateY(10px)';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      vp.style.opacity   = '1';
+      vp.style.transform = 'translateY(0)';
+    }));
+
+    this.current = key;
+
+    if (push) {
+      const fullUrl = BASE + (path === '/' ? '/' : path);
+      history.pushState({ path }, '', fullUrl);
+    }
+
+    this.updateUI(route.page);
+    this.animateMobNav(route.page);
+
+    document.title = ({
+      hero:      'Micky Valat — Monteur Vidéo',
+      about:     'À propos — Micky Valat',
+      portfolio: 'Portfolio — Micky Valat',
+      contact:   'Contact — Micky Valat',
+    })[route.page] || 'Micky Valat';
+
+    window.scrollTo(0, 0);
+    setTimeout(() => {
+      triggerReveals();
+      initImages();
+      initCutEffect();
+      if (route.page === 'about') setTimeout(animateBars, 480);
+      if (route.page === 'hero' && window.initHero) window.initHero();
+    }, 200);
+  },
 
   updateUI(page) {
     const nav = document.getElementById('nav');
     nav.classList.toggle('on-dark', DARK_PAGES.has(page));
+
+    const activePage = page === 'project' ? 'portfolio' : page;
     document.querySelectorAll('.nav-link, .mob-item').forEach(el =>
-      el.classList.toggle('active', el.dataset.route === page)
+      el.classList.toggle('active', el.dataset.route === activePage)
     );
+
+    if (window.initMobNav) window.initMobNav(page);
   },
 
   intercept() {
@@ -175,11 +223,22 @@ async go(input, param = null, push = true) {
     this.intercept();
     this.handlePop();
     this.go(window.location.pathname, null, false);
+    
+    // ← Refresh pill sur resize fenêtre
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (this.current) {
+          const page = this.current.split(':')[0] || this.current;
+          this.animateMobNav(page);
+        }
+      }, 100);
+    });
   },
 };
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
 
 // Init déclenché après que main.js a tout défini
 router.init();

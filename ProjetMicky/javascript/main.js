@@ -3,36 +3,26 @@
 ════════════════════════════════════════════════ */
 
 
+
 /* ── Cursor ──────────────────────────────────── */
 if (window.matchMedia('(pointer: fine) and (hover: hover)').matches) {
   var cur = document.getElementById('cur');
   document.addEventListener('mousemove', function(e) {
     cur.style.left = e.clientX + 'px';
     cur.style.top  = e.clientY + 'px';
-  });
+  }, { passive: true });
 }
+
+
 
 /* ── Render Loader ───────────────────────────── */
 window.showRenderLoader = function(onComplete) {
-  console.log('[loader] showRenderLoader appelé');
-
   var loader = document.getElementById('render-loader');
   var bar    = document.getElementById('rl-bar');
   var pct    = document.getElementById('rl-pct');
   var meta   = document.getElementById('rl-meta');
 
-  console.log('[loader] éléments trouvés →', {
-    loader: !!loader,
-    bar:    !!bar,
-    pct:    !!pct,
-    meta:   !!meta
-  });
-
-  if (!loader) {
-    console.warn('[loader] ❌ #render-loader introuvable → onComplete() immédiat');
-    onComplete();
-    return;
-  }
+  if (!loader) { onComplete(); return; }
 
   var MIN_DURATION = 1200;
   var startTime    = Date.now();
@@ -54,34 +44,23 @@ window.showRenderLoader = function(onComplete) {
   loader.classList.remove('fade-out');
   loader.classList.add('active');
 
-  console.log('[loader] ✅ classe active ajoutée | classes =', loader.className);
-  console.log('[loader] styles computed → opacity :', getComputedStyle(loader).opacity, '| pointer-events :', getComputedStyle(loader).pointerEvents);
-
   function step() {
     if (i >= steps.length) {
       var elapsed   = Date.now() - startTime;
       var remaining = Math.max(0, MIN_DURATION - elapsed);
-      console.log('[loader] steps terminés | elapsed =', elapsed + 'ms | remaining =', remaining + 'ms');
-
       setTimeout(function() {
-        console.log('[loader] → fade-out start');
         loader.classList.add('fade-out');
-
         setTimeout(function() {
-          console.log('[loader] → fade-out terminé, onComplete() appelé');
           loader.classList.remove('active', 'fade-out');
           onComplete();
         }, 420);
       }, remaining);
       return;
     }
-
     var s = steps[i++];
     bar.style.width  = s.p + '%';
     pct.textContent  = s.p + '%';
     meta.textContent = s.label;
-    console.log('[loader] step ' + i + '/' + steps.length + ' →', s.p + '%', '|', s.label);
-
     setTimeout(step, 80 + Math.random() * 140);
   }
 
@@ -90,10 +69,11 @@ window.showRenderLoader = function(onComplete) {
 
 
 
-
-/* ── Compteur animé stats hero ───────────────── */
+/* ── Compteur animé (hero + autres pages) ────── */
 function animateCounters() {
-  document.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
+  document.querySelectorAll(
+    '.stat-num[data-target], .hero-stat-num[data-target]'
+  ).forEach(function(el) {
     var target    = parseInt(el.getAttribute('data-target'));
     var suffix    = el.getAttribute('data-suffix') || '';
     var duration  = 1400;
@@ -110,50 +90,73 @@ function animateCounters() {
 }
 
 
-/* ── Compteur animé impact projet ────────────── */
-function animateImpact() {
-  document.querySelectorAll('.pd-impact-val[data-target]').forEach(function(el) {
-    var target    = parseFloat(el.getAttribute('data-target'));
-    var suffix    = el.getAttribute('data-suffix') || '';
-    var isFloat   = target % 1 !== 0;
-    var duration  = 1400;
-    var startTime = null;
-    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var p = Math.min((ts - startTime) / duration, 1);
-      var v = easeOut(p) * target;
-      el.textContent = (isFloat ? v.toFixed(1) : Math.floor(v)) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  });
-}
-
 
 /* ── Scroll reveal ───────────────────────────── */
 window.triggerReveals = function() {
   var elements = document.querySelectorAll('.reveal');
-  console.log('[triggerReveals] trouvés =', elements.length);
+  var isMobile = window.innerWidth < 768;
+  var delay    = isMobile ? 40 : 70;
 
   elements.forEach(function(el, i) {
-    setTimeout(function() {
-      el.classList.add('in');
-    }, i * 70);
+    setTimeout(function() { el.classList.add('in'); }, i * delay);
   });
 
-  // Stats counter
-  var statsEl = document.querySelector('.stats-strip');
-  if (statsEl) {
-    setTimeout(animateCounters, 400);
-  }
+  var hasStats = document.querySelector('.hero-stat-num[data-target], .stat-num[data-target]');
+  if (hasStats) setTimeout(animateCounters, 500);
 };
 
 
 
+/* ── Compteur animé impact projet (scroll-triggered) ── */
+function initImpactObserver() {
+  var grid = document.getElementById('pd-impact');
+  if (!grid) return;
+
+  var fired = false;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !fired) {
+        fired = true;
+        observer.disconnect();
+        animateImpact();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(grid);
+}
+
+function animateImpact() {
+  document.querySelectorAll('.pd-impact-val[data-target]').forEach(function(el, i) {
+    setTimeout(function() {
+      el.classList.add('val-in');
+
+      var target   = parseFloat(el.getAttribute('data-target'));
+      var suffix   = el.getAttribute('data-suffix') || '';
+      var isFloat  = target % 1 !== 0;
+      var duration = 900;
+      var start    = performance.now();
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
+
+      function tick(now) {
+        var elapsed  = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var v        = easeOut(progress) * target;
+        el.textContent = (isFloat ? v.toFixed(1) : Math.floor(v)) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }, i * 120);
+  });
+}
+
+
 
 /* ── Skill bars ──────────────────────────────── */
-window.animateBars    = function() {
+window.animateBars = function() {
   document.querySelectorAll('.bar-fill').forEach(function(bar) {
     bar.style.transition = 'none';
     bar.style.width = '0%';
@@ -161,7 +164,8 @@ window.animateBars    = function() {
     bar.style.transition = 'width 1.4s cubic-bezier(0.16,1,0.3,1)';
     bar.style.width = bar.getAttribute('data-w') + '%';
   });
-}
+};
+
 
 
 /* ── Navigation clavier ──────────────────────── */
@@ -176,6 +180,7 @@ document.addEventListener('keydown', function(e) {
   if ((e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   && i > 0)
     router.go(PAGE_ORDER[i - 1]);
 });
+
 
 
 /* ════════════════════════════════════════════════
@@ -194,10 +199,10 @@ window._PROJECTS = {
     ],
     tools:  ['Logiciel 1', 'Logiciel 2', 'Logiciel 3'],
     impact: [
-      { value: 2.4, suffix: 'M',   label: 'Vues totales',      icon: '▶' },
-      { value: 68,  suffix: '%',   label: 'Taux de rétention', icon: '⏱' },
-      { value: 320, suffix: 'K',   label: 'Reach Instagram',   icon: '◈' },
-      { value: 4.9, suffix: '/5',  label: 'Note client',       icon: '★' },
+      { value: 2.4, suffix: 'M',  label: 'Vues totales',      icon: '▶' },
+      { value: 68,  suffix: '%',  label: 'Taux de rétention', icon: '⏱' },
+      { value: 320, suffix: 'K',  label: 'Reach Instagram',   icon: '◈' },
+      { value: 4.9, suffix: '/5', label: 'Note client',       icon: '★' },
     ],
     year:   '2026',
     client: 'ENTREPRISE A',
@@ -217,10 +222,10 @@ window._PROJECTS = {
     ],
     tools:  ['Logiciel 1', 'Logiciel 2', 'Logiciel 3', 'Logiciel 4'],
     impact: [
-      { value: 1.2, suffix: 'M',   label: 'Vues totales',      icon: '▶' },
-      { value: 72,  suffix: '%',   label: 'Taux de rétention', icon: '⏱' },
-      { value: 180, suffix: 'K',   label: 'Reach Instagram',   icon: '◈' },
-      { value: 5.0, suffix: '/5',  label: 'Note client',       icon: '★' },
+      { value: 1.2, suffix: 'M',  label: 'Vues totales',      icon: '▶' },
+      { value: 72,  suffix: '%',  label: 'Taux de rétention', icon: '⏱' },
+      { value: 180, suffix: 'K',  label: 'Reach Instagram',   icon: '◈' },
+      { value: 5.0, suffix: '/5', label: 'Note client',       icon: '★' },
     ],
     year:   '2025',
     client: 'ENTREPRISE A',
@@ -240,10 +245,10 @@ window._PROJECTS = {
     ],
     tools:  ['Logiciel 1', 'Logiciel 2', 'Logiciel 3'],
     impact: [
-      { value: 850, suffix: 'K',   label: 'Vues totales',      icon: '▶' },
-      { value: 61,  suffix: '%',   label: 'Taux de rétention', icon: '⏱' },
-      { value: 95,  suffix: 'K',   label: 'Reach Instagram',   icon: '◈' },
-      { value: 4.8, suffix: '/5',  label: 'Note client',       icon: '★' },
+      { value: 850, suffix: 'K',  label: 'Vues totales',      icon: '▶' },
+      { value: 61,  suffix: '%',  label: 'Taux de rétention', icon: '⏱' },
+      { value: 95,  suffix: 'K',  label: 'Reach Instagram',   icon: '◈' },
+      { value: 4.8, suffix: '/5', label: 'Note client',       icon: '★' },
     ],
     year:   '2025',
     client: 'ENTREPRISE B',
@@ -263,10 +268,10 @@ window._PROJECTS = {
     ],
     tools:  ['Logiciel 1', 'Logiciel 2'],
     impact: [
-      { value: 400, suffix: 'K',   label: 'Vues totales',      icon: '▶' },
-      { value: 58,  suffix: '%',   label: 'Taux de rétention', icon: '⏱' },
-      { value: 60,  suffix: 'K',   label: 'Reach Instagram',   icon: '◈' },
-      { value: 4.7, suffix: '/5',  label: 'Note client',       icon: '★' },
+      { value: 400, suffix: 'K',  label: 'Vues totales',      icon: '▶' },
+      { value: 58,  suffix: '%',  label: 'Taux de rétention', icon: '⏱' },
+      { value: 60,  suffix: 'K',  label: 'Reach Instagram',   icon: '◈' },
+      { value: 4.7, suffix: '/5', label: 'Note client',       icon: '★' },
     ],
     year:   '2024',
     client: 'ENTREPRISE C',
@@ -286,10 +291,10 @@ window._PROJECTS = {
     ],
     tools:  ['Logiciel 1', 'Logiciel 2', 'Logiciel 3'],
     impact: [
-      { value: 600, suffix: 'K',   label: 'Vues totales',      icon: '▶' },
-      { value: 65,  suffix: '%',   label: 'Taux de rétention', icon: '⏱' },
-      { value: 110, suffix: 'K',   label: 'Reach Instagram',   icon: '◈' },
-      { value: 5.0, suffix: '/5',  label: 'Note client',       icon: '★' },
+      { value: 600, suffix: 'K',  label: 'Vues totales',      icon: '▶' },
+      { value: 65,  suffix: '%',  label: 'Taux de rétention', icon: '⏱' },
+      { value: 110, suffix: 'K',  label: 'Reach Instagram',   icon: '◈' },
+      { value: 5.0, suffix: '/5', label: 'Note client',       icon: '★' },
     ],
     year:   '2024',
     client: 'ENTREPRISE A',
@@ -298,6 +303,7 @@ window._PROJECTS = {
     next: null,
   },
 };
+
 
 
 /* ════════════════════════════════════════════════
@@ -343,6 +349,11 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowLeft')  window.lbNav(-1, null);
 });
 
+
+
+/* ════════════════════════════════════════════════
+   TIMELINE NLE
+════════════════════════════════════════════════ */
 function renderTimeline(p, vid) {
   var tracks = {
     'v2': randomClips(2, 4, 8),
@@ -357,7 +368,7 @@ function renderTimeline(p, vid) {
     lane.innerHTML = '';
     tracks[id].forEach(function(clip, i) {
       var el = document.createElement('div');
-      el.className = 'pd-tl-clip';
+      el.className   = 'pd-tl-clip';
       el.style.left  = clip.left  + '%';
       el.style.width = clip.width + '%';
       lane.appendChild(el);
@@ -369,13 +380,21 @@ function renderTimeline(p, vid) {
   var tcOverlay = document.getElementById('pd-timecode');
   var clipsCol  = document.getElementById('pd-tl-clips');
 
-  // ── Ruler ────────────────────────────────────
+  function formatTC(seconds) {
+    var s = Math.floor(seconds);
+    var m = Math.floor(s / 60);
+    var h = Math.floor(m / 60);
+    s = s % 60; m = m % 60;
+    if (h > 0)
+      return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    return String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }
+
   function buildRuler(duration) {
     var ruler = document.getElementById('pd-tl-ruler');
     if (!ruler) return;
     ruler.innerHTML = '';
 
-    // Choisit un intervalle lisible selon la durée
     var interval;
     if      (duration <= 60)  interval = 10;
     else if (duration <= 180) interval = 30;
@@ -385,48 +404,35 @@ function renderTimeline(p, vid) {
     var steps = Math.floor(duration / interval);
 
     for (var i = 0; i <= steps; i++) {
-      var sec  = i * interval;
-      var pct  = sec / duration;
+      var sec = i * interval;
+      var pct = sec / duration;
 
       var tick = document.createElement('div');
-      tick.className  = 'pd-tl-tick';
-      tick.style.left = 'calc(52px + (100% - 52px) * ' + pct + ')';
+      tick.className    = 'pd-tl-tick';
+      tick.style.left   = 'calc(52px + (100% - 52px) * ' + pct + ')';
       tick.style.height = '10px';
       ruler.appendChild(tick);
 
       var lbl = document.createElement('span');
-      lbl.className  = 'pd-tl-tick-lbl';
-      lbl.style.left = tick.style.left;
+      lbl.className   = 'pd-tl-tick-lbl';
+      lbl.style.left  = tick.style.left;
       lbl.textContent = formatTC(sec);
       ruler.appendChild(lbl);
     }
 
-    // Tick final = durée exacte si non alignée
     if (duration % interval !== 0) {
       var endTick = document.createElement('div');
-      endTick.className  = 'pd-tl-tick';
-      endTick.style.left = 'calc(52px + (100% - 52px) * 1)';
+      endTick.className    = 'pd-tl-tick';
+      endTick.style.left   = 'calc(52px + (100% - 52px) * 1)';
       endTick.style.height = '10px';
       ruler.appendChild(endTick);
 
       var endLbl = document.createElement('span');
-      endLbl.className  = 'pd-tl-tick-lbl';
-      endLbl.style.left = endTick.style.left;
+      endLbl.className   = 'pd-tl-tick-lbl';
+      endLbl.style.left  = endTick.style.left;
       endLbl.textContent = formatTC(duration);
       ruler.appendChild(endLbl);
     }
-  }
-
-  function formatTC(seconds) {
-    var s = Math.floor(seconds);
-    var m = Math.floor(s / 60);
-    var h = Math.floor(m / 60);
-    s = s % 60;
-    m = m % 60;
-    if (h > 0) {
-      return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-    }
-    return String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
   }
 
   function updateTimecode(seconds) {
@@ -442,11 +448,10 @@ function renderTimeline(p, vid) {
   }
 
   if (vid) {
-    // Si durée déjà connue (cache)
     if (vid.duration && !isNaN(vid.duration)) {
       buildRuler(vid.duration);
     } else {
-      buildRuler(60); // placeholder
+      buildRuler(60);
       vid.addEventListener('loadedmetadata', function() {
         buildRuler(vid.duration);
       });
@@ -460,10 +465,9 @@ function renderTimeline(p, vid) {
     });
 
   } else {
-    buildRuler(60); // pas de vidéo → ruler générique
+    buildRuler(60);
   }
 
-  // ── Scrubbing ──────────────────────────────────
   if (!clipsCol) return;
   var isScrubbing = false;
 
@@ -512,8 +516,6 @@ function renderTimeline(p, vid) {
   });
 }
 
-
-
 function randomClips(minCount, maxCount, seed) {
   var count = minCount + (seed % (maxCount - minCount + 1));
   var clips = []; var pos = 1;
@@ -526,6 +528,7 @@ function randomClips(minCount, maxCount, seed) {
   }
   return clips;
 }
+
 
 
 /* ════════════════════════════════════════════════
@@ -543,14 +546,13 @@ window.renderProject = function(key) {
   if ($('pd-desc'))   $('pd-desc').textContent   = p.desc;
   if ($('pd-year'))   $('pd-year').textContent   = p.year;
 
-  // ── Preview vidéo ou image ──
   var preview = document.querySelector('.pd-preview');
   var playBtn = preview ? preview.querySelector('.play-btn') : null;
-  var vid = null; // ← déclaré ici
+  var vid = null;
 
   if (preview) {
     if (p.video) {
-      vid = document.createElement('video'); // ← assigné ici
+      vid = document.createElement('video');
       vid.src         = p.video;
       vid.preload     = 'metadata';
       vid.controls    = false;
@@ -634,16 +636,13 @@ window.renderProject = function(key) {
     }
   }
 
-  // ← renderTimeline ici, vid est maintenant défini
   renderTimeline(p, vid);
 
-  // ── Tags ──
   if ($('pd-tags'))
     $('pd-tags').innerHTML = p.tags.map(function(t) {
       return '<span class="modal-tag">' + t + '</span>';
     }).join('');
 
-  // ── Stats ──
   if ($('pd-stats'))
     $('pd-stats').innerHTML = p.stats.map(function(s) {
       return '<div class="pd-stat-card">' +
@@ -652,13 +651,11 @@ window.renderProject = function(key) {
         '</div>';
     }).join('');
 
-  // ── Outils ──
   if ($('pd-tools'))
     $('pd-tools').innerHTML = p.tools.map(function(t) {
       return '<span class="modal-tool">' + t + '</span>';
     }).join('');
 
-  // ── Impact ──
   if ($('pd-impact') && p.impact) {
     $('pd-impact').innerHTML = p.impact.map(function(item) {
       return '<div class="pd-impact-card">' +
@@ -667,10 +664,9 @@ window.renderProject = function(key) {
         '<div class="pd-impact-lbl">' + item.label + '</div>' +
         '</div>';
     }).join('');
-    setTimeout(animateImpact, 300);
+    requestAnimationFrame(initImpactObserver);
   }
 
-  // ── Navigation projets ──
   if ($('pd-nav-projects')) {
     var nav = '<div class="pd-nav-inner">';
     if (p.prev) {
@@ -688,24 +684,24 @@ window.renderProject = function(key) {
     nav += '</div>';
     $('pd-nav-projects').innerHTML = nav;
   }
+
+  triggerReveals();
 };
 
 
 
+/* ════════════════════════════════════════════════
+   IMAGES & CUT EFFECT
+════════════════════════════════════════════════ */
 window.initImages = function() {
   var base = (window.ASSET_BASE || '').replace(/\/+$/, '');
   var imgs = document.querySelectorAll('img[data-src]');
-
-  console.log('[initImages] base =', base, '| images =', imgs.length);
 
   imgs.forEach(function(img, i) {
     var path = img.getAttribute('data-src').replace(/^\//, '');
     img.src  = base + '/' + path;
 
-    console.log('[img ' + i + '] →', img.src);
-
     function markLoaded() {
-      console.log('[img ' + i + '] ✅');
       img.classList.add('loaded');
       var thumb = img.closest('.pc-thumb');
       if (thumb) thumb.classList.add('img-loaded');
@@ -722,10 +718,8 @@ window.initImages = function() {
   });
 };
 
-
 window.initCutEffect = function() {
   document.querySelectorAll('.proj-card').forEach(function(card) {
-    // Évite les doublons sans cloner
     if (card._cutReady) return;
     card._cutReady = true;
 
@@ -744,3 +738,89 @@ window.initCutEffect = function() {
 };
 
 
+
+window.initHero = function() {
+  var hero = document.getElementById('p-hero');
+  if (!hero) return;
+
+  /* ── Reset animations ── */
+  hero.querySelectorAll('.slide-up, .fade-in').forEach(function(el) {
+    el.style.animationName = 'none';
+  });
+  void hero.offsetHeight;
+  hero.querySelectorAll('.slide-up, .fade-in').forEach(function(el) {
+    el.style.animationName = '';
+  });
+
+  /* ── Timecode live ── */
+  (function() {
+    var el    = document.getElementById('hero-tc');
+    var start = performance.now();
+    if (!el) return;
+    function tick() {
+      if (!document.getElementById('hero-tc')) return;
+      var t  = (performance.now() - start) / 1000;
+      var h  = Math.floor(t / 3600);
+      var m  = Math.floor((t % 3600) / 60);
+      var s  = Math.floor(t % 60);
+      var fr = Math.floor((t % 1) * 25);
+      el.textContent = [h,m,s].map(function(v) {
+        return String(v).padStart(2,'0');
+      }).join(':') + ':' + String(fr).padStart(2,'0');
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
+
+  /* ── Barre export ── */
+  (function() {
+    var bar = document.getElementById('hero-export-bar');
+    if (!bar) return;
+    bar.style.width = '0%'; bar.style.opacity = '1';
+    setTimeout(function() {
+      bar.style.width = '100%';
+      setTimeout(function() { bar.style.opacity = '0'; }, 1600);
+    }, 300);
+  })();
+
+  /* ── Compteurs stats ── */
+  setTimeout(animateCounters, 800);
+};
+
+
+/* ════════════════════════════════════════════════
+   MOB NAV
+════════════════════════════════════════════════ */
+window.initMobNav = function(currentPage) {
+  var nav = document.getElementById('mob-nav');
+  if (!nav) return;
+
+  var items = [
+    { label: 'Accueil',   route: 'hero'      },
+    { label: 'À propos',  route: 'about'     },
+    { label: 'Portfolio', route: 'portfolio' },
+    { label: 'Contact',   route: 'contact'   },
+  ];
+
+  /* Injecte les boutons une seule fois */
+  if (!nav.children.length) {
+    items.forEach(function(item) {
+      var btn = document.createElement('button');
+      btn.className    = 'mob-item';
+      btn.textContent  = item.label;
+      btn.dataset.route = item.route;
+      btn.addEventListener('click', function() {
+        if (window.router) router.go(item.route);
+      });
+      nav.appendChild(btn);
+    });
+  }
+
+  /* Met à jour l'item actif */
+  var page = (currentPage || '').split(':')[0]; /* gère "project:Projet1" */
+  var activePage = page === 'project' ? 'portfolio' : page; /* project → portfolio actif */
+
+  nav.querySelectorAll('.mob-item').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.route === activePage);
+  });
+};
